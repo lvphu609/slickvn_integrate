@@ -1,0 +1,72 @@
+#detail_post{
+   float: left;
+   width: 100%;
+   height: auto;
+   margin: 0 auto;
+   background: url('../../../../includes/images/icon/slidebg.png'); 
+  
+}
+
+
+
+#detail_post .detail_post_center{
+  width: 1024px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/*============left===========*/
+#detail_post .detail_post_center .left_detail_post{
+  width: 700px;
+  height: auto;
+  float: left;
+  background: #FFF;
+  /*temp
+  height: 200px;
+  background: #00AAE7;*/
+}
+#detail_post .detail_post_center .left_detail_post .view_info_post{
+  margin-top: 10px;
+  width: 680px;
+  margin-left: 10px;
+  float: left;
+  height: 20px;
+  background: #FFF;
+  
+  /*temp*/
+  height: 20px;
+  
+}
+#detail_post .detail_post_center .left_detail_post .view_info_post span{
+  color: #99999;
+  font-size: 12px;
+  
+}
+
+#detail_post .detail_post_center .left_detail_post .box_detail_post{
+  margin-top: 10px;
+  width: 680px;
+  margin-left: 10px;
+  float: left;
+  height: auto;
+  background: #FFF;
+  
+  /*temp
+  height: 100px;
+  background: #FFF;*/
+}
+
+
+
+/*============right===========*/
+#detail_post .detail_post_center .right_detail_post{
+  width: 314px;
+  height: auto;
+  float: left;
+  margin-left: 10px;
+  /*temp*/
+  height: 500px;
+  background: #000;
+  
+  opacity: 0.3;
+}

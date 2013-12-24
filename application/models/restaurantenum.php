@@ -1,0 +1,43 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of RestaurantEnum
+ *
+ * @author phucnguyen
+ */
+class Restaurantenum {
+ 
+  const TOTAL = "Total";
+  const RESULTS = "Results";
+  
+  const ID = 'id'; 
+  const NAME = 'name'; 
+  const STATUS = 'status'; 
+  const CREATEED_DATE = 'created_date'; 
+  const ADDRESS = 'address'; 
+  const RATE_POINT = 'rate_point'; 
+  const IMAGE_LINK = 'image_link';
+  const LIMIT_PAGE_NEWEST_RESTAURANT = 1;
+  const LIMIT_PAGE_ORTHER_RESTAURANT = 1;
+  const LIMIT_PAGE_PROMOTION = 4;
+  const LIMIT_PAGE_POST = 3;
+  const LIMIT_PAGE_RESTAURANT_ALL = 15;
+  const LIMIT_SEARCH_POST=10;
+  const LIMIT_PAGE_USER_ALL=10;
+  const LIMIT_PAGE_SEARCH_COUPON=10;
+  
+  /*search -----------------*/
+   //meal
+   const LIMIT_PAGE_SEARCH_MEAL=10;
+  
+  /*end search ------------------*/
+  
+  
+}
+
+?>

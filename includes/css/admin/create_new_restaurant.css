@@ -1,0 +1,420 @@
+#create_new_restaurant{
+  width: 85%;
+  height: auto;
+  float: left;
+  /*background-color: #00620C;*/
+}
+#create_new_restaurant #content_create_new_restaurant{
+  margin-top: 100px;
+  width: 93%;
+  height: auto;
+  float: left;
+  margin-left: 5%;
+  margin-right: 2%;
+   
+ /* background: #0066FF;*/
+  
+}
+#create_new_restaurant #content_create_new_restaurant .create_new_restaurant_title{
+ width: 100%;
+ height: auto;
+ 
+/* background: #6c7670;*/
+}
+
+#create_new_restaurant #content_create_new_restaurant .create_new_restaurant_title span{
+  color: #000;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: sans-serif, Arial;
+}
+#create_new_restaurant #content_create_new_restaurant .line_title{
+  width: 100%;
+  height: 1px;
+  float: left;
+  background: #d4d4d4;
+}
+#create_new_restaurant #content_create_new_restaurant .restaurant_info_title{
+  width: 100%;
+  height: auto;
+  text-align: left;
+}
+#create_new_restaurant #content_create_new_restaurant .restaurant_info_title span{
+   color: #999;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic; 
+  font-family: sans-serif, Arial;
+}
+
+#create_new_restaurant #content_create_new_restaurant .box_input{
+  width: 100%;
+  margin-top: 20px;
+  height: auto;
+  
+  /*temp
+  height: 500px;
+  background: #d4d4d4;*/
+}
+
+#create_new_restaurant #content_create_new_restaurant .box_input .image_restaurant{
+  width: 20%;
+  height: 300px;
+  float: left;
+  /*temp
+  background:#00BDFF; */
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .image_restaurant .preview {
+
+   float: left;
+   width: 100%;
+   height: 80%;
+}
+
+
+#create_new_restaurant #content_create_new_restaurant .box_input .name_restaurant{
+  width: 24.66%;
+  height: 100px;
+  float: left;
+  margin-left: 2%;
+  /*temp
+  background:#468847;*/ 
+}
+
+#create_new_restaurant #content_create_new_restaurant .box_input .address_restaurant{
+  width: 24.66%;
+  height: 100px;
+  float: left;
+  margin-left: 2%;
+  /*temp
+  background:#465662; */
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .phone_number_restaurant{
+  width: 24.66%;
+  height: 100px;
+  float: left;
+  margin-left: 2%;
+  /*temp
+  background:#ff0; */
+}
+
+#create_new_restaurant #content_create_new_restaurant .box_input .website_restaurant{
+  width: 24.66%;
+  height: 100px;
+  float: left;
+  margin-left: 2%;
+  /*temp
+  background:#474747;*/
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .email_restaurant{
+  width: 24.66%;
+  height: 100px;
+  float: left;
+  margin-left: 2%;
+  /*temp
+  background:#ff0;*/
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .status_active{
+  width: 24.66%;
+  height: 100px;
+  float: left;
+  margin-left: 2%;
+  /*temp
+  background:#474747;*/
+}
+/*
+#create_new_restaurant #content_create_new_restaurant .box_input .facebock_url_profile{
+  width: 24.66%;
+  height: 100px;
+  float: left;
+  margin-left: 2%;
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .code_restaurant_profile{
+  width: 24.66%;
+  height: 100px;
+  float: left;
+  margin-left: 2%;
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .password_profile{
+  width: 24.66%;
+  height: 100px;
+  float: left;
+  margin-left: 2%;
+}
+*/
+#create_new_restaurant #content_create_new_restaurant .box_input .line_title{
+  width: 100%;
+  height: 1px;
+  float: left;
+  background: #d4d4d4;
+  margin-top: 10px;
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .introduce_short_restaurant{
+  width: 100%;
+  height: auto;
+  float: left;
+  margin-top: 15px;
+  
+  /*background: #d4d4d4;*/
+}
+
+#create_new_restaurant #content_create_new_restaurant .box_input .btn_save_cancel{
+  width: 100%;
+  height: 40px;
+  float: left;
+  margin-top: 15px;
+  margin-bottom: 100px;
+  
+  /*background: #d4d4d4;*/
+}
+
+
+
+#create_new_restaurant #content_create_new_restaurant .box_input .btn_save_cancel .btn_save{
+  width: 10%;
+  height: 40px;
+  float: left;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  text-align: center;
+  
+  background-image: -o-linear-gradient(bottom, #6ED60D 0%, #4D7D12 84%);
+  background-image: -moz-linear-gradient(bottom, #6ED60D 0%, #4D7D12 84%);
+  background-image: -webkit-linear-gradient(bottom, #6ED60D 0%, #4D7D12 84%);
+  background-image: -ms-linear-gradient(bottom, #6ED60D 0%, #4D7D12 84%);
+  background-image: linear-gradient(to bottom, #6ED60D 0%, #4D7D12 84%);
+
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .btn_save_cancel .btn_save:hover{
+  width: 10%;
+  height: 40px;
+  float: left;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-image: -o-linear-gradient(bottom, #509C03 0%, #73CF0B 100%);
+  background-image: -moz-linear-gradient(bottom, #509C03 0%, #73CF0B 100%);
+  background-image: -webkit-linear-gradient(bottom, #509C03 0%, #73CF0B 100%);
+  background-image: -ms-linear-gradient(bottom, #509C03 0%, #73CF0B 100%);
+  background-image: linear-gradient(to bottom, #509C03 0%, #73CF0B 100%);
+
+}
+
+#create_new_restaurant #content_create_new_restaurant .box_input .btn_save_cancel .btn_save lable{
+  color: #FFF;
+  font-size: 23px;
+  font-family: sans-serif;
+
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .btn_save_cancel .btn_save .center_text{
+  margin-top: 5px;
+
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .btn_save_cancel .btn_cancel{
+  width: 10%;
+  height: 40px;
+  float: left;
+  margin-left: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  text-align: center;
+  
+  background-image: -o-linear-gradient(bottom, #DEDEDE 0%, #292929 100%);
+  background-image: -moz-linear-gradient(bottom, #DEDEDE 0%, #292929 100%);
+  background-image: -webkit-linear-gradient(bottom, #DEDEDE 0%, #292929 100%);
+  background-image: -ms-linear-gradient(bottom, #DEDEDE 0%, #292929 100%);
+  background-image: linear-gradient(to bottom, #DEDEDE 0%, #292929 100%);
+  
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .btn_save_cancel .btn_cancel:hover{
+  width: 10%;
+  height: 40px;
+  float: left;
+  margin-left: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-image: -o-linear-gradient(bottom, #595959 0%, #D1D1D1 100%);
+  background-image: -moz-linear-gradient(bottom, #595959 0%, #D1D1D1 100%);
+  background-image: -webkit-linear-gradient(bottom, #595959 0%, #D1D1D1 100%);
+  background-image: -ms-linear-gradient(bottom, #595959 0%, #D1D1D1 100%);
+  background-image: linear-gradient(to bottom, #595959 0%, #D1D1D1 100%);
+  
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .btn_save_cancel .btn_cancel lable{
+  color: #FFF;
+  font-size: 23px;
+  font-family: sans-serif;
+
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .btn_save_cancel .btn_cancel .center_text{
+  margin-top: 5px;
+
+}
+#create_new_restaurant #content_create_new_restaurant .box_input span.title_input{
+  color: #0066FF;
+  font-size: 15px;
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+#create_new_restaurant #content_create_new_restaurant .box_input .input_text{
+  width: 100%;
+  height: 50px;
+  
+  background: #fff;
+  border: 1px solid #5bc0de;
+  font-size: 15px;
+  box-sizing: border-box;
+  color: #595959;
+  margin: 0;
+  outline: 0;
+  padding: 5px 0 6px 8px;
+  -webkit-appearance: none;
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .input_textarea{
+  width: 100%;
+  height: 150px;
+   resize: none; 
+  background: #fff;
+  border: 1px solid #5bc0de;
+  font-size: 15px;
+  box-sizing: border-box;
+  color: #595959;
+  margin: 0;
+  outline: 0;
+  padding: 5px 0 6px 8px;
+  -webkit-appearance: none;
+}
+
+
+#create_new_restaurant #content_create_new_restaurant .box_input .box_select_option{
+  width: 100%;
+  height: auto;
+  float: left;
+  margin-top: 30px;
+  border: 1px solid #5bc0de;
+  /*temp
+  height: 200px;
+/*  background: #d4d4d4;*/
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .box_select_option_noboder{
+  width: 100%;
+  height: auto;
+  float: left;
+  margin-top: 5px;
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .box_select_option .span_title{
+  background: #FFF;
+  /*position: absolute;*/
+  margin-top: -10px;
+  margin-left: 20px;
+  color:#0066FF;
+  
+}
+
+ul.list_index {
+width: 100%;
+height: auto;
+float: left;
+clear: both;
+margin: 0px;
+padding: 0px;
+list-style: none;
+margin-top: 10px;
+}
+ul.list_index li {
+width: 19%;
+height: auto;
+float: left;
+clear: none;
+margin-left: 5px;
+cursor: pointer;
+color:#000000;
+font-size: 15px;
+font-family: sans-serif;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+ul.list_index li .checkbox {
+width: 16px;
+height: 18px;
+background: url(../../../includes/images/icon/check.png) no-repeat;
+cursor: pointer;
+display: inline-block;
+float: left;
+/*margin-right: 5px;*/
+}
+ul.list_index li .checkboxSelect {
+background: url(../../../includes/images/icon/checked.png) no-repeat;
+/*margin-right: 5px;*/
+display: inline-block;
+float: left;
+width: 16px;
+height: 18px;
+}
+
+/*giới thiệu nhà hàng*/
+
+#create_new_restaurant #content_create_new_restaurant .box_input .box_select_option .input_post_image_content{
+ margin-top: 10px;
+  /*temp
+  height: 200px;*/
+/*  background: #d4d4d4;*/
+}
+#create_new_restaurant #content_create_new_restaurant .box_input .box_select_option .preview_post {
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#create_new_restaurant #content_create_new_restaurant .box_input .box_select_option  .preview_post {
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+}
+
+#create_new_restaurant #content_create_new_restaurant .box_input .box_select_option .preview_post {
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+}
+
+
+
+/*end giới thiệu nhà hàng*/
+
+/*thêm menu nhà hàng*/
+
+select, input[type="text"] .uneditable-input {
+  display: inline-block;
+  height: 50px;
+  width: 100%;
+  padding: 4px 6px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #555555;
+}
+.select_menu_option{
+  width: 150px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.keyvalueeditor-key, .keyvalueeditor-value {
+  color: #333 !important;
+  padding: 5px !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-bottom: solid thin #CCC !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  margin-right: 10px !important;
+  width: 224px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
