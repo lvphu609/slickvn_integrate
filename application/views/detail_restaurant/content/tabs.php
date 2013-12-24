@@ -1792,7 +1792,7 @@
      }
      
      function send_answer_assessment(object){
-      var content = $('textarea#answer_assessment').val();
+      var content = $(object).closest('.box_detail_comment_for_assessment').find('#answer_assessment').val();
       var session_id_user = $('#session_id_user').val();
       var id_assessment=$('#id_assessment').val();
       var url = $('#hidUrl').val();

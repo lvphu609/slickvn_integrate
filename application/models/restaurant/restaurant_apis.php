@@ -251,6 +251,7 @@ class Restaurant_apis extends CI_Model{
                                             );
             $data =  array(
                    'Status'     => Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                   User_enum::NUMBER_ASSESSMENT => $this->restaurant_model->countAssessmentForUser($array_value[Common_enum::_ID]->{'$id'}),
                     Comment_enum::ID => $array_value[Common_enum::_ID]->{'$id'},
                    'Error'      => $error
             );
