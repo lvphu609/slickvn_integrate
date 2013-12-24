@@ -15,6 +15,7 @@ class Post_enum {
    const ID                     = 'id';
    const ID_USER                = 'id_user';
    const TITLE                  = 'title';
+   const TITLE_NON_UTF8         = 'title_non_utf8';
    const AVATAR                 = 'avatar';
    const ADDRESS                = 'address';
    const FAVOURITE_TYPE_LIST    = 'favourite_type_list';

@@ -51,6 +51,7 @@ class Common_enum {
     const TYPE_CAROUSEL             = 'carousel/';
     const TYPE_DISH                 = 'dish/';
     const TYPE_INTRODUCE            = 'introduce/';
+    const DIR_LOGO_COUPON           = 'logo_coupon/';
     
     const DEFAULT_AVATAR            = 'DEFAULT_AVATAR.png';
     

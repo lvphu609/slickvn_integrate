@@ -2519,28 +2519,58 @@ class Restaurant_apis extends CI_Model{
      */
     public function update_coupon($action, $id=null, $id_restaurant=null, $value_coupon=null, 
                                   $start_date=null, $due_date=null, $desc=null, $is_use=null,
+                                  $logo,
                                   $created_date = null, $updated_date = null
                                  ){
         
-        //  Get param from client
-//        $action         = $this->post('action');
-//        $id             = $this->post('id');
-//        $id_restaurant  = $this->post('id_restaurant');
-//        $value_coupon   = $this->post('value_coupon');
-//        $start_date     = $this->post('start_date');
-//        $due_date       = $this->post('due_date');
-//        $desc           = $this->post('desc');
-//        $is_use         = $this->post('is_use');
-//        $created_date   = $this->post('created_date');
-//        $updated_date = $this->post('updated_date');
 
         $action_insert = strcmp( strtolower($action), Common_enum::INSERT );
-        $action_edit = strcmp( strtolower($action), Common_enum::EDIT );
+        $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
         $action_delete = strcmp( strtolower($action), Common_enum::DELETE );
+        
+        $file_temp = Common_enum::ROOT.Common_enum::PATH_TEMP;
+        $file_logo = Common_enum::ROOT.Common_enum::DIR_LOGO_COUPON;
+        
+        if($action_insert == 0){
+            if($logo == null){
+                //  TODO
+            }
+            else{
+                //  Create directory $path
+                $this->common_model->createDirectory($file_logo, Common_enum::WINDOWN);
+                if(file_exists($file_temp)){
+                    $move_file_logo = $this->common_model->moveFileToDirectory($file_temp.$logo, $file_logo.$logo);
+                    if(!$move_file_logo){
+                        $this->common_model->setError('Move file logo '.$move_file_logo);
+                    }
+                }
+            }
+        }
+        else if($is_edit == 0){
+            $new_old_logo = explode(Common_enum::MARK, $logo);
+            $new_logo = $new_old_logo[0];
+            $old_logo = $new_old_logo[1];
+            
+            $file_new_logo = $path_logo.$new_logo;
+            $file_old_logo = $path_logo.$old_logo;
+            
+            if(!file_exists($file_new_logo)){
+                unlink($file_old_logo);
+                $move_file_logo = $this->common_model->moveFileToDirectory($file_temp.$new_logo, $file_new_logo);
+                if(!$move_file_logo){
+                    $this->common_model->setError('Move file logo '.$move_file_logo);
+                }
+                $golo = $new_logo;
+            }
+            else{
+                $logo = $old_logo;
+            }
+        }
         
         $array_value = ($action_delete != null)? array(
             Coupon_enum::ID_RESTAURANT => $id_restaurant,
             Coupon_enum::VALUE_COUPON => (int)$value_coupon,
+            Coupon_enum::LOGO_COUPON => $logo,
             Coupon_enum::START_DATE => $start_date,
             Coupon_enum::DUE_DATE => $due_date,
             Coupon_enum::DESC => $desc,
@@ -2550,7 +2580,7 @@ class Restaurant_apis extends CI_Model{
             Common_enum::CREATED_DATE       => ($created_date == null ) ? $this->common_model->getCurrentDate(): $created_date
         )
          : array();
-        $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
+        
         if($is_edit == TRUE){
             unset($array_value[Common_enum::CREATED_DATE]);
         }
@@ -2704,17 +2734,19 @@ class Restaurant_apis extends CI_Model{
         $position_start_get = ($page == 1)? $page : ( $position_end_get - ($limit - 1) );
         
         //  Query
-        $where = array(Post_enum::TITLE => new MongoRegex('/'.$key.'/i'));
-        $list_post = $this->restaurant_model->searchPost($where);
+        $array_key_word = explode(' ', $key);
+        $where = array();
+        foreach ($array_key_word as $value) {
+            $where[] = array(Post_enum::TITLE => new MongoRegex('/'.$value.'/i'));
+            $where[] = array(Post_enum::NAME_NON_UTF8 => new MongoRegex('/'.$value.'/i'));
+        }
+        $list_post = $this->restaurant_model->searchPost(array( '$or'=>  $this->common_model->removeElementArrayNull($where)));
         
         //  Array object post
         $results = array();
         
         //  Count object post
         $count = 0;
-        
-        //  Count resulte
-        $count_resulte = 0;
         if(is_array($list_post)){
             foreach ($list_post as $post){
                 $count++;
@@ -3040,7 +3072,7 @@ class Restaurant_apis extends CI_Model{
         $array_value = ($is_delete != 0) ? array(
                         Post_enum::ID_USER               => $id_user,
                         Post_enum::TITLE                 => $title,     
-            
+                        Post_enum::TITLE_NON_UTF8        =>$this->common_model->nonUtf8Convert($title),
                         Post_enum::AVATAR                => $file_avatar,
                         Post_enum::ADDRESS               => $address,
                         Post_enum::FAVOURITE_TYPE_LIST   => explode(Common_enum::MARK, $favourite_type_list),
@@ -3149,26 +3181,22 @@ class Restaurant_apis extends CI_Model{
      *  Response: JSONObject
      * 
      */
-    public function update_email($action, $id, $email, $updated_date = null,
+    public function update_email($action, $id=null, $email, $updated_date = null,
                                 $created_date = null
                                 ){
         
-        //  Get param from client
-        $action                     = $this->post('action');
-        $id                         = $this->post('id');
-        $email                      = $this->post('email');
-        $updated_date               = $this->post('updated_date');
-        $created_date               = $this->post('created_date');
+        $check_email = $this->common_model->checkExistValue(Subscribed_email_enum::COLLECTION_SUBSCRIBED,
+                                                            array(Subscribed_email_enum::EMAIL => $email)
+                                                            );
         
-        if($email == null){
+        if($email == null || $check_email==TRUE){
             //  Response
             $resulte =  array(
                'Status'     =>  Common_enum::MESSAGE_RESPONSE_FALSE,
-               'Error'      =>'Email is null'
+               'Error'      =>'Email is null or existed'
             );
 
-            $this->response($resulte);
-            return;
+            return $resulte;
         }
         
         $array_value = array(
@@ -3187,14 +3215,14 @@ class Restaurant_apis extends CI_Model{
                    'Status'     =>  Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
                    'Error'      =>$error
             );
-            $this->response($data);
+            return $data;
         }
         else{
             $data =  array(
                    'Status'     =>Common_enum::MESSAGE_RESPONSE_FALSE,
                    'Error'      =>$error
             );
-            $this->response($data);
+            return $data;
         }
         
     }

@@ -609,7 +609,6 @@ class Restaurant_model extends CI_Model{
             $user = $this->user_model->getUserById($comment['id_user']);
             $approval = $comment[Comment_enum::APPROVAL];
             if( strcmp(strtoupper($approval), Assessment_enum::APPROVAL_YES) == 0){
-               
                 $comment_detail = array(
                                         Comment_enum::ID                => $comment['_id']->{'$id'},
                                         //  Infor User

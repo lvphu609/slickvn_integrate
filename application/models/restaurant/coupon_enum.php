@@ -13,6 +13,7 @@
 class Coupon_enum {
    const ID             = 'id';
    const ID_RESTAURANT  = 'id_restaurant';
+   const LOGO_COUPON    = 'logo_coupon';
    const VALUE_COUPON   = 'value_coupon';
    const START_DATE     = 'coupon_start_date';
    const DUE_DATE       = 'coupon_due_date';
