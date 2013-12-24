@@ -755,14 +755,10 @@ class Common_model extends CI_Model{
      * @return int
      */
     public function getInterval($d1, $d2) {
-
         $start  = strtotime($d1);
         $end    = strtotime($d2);
-
-        $days_between = ceil(( $end - $start) / 86400);
-        
+        $days_between = ceil($end - $star);
         return $days_between;
-        
     }
     
     public function getCurrentDate() {
