@@ -95,7 +95,7 @@
                    });
                }
                else{
-                 check_validate="Email đã tồn tại!";
+                 check_validate=data;
                   $(".remove_dialog").remove();
                   $( ".dialog_validate_register_email" ).append("<div class=\"remove_dialog\">"+check_validate+"</div>");  
                   $( ".dialog_validate_register_email" ).dialog({

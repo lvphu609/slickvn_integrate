@@ -1019,6 +1019,9 @@ class Home_controller extends CI_Controller {
      if(strcmp($results['Status'],"SUCCESSFUL")==0){
        echo $results['Status'];
      }
+     else{
+       echo "Email này đã được đăng ký!";
+     }
       
     }
   
