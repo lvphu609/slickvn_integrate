@@ -1,6 +1,6 @@
 
 <?php $url=  base_url(); 
- var_dump($info_restaurant);
+// var_dump($info_restaurant);
  foreach ($info_restaurant as $info_detail_restaurant) {
    
 
@@ -70,6 +70,11 @@
 
         $culinary_style_list=$info_detail_restaurant['culinary_style_list'];
         $culinary_style_list=substr($culinary_style_list, 1);
+        
+        $value_coupon         =$info_detail_restaurant['value_coupon'];
+        $coupon_start_date    =$info_detail_restaurant['coupon_start_date'];
+        $coupon_due_date      =$info_detail_restaurant['coupon_due_date'];
+        $coupon_desc          =$info_detail_restaurant['coupon_desc'];
 
  }
  ?>
@@ -1631,7 +1636,13 @@
  <!--==============Khuyến mãi=================================--====================-->    
 <div id="coupon_restaurant">
   <div class="box_detail_coupon_restaurant">
-    
+    <div class="left">
+      <div class="time_left">
+        
+      </div>
+    </div>
+    <div class="right">
+    </div>
   </div>
 </div>
  

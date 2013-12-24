@@ -61,6 +61,7 @@
  background-repeat: no-repeat;
  background-size: 180px 75px;
  margin-top: -14px;
+ /*-webkit-transform: rotate(634.5deg);*/
 
   
 }
@@ -1143,10 +1144,30 @@ ul li .right .rating .star_no_active{
  float: left;
  height: auto;
  background:url(../../../../includes/images/icon/bg_paper.png);
- height: 500px;
+ 
   
 }
-
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant .left {
+ width: 300px;
+ float: left;
+ height: 300px;
+ float: left;
+ /*temp*/
+ background: #00620C;
+  
+}
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant .left 
+.time_left {
+ width: 200px;
+ float: left;
+ height: 100px;
+ float: left;
+ margin-top: 50px;
+ margin-left: 50px;
+ /*temp*/
+ background: #FFF;
+  
+}
 
 
 /*====================================================TABS RIGHT===============*/
