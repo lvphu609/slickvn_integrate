@@ -1,8 +1,7 @@
 <?php $url=  base_url();
 
  //var_dump($info_restaurant);
- foreach ($info_restaurant as $info_detail_restaurant) {
-   
+ foreach ($info_restaurant as $info_detail_restaurant) {   
 
       $id=                    $info_detail_restaurant['id'];
       //$id_user=               $info_detail_restaurant['id_user'];
@@ -38,7 +37,7 @@
       $created_date=          $info_detail_restaurant['created_date'];
       $desc=                  $info_detail_restaurant['desc'];
       $email=                 $info_detail_restaurant['email'];
- }
+  }
  ?>
 
 
@@ -90,8 +89,9 @@
        
         </div>
       </div>
-      <div class="line_banner_vote_comment"></div>
+      <div class="line_banner_vote_comment">  </div>
       <div class="gallery_slide">
+        
         <ul id="myGallery">
           <?php 
             foreach ($image_introduce_link as $value) {

@@ -338,8 +338,56 @@
           
         });
         
+    });
+       /*Khuyến mãi--------------------------------------------------------*/
+    $('#btn_coupon_restaurant').click(function() {
+        $("#status_clicked_1").removeClass('active');
+        $("#status_clicked_2").removeClass('active');
+        $("#status_clicked_3").removeClass('active');
+        $("#status_clicked_4").removeClass('active'); 
+        
+        //gioi thieu nha hang
+        $("#introduce_restaurant").css({
+            display: "none"
+          
+        });
+        
+         //thong tin nha hang
+         $("#info_restaurant").css({
+           display: "none"
+          
+        });
+        //tiện ích
+         $("#utilities_restaurant").css({
+            display: "none"
+          
+        });
+        //binh luận
+         $("#comment_restaurant").css({
+            display: "none"
+          
+        });
+        //khuyến mãi
+         $("#coupon_restaurant").css({
+            display: "block",
+            width: "734px",
+            marginLeft: "10px",
+            marginRight: "10px",
+            height: "auto",
+            float: "left",
+            background: "#FFF",
+            marginBottom: "20px",
+            marginTop: "20px",
+            visibility: ""
+          
+        });
+        
                                   
     });
+     
+     
+     
+     
      
      
      //btn_đánh giá
@@ -384,6 +432,10 @@
                                   
     });
     
+    
+    
+    
+    
      
     
   }); 
@@ -424,6 +476,13 @@
               <span>BÌNH LUẬN</span>
             </li>
           </a>
+          <a href="javascript:;" id="btn_coupon_restaurant">
+            <li>
+              <div class="coupon_logo"></div>
+            </li>
+          </a>
+          
+          
         </ul>
       </div>
     </div>
@@ -1547,7 +1606,18 @@
       
       
     </div>
-    <!--===============================end binh luan====================-->
+    <!--===============================end binh luan====================---->
+    
+ <!--==============Khuyến mãi=================================--====================-->    
+<div id="coupon_restaurant">
+  <div class="box_detail_coupon_restaurant">
+    
+  </div>
+</div>
+ 
+ 
+ <!--==============End khuyến mãi=================================--====================-->    
+ 
     
     </div>
 <!--end tabs left-->

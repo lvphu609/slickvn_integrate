@@ -50,6 +50,21 @@
  margin-top: 5px;
   
 }
+#tabs_detail_restaurant .tabs_align_center .tabs_title #ul_menu li .coupon_logo{
+ width: 180px;
+ height: 60px;
+ float: left;
+ position: absolute;
+ margin-right: -100px;
+ background: url('../../../../includes/images/icon/detail_restaurant_coupon.png');
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: 180px 75px;
+ margin-top: -14px;
+
+  
+}
+
 #tabs_detail_restaurant .tabs_align_center .tabs_title #ul_menu li:hover{
    background: url('../../../../includes/images/icon/banner_red.png'); 
  border-top-left-radius: 5px;
@@ -1113,6 +1128,32 @@ ul li .right .rating .star_no_active{
   background-image: linear-gradient(to bottom, #FA2D2D 0%, #910707 100%);
 }
 
+/*--------------------------------------------tabs_coupon_restaurant-------------*/
+
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant{
+  width: 734px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: auto;
+  float: left;
+  background: #FFF;
+   margin-bottom: 20px;
+   margin-top: 20px;
+  
+  
+  
+}
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant {
+ width: 700px;
+ margin-left: 16px;
+ float: left;
+ height: auto;
+ 
+
+ background: #DDD;
+ height: 500px;
+  
+}
 
 
 

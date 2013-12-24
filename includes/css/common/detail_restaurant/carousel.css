@@ -167,6 +167,13 @@
   
   
 }
+#carousel_detail .box_align_center .box_detail_left .line_banner_vote_comment .coupon_logo{
+   width: 100px;
+ height: 100px;
+ background: #4D7D12;
+ position: absolute;
+}
+
 #carousel_detail .box_align_center .box_detail_left .gallery_slide{
   width: 444px;
   height: auto;;
@@ -178,7 +185,12 @@
   margin-left: 10px;
   margin-bottom: 10px;
   
+  
 }
+
+
+
+
 
 #carousel_detail .box_align_center .box_detail_left .title_restaurant_and_introduce{
   width: 290px;
