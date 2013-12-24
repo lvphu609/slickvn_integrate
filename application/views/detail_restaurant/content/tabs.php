@@ -1,6 +1,6 @@
 
 <?php $url=  base_url(); 
-
+ var_dump($info_restaurant);
  foreach ($info_restaurant as $info_detail_restaurant) {
    
 
@@ -95,7 +95,6 @@
                       marginRight: "10px",
                       height: "auto",
                       float: "left",
-                      background: "#FFF",
                       marginBottom: "20px",
                       marginTop: "20px",
                       visibility: ""
@@ -117,7 +116,12 @@
                       display: "none"
 
                   });
+                  
+                  //Khuyến mãi
+                    $("#coupon_restaurant").css({
+                       display: "none"
 
+                   });
 
              });
 
@@ -151,12 +155,16 @@
                       marginRight: "10px",
                       height: "auto",
                       float: "left",
-                      background: "#FFF",
                       marginBottom: "20px",
                       marginTop: "20px",
                       visibility: ""
 
                   });
+                  //Khuyến mãi
+                    $("#coupon_restaurant").css({
+                       display: "none"
+
+                   });
 
 
              });
@@ -187,7 +195,6 @@
           marginRight: "10px",
           height: "auto",
           float: "left",
-          background: "#FFF",
           marginBottom: "20px",
           marginTop: "20px",
           visibility: ""
@@ -209,7 +216,11 @@
            display: "none"
           
         });
-        
+        //Khuyến mãi
+         $("#coupon_restaurant").css({
+            display: "none"
+          
+        });
         
     });
     
@@ -238,7 +249,6 @@
             marginRight: "10px",
             height: "auto",
             float: "left",
-            background: "#FFF",
             marginBottom: "20px",
             marginTop: "20px",
             visibility: ""
@@ -254,7 +264,11 @@
             display: "none"
           
         });
-        
+        //Khuyến mãi
+         $("#coupon_restaurant").css({
+            display: "none"
+          
+        });
                                   
     });
     
@@ -285,7 +299,6 @@
             marginRight: "10px",
             height: "auto",
             float: "left",
-            background: "#FFF",
             marginBottom: "20px",
             marginTop: "20px",
             visibility: ""
@@ -296,7 +309,11 @@
            display: "none"
           
         });
-        
+        //Khuyến mãi
+         $("#coupon_restaurant").css({
+            display: "none"
+          
+        });
         
                                   
     });
@@ -331,12 +348,17 @@
             marginRight: "10px",
             height: "auto",
             float: "left",
-            background: "#FFF",
             marginBottom: "20px",
             marginTop: "20px",
             visibility: ""
           
         });
+        //Khuyến mãi
+         $("#coupon_restaurant").css({
+            display: "none"
+          
+        });
+        
         
     });
        /*Khuyến mãi--------------------------------------------------------*/
@@ -375,7 +397,6 @@
             marginRight: "10px",
             height: "auto",
             float: "left",
-            background: "#FFF",
             marginBottom: "20px",
             marginTop: "20px",
             visibility: ""
@@ -422,7 +443,6 @@
             marginRight: "10px",
             height: "auto",
             float: "left",
-            background: "#FFF",
             marginBottom: "20px",
             marginTop: "20px",
             visibility: ""

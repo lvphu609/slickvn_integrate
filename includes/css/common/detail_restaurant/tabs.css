@@ -117,7 +117,7 @@ margin-top: 5px;
   width: 754px;
   height: auto;
   float: left;
-  background: #FFF;
+  background: url(../../../../includes/images/icon/bg.jpg);
    margin-bottom: 20px;
   /*temp
   height: 500px;
@@ -130,7 +130,6 @@ margin-top: 5px;
   margin-right: 10px;
   height: auto;
   float: left;
-  background: #FFF;
    margin-bottom: 20px;
    margin-top: 20px;
    font-size: 12px;
@@ -148,7 +147,6 @@ margin-top: 5px;
   margin-right: 10px;
   height: auto;
   float: left;
-  background: #FFF;
    margin-bottom: 20px;
    margin-top: 20px;
   
@@ -286,7 +284,6 @@ margin-top: 5px;
   margin-right: 20px;
   height: auto;
   float: left;
-  background: #FFF;
    margin-bottom: 20px;
    margin-top: 20px;
   
@@ -578,7 +575,6 @@ margin-top: 5px;
   margin-right: 20px;
   height: auto;
   float: left;
-  background: #FFF;
    margin-bottom: 20px;
    margin-top: 20px;
   
@@ -588,7 +584,6 @@ margin-top: 5px;
   width: 734px;
   height: auto;
   float: left;
-  background: #FFF;
   margin-bottom: 10px;
   
   /*temp
@@ -776,7 +771,6 @@ background-image: linear-gradient(to bottom, #FA2D2D 0%, #910707 100%);
   width: 734px;
   height: auto;
   float: left;
-  background: #FFF;
   margin-bottom: 10px;
   
   /*temp
@@ -1136,7 +1130,7 @@ ul li .right .rating .star_no_active{
   margin-right: 10px;
   height: auto;
   float: left;
-  background: #FFF;
+  
    margin-bottom: 20px;
    margin-top: 20px;
   
@@ -1148,9 +1142,7 @@ ul li .right .rating .star_no_active{
  margin-left: 16px;
  float: left;
  height: auto;
- 
-
- background: #DDD;
+ background:url(../../../../includes/images/icon/bg_paper.png);
  height: 500px;
   
 }
