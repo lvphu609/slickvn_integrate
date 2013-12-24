@@ -1152,21 +1152,23 @@ ul li .right .rating .star_no_active{
  float: left;
  height: 300px;
  float: left;
- /*temp*/
- background: #00620C;
+ /*temp
+ background: #00620C;*/
   
 }
 #tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant .left 
 .time_left {
  width: 200px;
  float: left;
- height: 100px;
+ height: 200px;
  float: left;
  margin-top: 50px;
  margin-left: 50px;
  /*temp*/
- background: #FFF;
-  
+ background: url(../../../../includes/images/icon/note.png);
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: 200px 200px;
 }
 
 
