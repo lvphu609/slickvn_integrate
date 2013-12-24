@@ -113,13 +113,17 @@
                </div>               
              </div>
            </a>
-           <a href="<?php echo $url?>index.php/home_controller/add_post" id="btn_add_post">
+         <?php
+         /*  <a href="<?php echo $url?>index.php/home_controller/add_post" id="btn_add_post">
              <div class="text_add_post">
                <div class="text">
                  <span>Thêm bài viết</span>
                </div>               
              </div>
            </a>
+          
+          */
+         ?>
          </div>
          
        </div>

@@ -40,6 +40,48 @@
       </div>
     </div>
     <div class="right_detail_post">
+      <ul>
+        <?php 
+           // var_dump($post_similar);
+            if(is_array($post_similar)&&  sizeof($post_similar)>0){
+              foreach ($post_similar as $value) {
+                $id_similar                  =$value['id'];
+                $id_user_similar             =$value['id_user'];
+                $title_similar               =$value['title'];
+                $title_similar=substr($title_similar,0,120) . '...';
+                $avatar_similar              =$value['avatar'];
+                $avatar_similar  =$BASE_IMAGE_POST_URL.$avatar_similar;
+                $address_similar             =$value['address'];
+                $favourite_type_list_similar =$value['favourite_type_list'];
+                $price_person_list_similar   =$value['price_person_list'];
+                $culinary_style_list_similar =$value['culinary_style_list'];
+                $content_similar             =$value['content'];
+                $number_assessment_similar   =$value['number_assessment'];
+                $rate_point_similar          =$value['rate_point'];
+                $number_view_similar         =$value['number_view'];
+                $updated_date_similar        =$value['updated_date'];
+                $created_date_similar        =$value['created_date'];
+              
+            
+        ?>
+        <li>
+          <a href="<?php echo $url;?>/index.php/detail_post/detail_post?id_post=<?php echo $id_similar; ?>">
+            <div class="box_img_post">
+              <img class="img_post" src="<?php echo $avatar_similar;?>">
+            </div>
+            <div class="box_short_content_post">
+              <div class="title">
+                <p><?php echo $title_similar; ?></p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <?php 
+              }
+            }
+        ?>
+        
+      </ul>
     </div>
   </div>
 </div>

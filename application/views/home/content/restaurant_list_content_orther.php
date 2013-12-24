@@ -34,7 +34,7 @@
                <li >            
                 <div class="detail_box">
                            <div class="img_item">
-                             <a href="<?php echo $url;?>index.php/detail_restaurant/detail_restaurant?id_restaurant=<?php echo $url;?>">
+                             <a href="<?php echo $url;?>index.php/detail_restaurant/detail_restaurant?id_restaurant=<?php echo $id;?>">
                                  <img  class="big" src="<?php echo $url_res_frofile.$avatar;?>" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
                              </a>
                              <div id="remove_comment_like_animate" class="">

@@ -31,6 +31,9 @@ class Detail_post extends CI_Controller {
     $data['info_post']=$json_detail_post["Results"];
     //var_dump($data['info_post']);
       if($data['info_post']!=NULL){//nếu dữ liệu lấy về không NULL
+          $json_post_similar = $this->restaurant_apis->get_all_post_similar(100,1,$id_post);
+          $data['post_similar']=$json_post_similar["Results"];
+          $data['BASE_IMAGE_POST_URL']=  Api_link_enum::$BASE_IMAGE_POST_URL;
               /*===============MENU==========================================================================*/
                 $info_user=$this->info_user;
                 $data['info_user']=$info_user;

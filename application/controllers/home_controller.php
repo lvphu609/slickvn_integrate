@@ -1003,6 +1003,24 @@ class Home_controller extends CI_Controller {
      }
       
     }
+    
+     public function register_email()
+    {
+      $email   =$_POST['email'];
+      $action="insert";
+      $results=$this->restaurant_apis->update_email(
+            $action,
+            null,
+            $email,
+            null,
+            null
+            );
+    
+     if(strcmp($results['Status'],"SUCCESSFUL")==0){
+       echo $results['Status'];
+     }
+      
+    }
   
 }
 

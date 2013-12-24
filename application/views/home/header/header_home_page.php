@@ -77,6 +77,12 @@
     <link rel="stylesheet" href="<?php //echo $url;?>includes/plugins/select_custom/css/sparkbox-select.css">-->
     <script src="<?php echo $url;?>includes/plugins/select_custom/js/modernizr-1.7.min.js"></script>
     <!--end menu select search-->
+    
+    <!--dialog-->
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <!--end dialog-->
+    
+    
 </head>
 
 <body>
