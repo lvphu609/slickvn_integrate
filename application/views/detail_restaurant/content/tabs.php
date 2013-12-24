@@ -1484,8 +1484,7 @@
               <input class="btn_answer_assessment" type="button" onclick="return send_answer_assessment(this)" value="Trả lời" >
             </ul>
            <?php if(is_array($comment_list)&&  sizeof($comment_list)>0 && !empty($comment_list)){
-   var_dump($comment_list);
-                 foreach ($array as $value) {
+                 foreach ($comment_list as $value) {
                     
   
            

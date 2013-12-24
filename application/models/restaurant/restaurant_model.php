@@ -594,12 +594,12 @@ class Restaurant_model extends CI_Model{
                                         User_enum::NUMBER_ASSESSMENT     => $this->countAssessmentForUser($comment['id_user']),
                                         Comment_enum::CONTENT            => $comment[Comment_enum::CONTENT],
                                         //  Number LIKE of Comment
-                                        Comment_enum::NUMBER_LIKE        => $this->user_model->countUserLogByAction(array ( UserLogEnum::ID_ASSESSMENT => $comment['_id']->{'$id'}, 
-                                                                                                                            UserLogEnum::ACTION        => Common_enum::LIKE_COMMENT
+                                        Comment_enum::NUMBER_LIKE        => $this->user_model->countUserLogByAction(array ( User_log_enum::ID_ASSESSMENT => $comment['_id']->{'$id'}, 
+                                                                                                                            User_log_enum::ACTION        => Common_enum::LIKE_COMMENT
                                                                                                                             )),
                                         //  Number SHARE of Comment
-                                        Comment_enum::NUMBER_SHARE        => $this->user_model->countUserLogByAction(array ( UserLogEnum::ID_ASSESSMENT => $comment['_id']->{'$id'}, 
-                                                                                                                            UserLogEnum::ACTION        => Common_enum::SHARE_COMMENT
+                                        Comment_enum::NUMBER_SHARE        => $this->user_model->countUserLogByAction(array ( User_log_enum::ID_ASSESSMENT => $comment['_id']->{'$id'}, 
+                                                                                                                            User_log_enum::ACTION        => Common_enum::SHARE_COMMENT
                                                                                                                             )),
                                         Common_enum::CREATED_DATE         => $comment[Common_enum::CREATED_DATE],
                                         Common_enum::UPDATED_DATE         => $comment[Common_enum::UPDATED_DATE]        
