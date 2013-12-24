@@ -1969,11 +1969,11 @@ class Restaurant_apis extends CI_Model{
                 $is_delete = $restaurant['is_delete'];
 
                 //  Get interval
-                $interval = $this->common_model->getInterval($created_date, $current_date);
                 if( ($interval_expired >=0 && $is_delete == 0) && ($restaurant['id_coupon'] != null) ){
                     $array_coupon = $this->restaurant_model->getCouponById($restaurant['id_coupon']);
                     if($array_coupon != null){
                       $coupon = $array_coupon[$restaurant['id_coupon']];
+                      
                       $due_date = $this->common_model->getInterval($current_date, $coupon['coupon_due_date']);
                       $is_user = $coupon[Coupon_enum::IS_USE];
                       if($due_date >= 0 && $is_user == 1){
@@ -2516,7 +2516,6 @@ class Restaurant_apis extends CI_Model{
      */
     public function update_coupon($action, $id=null, $id_restaurant=null, $value_coupon=null, 
                                   $start_date=null, $due_date=null, $desc=null, $is_use=null,
-                                  $logo,
                                   $created_date = null, $updated_date = null
                                  ){
         
@@ -2525,49 +2524,9 @@ class Restaurant_apis extends CI_Model{
         $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
         $action_delete = strcmp( strtolower($action), Common_enum::DELETE );
         
-        $file_temp = Common_enum::ROOT.Common_enum::PATH_TEMP;
-        $file_logo = Common_enum::ROOT.Common_enum::DIR_LOGO_COUPON;
-        
-        if($action_insert == 0){
-            if($logo == null){
-                //  TODO
-            }
-            else{
-                //  Create directory $path
-                $this->common_model->createDirectory($file_logo, Common_enum::WINDOWN);
-                if(file_exists($file_temp)){
-                    $move_file_logo = $this->common_model->moveFileToDirectory($file_temp.$logo, $file_logo.$logo);
-                    if(!$move_file_logo){
-                        $this->common_model->setError('Move file logo '.$move_file_logo);
-                    }
-                }
-            }
-        }
-        else if($is_edit == 0){
-            $new_old_logo = explode(Common_enum::MARK, $logo);
-            $new_logo = $new_old_logo[0];
-            $old_logo = $new_old_logo[1];
-            
-            $file_new_logo = $path_logo.$new_logo;
-            $file_old_logo = $path_logo.$old_logo;
-            
-            if(!file_exists($file_new_logo)){
-                unlink($file_old_logo);
-                $move_file_logo = $this->common_model->moveFileToDirectory($file_temp.$new_logo, $file_new_logo);
-                if(!$move_file_logo){
-                    $this->common_model->setError('Move file logo '.$move_file_logo);
-                }
-                $golo = $new_logo;
-            }
-            else{
-                $logo = $old_logo;
-            }
-        }
-        
         $array_value = ($action_delete != null)? array(
             Coupon_enum::ID_RESTAURANT => $id_restaurant,
             Coupon_enum::VALUE_COUPON => (int)$value_coupon,
-            Coupon_enum::LOGO_COUPON => $logo,
             Coupon_enum::START_DATE => $start_date,
             Coupon_enum::DUE_DATE => $due_date,
             Coupon_enum::DESC => $desc,
