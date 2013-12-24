@@ -21,7 +21,7 @@ class Test extends CI_Controller{
     
     public function index() {
         $this->load->model('restaurant/restaurant_apis');
-        $this->restaurant_apis->get_all_post_similar(100, 1, '529deb5b6b2bf5a40f000001');
+        $this->restaurant_apis->get_all_restaurant_similar(100, 1, '52b17e0b6b2bf5b80d000002');
     }
     
 }

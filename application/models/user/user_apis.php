@@ -706,7 +706,7 @@ class user_apis extends CI_Model{
      * Menthod: POST
      * 
      * @param String $id_user
-     * @param String $id_restaurant
+     * @param String $id_assessment
      * 
      * Response: JSONObject
      * 
@@ -714,11 +714,6 @@ class user_apis extends CI_Model{
     public function like_assessment($id_user, $id_assessment, $created_date=null,
                                     $updated_date=null
             ) {
-        //  Get param from client
-//        $id_user        = $this->post('id_user');
-//        $id_restaurant  = $this->post('id_restaurant');
-//        $created_date   = $this->post('created_date');
-//        $updated_date   = $this->post('updated_date');
         
         if($id_user == null || $id_assessment == null){return;}
         
@@ -730,6 +725,55 @@ class user_apis extends CI_Model{
                         User_log_enum::ID_POST              => null,
                         User_log_enum::ACTION               => Common_enum::LIKE_ASSESSMENT,
                         User_log_enum::DESC                 => Common_enum::LIKE_ASSESSMENT,
+                        Common_enum::UPDATED_DATE    => ($updated_date==null) ? $this->common_model->getCurrentDate() : $updated_date,
+                        Common_enum::CREATED_DATE    => ($created_date == null ) ? $this->common_model->getCurrentDate(): $created_date
+                );
+        
+        $this->user_model->updateUserLog(Common_enum::INSERT, Common_enum::LIKE, $array_value);
+        $error = $this->user_model->getError();
+        
+        if($error == null){
+            $data =  array(
+                   'Status'     =>Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                   'Error'      =>$error
+            );
+            return $data;
+        }
+        else{
+            $data =  array(
+                   'Status'     =>  Common_enum::MESSAGE_RESPONSE_FALSE,
+                   'Error'      =>$error
+            );
+            return $data;
+        }
+    }
+    
+    /**
+     * 
+     * Like for comment
+     * 
+     * Menthod: POST
+     * 
+     * @param String $id_user
+     * @param String $id_comment
+     * 
+     * Response: JSONObject
+     * 
+     */
+    public function like_comment($id_user, $id_comment, $created_date=null,
+                                    $updated_date=null
+            ) {
+        
+        if($id_user == null || $id_comment == null){return;}
+        
+        $array_value = array(
+                        User_log_enum::ID_USER              => $id_user,
+                        User_log_enum::ID_RESTAURANT        => null,        
+                        User_log_enum::ID_ASSESSMENT        => null,
+                        User_log_enum::ID_COMMENT           => $id_comment,
+                        User_log_enum::ID_POST              => null,
+                        User_log_enum::ACTION               => Common_enum::LIKE_COMMENT,
+                        User_log_enum::DESC                 => Common_enum::LIKE_COMMENT,
                         Common_enum::UPDATED_DATE    => ($updated_date==null) ? $this->common_model->getCurrentDate() : $updated_date,
                         Common_enum::CREATED_DATE    => ($created_date == null ) ? $this->common_model->getCurrentDate(): $created_date
                 );

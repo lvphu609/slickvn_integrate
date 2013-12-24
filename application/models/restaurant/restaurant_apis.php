@@ -251,7 +251,7 @@ class Restaurant_apis extends CI_Model{
                                             );
             $data =  array(
                    'Status'     => Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
-                   User_enum::NUMBER_ASSESSMENT => $this->restaurant_model->countAssessmentForUser($array_value[Common_enum::_ID]->{'$id'}),
+                   User_enum::NUMBER_ASSESSMENT => $this->restaurant_model->countAssessmentForUser($id_user),
                     Comment_enum::ID => $array_value[Common_enum::_ID]->{'$id'},
                    'Error'      => $error
             );
@@ -1230,6 +1230,81 @@ class Restaurant_apis extends CI_Model{
             );
             return $data;
         }
+    }
+    
+    /**
+     * API get post similar
+     * 
+     * @param int $limit
+     * @param int $page
+     * @param string $id_post
+     * 
+     * @return array
+     */    
+    public function get_all_restaurant_similar($limit, $page, $id_restaurant){
+        //  End
+        $position_end_get   = ($page == 1)? $limit : ($limit * $page);
+        //  Start
+        $position_start_get = ($page == 1)? $page : ( $position_end_get - ($limit - 1) );
+        
+        
+        $array_main_restaurant = $this->restaurant_model->getRestaurantById($id_restaurant);
+        $main_restaurant = $array_main_restaurant[$id_restaurant];
+        
+        $array_culinary_style_list        = $main_restaurant['culinary_style_list'];
+        $array_favourite_list             = $main_restaurant['favourite_list'];
+        $array_price_person_list          = $main_restaurant['price_person_list'];
+        $array_mode_use_list              = $main_restaurant['mode_use_list'];
+        $array_payment_type_list          = $main_restaurant['payment_type_list'];
+        $array_landscape_list             = $main_restaurant['landscape_list'];
+        $array_other_criteria_list        = $main_restaurant['other_criteria_list'];
+        
+        $where = array();
+        
+        $where[] = array(Restaurant_enum::CULINARY_STYLE_LIST => array('$in' => $array_culinary_style_list ) );
+        $where[] = array(Restaurant_enum::FAVOURITE_LIST => array('$in' => $array_favourite_list ) );
+        $where[] = array(Restaurant_enum::PRICE_PERSON_LIST => array('$in' => $array_price_person_list ) );
+        $where[] = array(Restaurant_enum::MODE_USE_LIST => array('$in' => $array_mode_use_list ) );
+        $where[] = array(Restaurant_enum::PAYMENT_TYPE_LIST => array('$in' => $array_payment_type_list ) );
+        $where[] = array(Restaurant_enum::LANDSCAPE_LIST => array('$in' => $array_landscape_list ) );
+        $where[] = array(Restaurant_enum::OTHER_CRITERIA_LIST => array('$in' => $array_other_criteria_list ) );
+        
+        
+        $list_restaurant = $this->restaurant_model->getAllRestauranttSimilar(array( '$or' => $where));
+        unset($list_restaurant[$id_restaurant]);
+        var_dump($list_restaurant);
+        //  Array object post
+        $results = array();
+        //  Count object post
+        $count = 0;
+        if(is_array($list_restaurant)){
+            foreach ($list_restaurant as $restaurant){
+                //  Is delete
+                    $is_delete = $restaurant['is_delete'];
+                    if($is_delete == 0){
+                        $count ++;
+                        if(($count) >= $position_start_get && ($count) <= $position_end_get){
+                            //  Create JSONObject Restaurant
+                            $jsonobject = array( 
+
+                                Restaurant_enum::ID                         => $restaurant['_id']->{'$id'},
+                                Restaurant_enum::NAME                       => $restaurant[Restaurant_enum::NAME],
+                                Restaurant_enum::EMAIL                       => $restaurant[Restaurant_enum::EMAIL],
+                                Restaurant_enum::PHONE_NUMBER               => $restaurant[Restaurant_enum::PHONE_NUMBER],
+                            );
+                            $results[] = $jsonobject;
+                        }
+                    }
+            }
+        }
+        //  Response
+        $data =  array(
+               'Status'     =>Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+               'Total'      =>  sizeof($results),
+               'Results'    =>$results
+        );
+
+        return $data;
     }
     
     /**
@@ -2741,16 +2816,13 @@ class Restaurant_apis extends CI_Model{
     }
     
     /**
+     * API get post similar
      * 
-     *  API get Post
+     * @param int $limit
+     * @param int $page
+     * @param string $id_post
      * 
-     *  Menthod: GET
-     * 
-     *  @param $limit
-     *  @param $page
-     * 
-     *  Response: JSONObject
-     * 
+     * @return array
      */    
     public function get_all_post_similar($limit, $page, $id_post){
         //  Get limit from client

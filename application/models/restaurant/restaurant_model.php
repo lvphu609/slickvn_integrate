@@ -358,6 +358,19 @@ class Restaurant_model extends CI_Model{
     
     /**
      * 
+     * Get Collection Post
+     * 
+     * Return: Array Collection Post
+     * 
+     */
+    public function getAllRestauranttSimilar($where) {
+
+        return $this->common_model->searchCollection(Restaurant_enum::COLLECTION_RESTAURANT, $where);
+        
+    }
+    
+    /**
+     * 
      * @param int $order_by: 1 = ASC | -1 = DESC 
      * @return Array
      * 
@@ -419,7 +432,7 @@ class Restaurant_model extends CI_Model{
     
     /**
      * 
-     * Get Collection Post
+     * Get Collection Post similar
      * 
      * Return: Array Collection Post
      * 
