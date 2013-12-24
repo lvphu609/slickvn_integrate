@@ -26,6 +26,7 @@ class Common_apis extends CI_Model{
         $this->load->model('common/list_point_enum');
         $this->load->model('common/city_enum');
         $this->load->model('common/district_enum');
+        $this->load->model('common/email_config_enum');
         
     }
     //----------------------------------------------------//
@@ -1525,6 +1526,93 @@ class Common_apis extends CI_Model{
         }
     }
     
+    //----------------------------------------------------//
+    //                                                    //
+    //  APIs email_config                                 //
+    //                                                    //
+    //----------------------------------------------------//
+    
+    public function get_all_email_config() {
+        $results = array();
+        $list_email_config = $this->common_model->getCollection(Email_config_enum::COLLECTION_EMAIL_CONFIG);
+        if(is_array($list_email_config) && sizeof($list_email_config)){
+            foreach ($list_email_config as $value) {
+                $doc = array(
+                             Email_config_enum::ID => $value[Common_enum::_ID]->{'$id'},
+                             Email_config_enum::EMAIL_SOURCE => $value[Email_config_enum::EMAIL_SOURCE],
+                             Email_config_enum::PASSWORD => $value[Email_config_enum::PASSWORD],
+                             Email_config_enum::PROTOCOL => $value[Email_config_enum::PROTOCOL],
+                             Email_config_enum::HOST => $value[Email_config_enum::HOST],
+                             Email_config_enum::PORT => $value[Email_config_enum::PORT],
+                             Email_config_enum::MAIL_TYPE => $value[Email_config_enum::MAIL_TYPE],
+                             Common_enum::CREATED_DATE => $value[Common_enum::CREATED_DATE],
+                             Common_enum::UPDATED_DATE => $value[Common_enum::UPDATED_DATE]
+                );
+                $results[]=$doc;
+            }
+        }
+        return $results;
+    }
+    
+    public function get_email_config_by_id($id) {
+        $results = array();
+        $list_email_config = $this->common_model->getCollectionById(Email_config_enum::COLLECTION_EMAIL_CONFIG, $id);
+        if(is_array($list_email_config) && sizeof($list_email_config)){
+            foreach ($list_email_config as $value) {
+                $doc = array(
+                             Email_config_enum::ID => $value[Common_enum::_ID]->{'$id'},
+                             Email_config_enum::EMAIL_SOURCE => $value[Email_config_enum::EMAIL_SOURCE],
+                             Email_config_enum::PASSWORD => $value[Email_config_enum::PASSWORD],
+                             Email_config_enum::PROTOCOL => $value[Email_config_enum::PROTOCOL],
+                             Email_config_enum::HOST => $value[Email_config_enum::HOST],
+                             Email_config_enum::PORT => $value[Email_config_enum::PORT],
+                             Email_config_enum::MAIL_TYPE => $value[Email_config_enum::MAIL_TYPE],
+                             Common_enum::CREATED_DATE => $value[Common_enum::CREATED_DATE],
+                             Common_enum::UPDATED_DATE => $value[Common_enum::UPDATED_DATE]
+                );
+                $results[]=$doc;
+            }
+        }
+        return $results;
+    }
+    
+    public function update_email_config($action, $id = null, $email_source,
+                                        $password, $protocol, $host, $port,
+                                        $mail_type, $created_date=null, $updated_date=null
+                                       ) {
+        $is_insert = $this->common_model->checkAction( $action, Common_enum::INSERT );
+        $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
+        $is_delete = $this->common_model->checkAction( $action, Common_enum::DELETE );
+        
+        if($is_delete == TRUE){
+            $this->common_model->removeDocByFile(Email_config_enum::COLLECTION_EMAIL_CONFIG, array(Common_enum::_ID => MongoId($id)) );
+        }
+        else{
+            $array_value = array(
+                Email_config_enum::ID => $id,
+                Email_config_enum::EMAIL_SOURCE => $email_source,
+                Email_config_enum::PASSWORD => $password,
+                Email_config_enum::PROTOCOL => $protocol,
+                Email_config_enum::HOST => $host,
+                Email_config_enum::PORT => $port,
+                Email_config_enum::MAIL_TYPE => $mail_type,
+                Common_enum::UPDATED_DATE    => ($updated_date==null) ? $this->common_model->getCurrentDate() : $updated_date,
+                Common_enum::CREATED_DATE    => ($created_date==null) ? $this->common_model->getCurrentDate() : $created_date
+            );
+            if($is_edit == TRUE){
+                unset($array_value[Common_enum::CREATED_DATE]);
+            }
+            $this->common_model->updateCollection(Email_config_enum::COLLECTION_EMAIL_CONFIG, $action, $id, $array_value);
+        }
+        $error = $this->common_model->getError();
+        if( $error == null ){
+            return $this->common_model->encapsulationDataResponsePost(Common_enum::MESSAGE_RESPONSE_SUCCESSFUL, $error);
+        }else{
+            return $this->common_model->encapsulationDataResponsePost(Common_enum::MESSAGE_RESPONSE_FALSE, $error);
+        }
+    }
+
+
     /**
      * 
      * API Send email

@@ -1411,10 +1411,8 @@ class Restaurant_apis extends CI_Model{
             $results = array();
             if(is_array($get_collection)){
                 foreach ($get_collection as $restaurant){
-
                     //  Current date
                     $current_date = $this->common_model->getCurrentDate();
-
                     //  End date
                     $end_date = $restaurant['end_date'];
 
@@ -1425,7 +1423,6 @@ class Restaurant_apis extends CI_Model{
                     $is_delete = $restaurant['is_delete'];
 
                     if($interval_expired >= 0 && $is_delete == 0){
-                        
                         $array_coupon = $this->restaurant_model->getCouponById($restaurant['id_coupon']);
                         $coupon = $array_coupon[$restaurant['id_coupon']];
     //                    var_dump($coupon);
@@ -3124,12 +3121,6 @@ class Restaurant_apis extends CI_Model{
      * 
      */
     public function get_all_subscribed_email($limit, $page) {
-        
-        //  Get limit from client
-//        $limit = $this->get("limit");
-        //  Get page from client
-//        $page = $this->get("page");
-                
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
         
@@ -3169,6 +3160,35 @@ class Restaurant_apis extends CI_Model{
         return $data;
     }
     
+    public function get_subscribed_email_by_id($id) {
+        // Get collection subscribed_email
+        $collection_name = Subscribed_email_enum::COLLECTION_SUBSCRIBED;
+        $list_subscribed_email = $this->restaurant_model->getAllSubcribedEmailById($collection_name, $id);
+        //  Array object subscribed_email
+        $results = array();
+        foreach ($list_subscribed_email as $subscribed_email){
+            //  Create JSONObject Post
+            $jsonobject = array( 
+                       Subscribed_email_enum::ID        => $subscribed_email['_id']->{'$id'},
+                       Subscribed_email_enum::EMAIL     => $subscribed_email['email'],
+                       Common_enum::UPDATED_DATE        => $subscribed_email['updated_date'],
+                       Common_enum::CREATED_DATE        => $subscribed_email['created_date']
+                       );
+            $results[] = $jsonobject;
+        }
+        
+        //  Response
+        $data =  array(
+               'Status'     =>Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+               'Total'      =>sizeof($results),
+               'Results'    =>$results
+        );
+        return $data;
+    }
+    
+    public function config_email($param) {
+        
+    }
     /**
      * 
      *  API update Subcribed Email
@@ -3224,7 +3244,6 @@ class Restaurant_apis extends CI_Model{
             );
             return $data;
         }
-        
     }
     
     /**

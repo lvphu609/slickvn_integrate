@@ -570,6 +570,19 @@ class Restaurant_model extends CI_Model{
     
     /**
      * 
+     * Get all Subcribed Email by id
+     * 
+     * Return: Array Collection Post
+     * 
+     */
+    public function getAllSubcribedEmailById($id) {
+
+        return $this->common_model->getCollectionById(Subscribed_email_enum::COLLECTION_SUBSCRIBED, $id);
+        
+    }
+    
+    /**
+     * 
      * Update Subcribed Email
      * 
      * @param String $id
