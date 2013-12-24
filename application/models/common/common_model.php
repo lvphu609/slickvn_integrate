@@ -757,7 +757,7 @@ class Common_model extends CI_Model{
     public function getInterval($d1, $d2) {
         $start  = strtotime($d1);
         $end    = strtotime($d2);
-        $days_between = ceil($end - $star);
+        $days_between = ceil($end - $start);
         return $days_between;
     }
     
