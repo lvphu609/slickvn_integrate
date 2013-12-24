@@ -1341,34 +1341,34 @@
       foreach ($comment_restaurant as $value) {
         
       $id_assessment                  =$value['id'];
-      $id_user             =$value['id_user'];
-      $id_restaurant       =$value['id_restaurant'];
-      $full_name           =$value['full_name'];
-      $avatar              =$value['avatar'];
-      $avatar=$BASE_IMAGE_USER_PROFILE_URL.$avatar;
-      $number_assessment   =$value['number_assessment'];
-      $content             =$value['content'];
-      $rate1        =$value['rate_service'];
-      $rate2      =$value['rate_landscape'];
-      $rate4        =$value['rate_taste'];
-      $rate3          =$value['rate_price'];
-      $number_comment      =$value['number_comment'];
-      $number_like         =$value['number_like'];
-      $number_share        =$value['number_share'];
-      $comment_list        =$value['comment_list'];
-      $updated_date        =$value['updated_date'];
-      $created_date        =$value['created_date'];
+      $id_user_assessment             =$value['id_user'];
+      $id_restaurant_assessment       =$value['id_restaurant'];
+      $full_name_assessment           =$value['full_name'];
+      $avatar_assessment              =$value['avatar'];
+      $avatar_assessment              =$BASE_IMAGE_USER_PROFILE_URL.$avatar_assessment;
+      $number_assessment              =$value['number_assessment'];
+      $content_assessment             =$value['content'];
+      $rate1_assessment        =$value['rate_service'];
+      $rate2_assessment      =$value['rate_landscape'];
+      $rate4_assessment        =$value['rate_taste'];
+      $rate3_assessment          =$value['rate_price'];
+      $number_comment_assessment      =$value['number_comment'];
+      $number_like_assessment         =$value['number_like'];
+      $number_share_assessment        =$value['number_share'];
+      $comment_list_assessment        =$value['comment_list'];
+      $updated_date_assessment        =$value['updated_date'];
+      $created_date_assessment        =$value['created_date'];
      
     ?>
     <div class="assessment_item">
      <div class="avatar">
             <a href="javascript:;">
-                  <img src="<?php echo $avatar;?>" >
+                  <img src="<?php echo $avatar_assessment;?>" >
             </a><br>
           <span><?php echo $number_assessment;?> bình luận</span>
           </div>
           <div class="full_name_user">
-            <span><?php echo $full_name;?></span>
+            <span><?php echo $full_name_assessment;?></span>
           </div>
           <ul class="list_vote_rating">
             <li>
@@ -1376,8 +1376,8 @@
               <div class="right">
                  <div class="rating">
                    <?php 
-                         $stt_off_rate1=5-round($rate1/2);
-                          $stt_on_rate1= round($rate1/2);
+                         $stt_off_rate1=5-round($rate1_assessment/2);
+                          $stt_on_rate1= round($rate1_assessment/2);
                           while ($stt_on_rate1!=0){
                             echo '<span class="star_active"></span>';
                               $stt_on_rate1--;
@@ -1396,8 +1396,8 @@
               <div class="right">
                   <div class="rating">
                     <?php 
-                         $stt_off_rate2=5-round($rate2/2);
-                          $stt_on_rate2= round($rate2/2);
+                         $stt_off_rate2=5-round($rate2_assessment/2);
+                          $stt_on_rate2= round($rate2_assessment/2);
                           while ($stt_on_rate2!=0){
                             echo '<span class="star_active"></span>';
                               $stt_on_rate2--;
@@ -1417,8 +1417,8 @@
               <div class="right">
                  <div class="rating">
                    <?php 
-                         $stt_off_rate3=5-round($rate3/2);
-                          $stt_on_rate3= round($rate3/2);
+                         $stt_off_rate3=5-round($rate3_assessment/2);
+                          $stt_on_rate3= round($rate3_assessment/2);
                           while ($stt_on_rate3!=0){
                             echo '<span class="star_active"></span>';
                               $stt_on_rate3--;
@@ -1439,8 +1439,8 @@
               <div class="right">
                  <div class="rating">
                    <?php 
-                         $stt_off_rate4=5-round($rate4/2);
-                          $stt_on_rate4= round($rate4/2);
+                         $stt_off_rate4=5-round($rate4_assessment/2);
+                          $stt_on_rate4= round($rate4_assessment/2);
                           while ($stt_on_rate4!=0){
                             echo '<span class="star_active"></span>';
                               $stt_on_rate4--;
@@ -1459,16 +1459,16 @@
           
           <div class="content_comment">
             <p>
-             <?php echo $content;?>
+             <?php echo $content_assessment;?>
             </p>
           </div>
           <div class="like_share_reply">
             <ul class="box_btn_submit">
-              <li class="btn_like_assessment">
-                <span>like</span><span>(<?php echo $number_like;?>)</span>
+              <li class="btn_like_assessment" onclick="return like_assessment(this)">
+                <span>like</span><span>(</span><span class="text_number_like_assessment"><?php echo $number_like_assessment;?></span><span>)</span>
               </li>
               <li class="btn_share_assessment">
-                <span>share</span><span>(<?php echo $number_share;?>)</span>
+                <span>share</span><span>(<?php echo $number_share_assessment;?>)</span>
               </li>
               <li class="btn_reply" onclick="return comment_for_assessment(this)">
                 <span>trả lời</span>
@@ -1483,9 +1483,20 @@
               <input type="hidden" value="<?php echo $id_assessment;   ?>" id="id_assessment">
               <input class="btn_answer_assessment" type="button" onclick="return send_answer_assessment(this)" value="Trả lời" >
             </ul>
-           <?php if(is_array($comment_list)&&  sizeof($comment_list)>0 && !empty($comment_list)){
-                 foreach ($comment_list as $value) {
-                    
+           <?php if(is_array($comment_list_assessment)&&  sizeof($comment_list_assessment)>0 && !empty($comment_list_assessment)){
+
+                 foreach ($comment_list_assessment as $value) {
+                  $id_comment                =$value['id'];
+                  $id_user_comment           =$value['id_user'];
+                  $full_name_comment         =$value['full_name'];
+                  $avatar_comment            =$value['avatar'];
+                  $avatar_comment=$BASE_IMAGE_USER_PROFILE_URL.$avatar_comment;
+                  $number_assessment_comment =$value['number_assessment'];
+                  $content_comment           =$value['content'];
+                  $number_like_comment       =$value['number_like'];
+                  $number_share_comment      =$value['number_share'];
+                  $created_date_comment      =$value['created_date'];
+                  $updated_date_comment      =$value['updated_date'];
   
            
             ?> 
@@ -1493,19 +1504,19 @@
                 <li class="line">
                 </li>
                 <li class="avatar_user_comment">
-                  <img src="http://dendau.vn/style/avatar/10.gif" >
+                  <img src="<?php echo $avatar_comment;?>" >
                   <br>
-                  <span>286 bình luận</span>
+                  <span><?php echo $number_assessment_comment;  ?> bình luận</span>
                 </li>
                 <li class="name_user_comment">
-                  <span>Lê Vĩnh Phú</span>
+                  <span><?php echo $full_name_comment;  ?></span>
                 </li>
                 <li class="content_user_comment">
-                  <p>ádfasfasfasfasf</p>
+                  <p><?php echo $content_comment; ?></p>
                 </li>
-                <li class="like_user_comment">
-                  <a href="javascript:;"><span class="span_margin">like(</span>
-                    <span>0</span>
+                <li class="like_user_comment" onclick="return like_comment(this)">
+                  <a href="javascript:;" ><span class="span_margin">like(</span>
+                    <span ><?php echo $number_like_comment;?></span>
                   <span>)</span></a>
                 </li>
               </ul>
@@ -1662,7 +1673,7 @@
 
 
 <input type="hidden" value="<?php echo $url;?>" id="hidUrl">
-<input type="hidden" value="<?php echo $id_restaurant;?>" id="id_restaurant">
+<input type="hidden" value="<?php echo $id;?>" id="id_restaurant">
 
 	<script type="text/javascript" src="<?php echo $url;?>includes/plugins/rating_jquery/jRating.jquery.js"></script>
 	<script type="text/javascript">
@@ -1792,9 +1803,9 @@
      }
      
      function send_answer_assessment(object){
-      var content = $(object).closest('.box_detail_comment_for_assessment').find('#answer_assessment').val();
       var session_id_user = $('#session_id_user').val();
-      var id_assessment=$('#id_assessment').val();
+      var id_assessment=$(object).closest('.box_detail_comment_for_assessment').find('#id_assessment').val();
+      var content=$(object).closest('.box_detail_comment_for_assessment').find('#answer_assessment').val();
       var url = $('#hidUrl').val();
       
         if(typeof(session_id_user) == "undefined"){
@@ -1842,13 +1853,80 @@
                  
           }
         }
-      
-      
-      
-      
      }
    
+   function like_assessment(object){
+      var session_id_user = $('#session_id_user').val();
+      var id_assessment=$(object).closest('.assessment_item').find('#id_assessment').val();
+      var url = $('#hidUrl').val();   
+      if(typeof(session_id_user) == "undefined"){
+            window.location=url+"index.php/home_controller/log_in";
+        }
+        else{
+                var url_api=url+"index.php/home_controller/like_assessment";
+                 var data={
+                   id_assessment:id_assessment,
+                   id_user:session_id_user
+                 };
+           
+                 $.ajax({
+                  url: url_api ,
+                  type: 'POST',
+                  data:data,
+                  success: function(data){
+                      var  text_number_like_assessment=parseInt($(object).closest('.assessment_item').find('.text_number_like_assessment').html());
+                      text_number_like_assessment=text_number_like_assessment+1;
+                      text_number_like_assessment=text_number_like_assessment.toString();
+                     if(data=="SUCCESSFUL"){
+                         $(object).closest('.assessment_item').find('.text_number_like_assessment').html(text_number_like_assessment);                       
+                      }
+                      //$(object).closest('.assessment_item').find('#id_assessment').val();
+                  },
+                    error: function(a,textStatus,b){
+                      alert('error');
+                    }
+                  });
+        }
+      
+      
+   }
    
+    function like_comment(object){
+      var session_id_user = $('#session_id_user').val();
+      var id_comment=$(object).closest('.assessment_item').find('#id_comment').val();
+      var url = $('#hidUrl').val();   
+      if(typeof(session_id_user) == "undefined"){
+            window.location=url+"index.php/home_controller/log_in";
+        }
+        else{
+                var url_api=url+"index.php/home_controller/like_comment";
+                 var data={
+                   id_comment:id_comment,
+                   id_user:session_id_user
+                 };
+           
+                 $.ajax({
+                  url: url_api ,
+                  type: 'POST',
+                  data:data,
+                  success: function(data){
+                      var  text_number_like_assessment=parseInt($(object).closest('.assessment_item').find('.text_number_like_assessment').html());
+                      text_number_like_assessment=text_number_like_assessment+1;
+                      text_number_like_assessment=text_number_like_assessment.toString();
+                     if(data=="SUCCESSFUL"){
+                         $(object).closest('.assessment_item').find('.text_number_like_assessment').html(text_number_like_assessment);                       
+                      }
+                      //$(object).closest('.assessment_item').find('#id_assessment').val();
+                  },
+                    error: function(a,textStatus,b){
+                      alert('error');
+                    }
+                  });
+        }
+      
+      
+   } 
+    
     
     
 	</script>

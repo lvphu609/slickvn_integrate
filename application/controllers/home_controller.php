@@ -775,6 +775,8 @@ class Home_controller extends CI_Controller {
      if(strcmp($results['Status'],"SUCCESSFUL")==0){
        $number_assessment = $results['number_assessment'];
        $id_assessment=$results['id'];
+       //$number_like=$results['number_like'];
+       $number_like=0;
        echo '
          <div class="assessment_item">
           <div class="avatar">
@@ -876,8 +878,8 @@ class Home_controller extends CI_Controller {
                </div>
                <div class="like_share_reply">
                  <ul class="box_btn_submit">
-                   <li class="btn_like_assessment">
-                     <span>like</span><span>(0)</span>
+                   <li class="btn_like_assessment" onclick="return like_assessment(this)">
+                     <span>like</span><span>(</span><span class="text_number_like_assessment">'.$number_like.'</span><span>)</span>
                    </li>
                    <li class="btn_share_assessment">
                      <span>share</span><span>(0)</span>
@@ -890,10 +892,12 @@ class Home_controller extends CI_Controller {
 
                </div>
                <div class="comment_for_assessment">
-                  <ul class="box_detail_comment_for_assessment" >
-                    <textarea style="resize: none; display: none;" id="answer_assessment" class="answer_assessment"   placeholder="Trả lời bình luận..." style="resize: none; "></textarea>
-                    <input style="resize: none; display: none;" class="btn_answer_assessment" type="button" onclick="return send_answer_assessment(this)" value="Trả lời" >
+                  <ul class="box_detail_comment_for_assessment">
+                    <textarea id="answer_assessment" class="answer_assessment"   placeholder="Trả lời bình luận..." style="resize: none; "></textarea>
+                    <input style="resize: none; display: none;"  type="hidden" value="'.$id_assessment.'" id="id_assessment">
+                    <input style="resize: none; display: none;"  class="btn_answer_assessment" type="button" onclick="return send_answer_assessment(this)" value="Trả lời" >
                   </ul>
+                 
 
 
                 </div>
@@ -910,6 +914,7 @@ class Home_controller extends CI_Controller {
   
   public function answer_for_assessment()
   {
+      $BASE_IMAGE_USER_PROFILE_URL=Api_link_enum::$BASE_IMAGE_USER_PROFILE_URL;
       $avatar_user     =$_POST['avatar'];
       $full_name     =$_POST['full_name'];
       $content         =$_POST['content'];
@@ -936,15 +941,15 @@ class Home_controller extends CI_Controller {
                 <li class="line">
                 </li>
                 <li class="avatar_user_comment">
-                  <img src="http://dendau.vn/style/avatar/10.gif" >
+                  <img src="'.$avatar_user.'" >
                   <br>
-                  <span>286 bình luận</span>
+                  <span>'.$number_assessment.' bình luận</span>
                 </li>
                 <li class="name_user_comment">
-                  <span>Lê Vĩnh Phú</span>
+                  <span>'.$full_name.'</span>
                 </li>
                 <li class="content_user_comment">
-                  <p>ádfasfasfasfasf</p>
+                  <p>'.$content.'</p>
                 </li>
                 <li class="like_user_comment">
                   <a href="javascript:;"><span class="span_margin">like(</span>
@@ -960,7 +965,41 @@ class Home_controller extends CI_Controller {
   }
   
   
+   public function like_assessment()
+    {
+      $id_assessment   =$_POST['id_assessment'];
+      $id_user         =$_POST['id_user'];
+      
+      $results=$this->user_apis->like_assessment(
+            $id_user,
+            $id_assessment,
+            null,
+            null
+            );
+    
+     if(strcmp($results['Status'],"SUCCESSFUL")==0){
+       echo $results['Status'];
+     }
+      
+    }
   
+    public function like_comment()
+    {
+      $id_comment   =$_POST['id_comment'];
+      $id_user         =$_POST['id_user'];
+      
+      $results=$this->user_apis->like_comment(
+            $id_user,
+            $id_comment,
+            null,
+            null
+            );
+    
+     if(strcmp($results['Status'],"SUCCESSFUL")==0){
+       echo $results['Status'];
+     }
+      
+    }
   
 }
 
