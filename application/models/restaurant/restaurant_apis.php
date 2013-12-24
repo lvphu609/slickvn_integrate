@@ -1435,7 +1435,7 @@ class Restaurant_apis extends CI_Model{
                         $jsonobject = array( 
                             Restaurant_enum::ID                         => $restaurant['_id']->{'$id'},
                             Restaurant_enum::ID_MENU_DISH               => $restaurant['id_menu_dish'],
-                            Restaurant_enum::ID_COUPON                  => $restaurant['id_coupon'],
+                            Restaurant_enum::ID_COUPON                  => ($due_date<0)? '' : $restaurant['id_coupon'],
                             Restaurant_enum::NAME                       => $restaurant['name'],
                             Restaurant_enum::AVATAR                     => $restaurant['avatar'],
                             Restaurant_enum::NUMBER_VIEW                => $restaurant['number_view'],
@@ -1476,12 +1476,12 @@ class Restaurant_apis extends CI_Model{
                             Restaurant_enum::START_DATE                 => $restaurant['start_date'],
                             Restaurant_enum::END_DATE                   => $restaurant['end_date'],
                             Restaurant_enum::DESC                       => $restaurant['desc'],        
-                            Coupon_enum::VALUE_COUPON                   => $coupon['value_coupon'],
-                            Coupon_enum::START_DATE                     => $coupon['coupon_start_date'],
-                            Coupon_enum::DUE_DATE                       => $coupon['coupon_due_date'],        
-                            Coupon_enum::DESC                           => $coupon['coupon_desc'],
-                            Common_enum::UPDATED_DATE                   => $restaurant['updated_date'],
-                            Common_enum::CREATED_DATE                   => $restaurant['created_date']
+                            Coupon_enum::VALUE_COUPON                   => ($due_date<0)? '' : $coupon['value_coupon'],
+                            Coupon_enum::START_DATE                     => ($due_date<0)? '' : $coupon['coupon_start_date'],
+                            Coupon_enum::DUE_DATE                       => ($due_date<0)? '' : $coupon['coupon_due_date'],        
+                            Coupon_enum::DESC                           => ($due_date<0)? '' : $coupon['coupon_desc'],
+                            Common_enum::UPDATED_DATE                   =>  $restaurant['updated_date'],
+                            Common_enum::CREATED_DATE                   =>  $restaurant['created_date']
                         );
                         $results[] = $jsonobject;
                     }

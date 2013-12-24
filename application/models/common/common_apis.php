@@ -1525,8 +1525,6 @@ class Common_apis extends CI_Model{
         }
     }
     
-    
-    
     /**
      * 
      * API Send email
