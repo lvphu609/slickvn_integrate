@@ -142,7 +142,8 @@ class Restaurant_model extends CI_Model{
      */
     public function getAssessmentByIdRestaurant($id_restaurant) {
         
-        return $this->common_model->getCollectionByField(Assessment_enum::COLLECTION_ASSESSMENT, array(Assessment_enum::ID_RESTAURANT => $id_restaurant) );
+        return $this->common_model->getCollectionByField(Assessment_enum::COLLECTION_ASSESSMENT, array(Assessment_enum::ID_RESTAURANT => $id_restaurant), 
+                                                         array(Common_enum::CREATED_DATE => -1));
         
     }
     
@@ -418,6 +419,19 @@ class Restaurant_model extends CI_Model{
     
     /**
      * 
+     * Get Collection Post
+     * 
+     * Return: Array Collection Post
+     * 
+     */
+    public function getAllPostSimilar($where) {
+
+        return $this->common_model->searchCollection(Post_enum::COLLECTION_POST, $where);
+        
+    }
+    
+    /**
+     * 
      * Get Collection Post by Id
      * 
      * @param String $id
@@ -426,9 +440,7 @@ class Restaurant_model extends CI_Model{
      * 
      */
     public function getPostById($id) {
-
         return $this->common_model->getCollectionById(Post_enum::COLLECTION_POST, $id);
-        
     }
     
     /**

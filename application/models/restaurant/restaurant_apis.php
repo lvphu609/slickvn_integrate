@@ -2752,6 +2752,82 @@ class Restaurant_apis extends CI_Model{
      *  Response: JSONObject
      * 
      */    
+    public function get_all_post_similar($limit, $page, $id_post){
+        //  Get limit from client
+//        $limit = $this->get("limit");
+        //  Get page from client
+//        $page = $this->get("page");
+        //  End
+        $position_end_get   = ($page == 1)? $limit : ($limit * $page);
+        //  Start
+        $position_start_get = ($page == 1)? $page : ( $position_end_get - ($limit - 1) );
+        
+        
+        $array_main_post = $this->restaurant_model->getPostById($id_post);
+        $main_post = $array_main_post[$id_post];
+        
+        $array_favourite_type_list = $main_post['favourite_type_list'];
+        $array_price_person_list = $main_post['price_person_list'];
+        $array_culinary_style_list = $main_post['culinary_style_list'];
+        
+        $where = array();
+        $where[] = array(Post_enum::FAVOURITE_TYPE_LIST => array('$in' => $array_favourite_type_list ) );
+        $where[] = array(Post_enum::PRICE_PERSON_LIST => array('$in' => $array_price_person_list ) );
+        $where[] = array(Post_enum::CULINARY_STYLE_LIST => array('$in' => $array_culinary_style_list ) );
+        
+        $list_post = $this->restaurant_model->getAllPostSimilar(array( '$or' => $where));
+        unset($list_post[$id_post]);
+        //  Array object post
+        $results = array();
+        //  Count object post
+        $count = 0;
+        if(is_array($list_post)){
+            foreach ($list_post as $post){
+                $count++;
+                if(($count) >= $position_start_get && ($count) <= $position_end_get){
+                    //  Create JSONObject Post
+                    $jsonobject = array( 
+                               Post_enum::ID                     => $post['_id']->{'$id'},
+                               Post_enum::ID_USER                => $post['id_user'],
+                               Post_enum::TITLE                  => $post['title'],
+                               Post_enum::AVATAR                 => $post['avatar'],
+                               Post_enum::ADDRESS                => $post['address'],
+                               Post_enum::FAVOURITE_TYPE_LIST    => $this->common_model->getValueFeildNameBaseCollectionById(Common_enum::FAVOURITE_TYPE,   $post['favourite_type_list']),
+                               Post_enum::PRICE_PERSON_LIST      => $this->common_model->getValueFeildNameBaseCollectionById(Common_enum::PRICE_PERSON,   $post['price_person_list']),
+                               Post_enum::CULINARY_STYLE_LIST    => $this->common_model->getValueFeildNameBaseCollectionById(Common_enum::CULINARY_STYLE,   $post['culinary_style_list']),
+                               Post_enum::CONTENT                => $post['content'],
+                               Post_enum::NUMBER_ASSESSMENT     => $this->restaurant_model->countAssessmentForPost($post['_id']->{'$id'}),
+                               Post_enum::RATE_POINT            => $this->restaurant_model->getRatePoint(),
+                               Post_enum::NUMBER_VIEW            => $post['number_view'],
+                               Common_enum::UPDATED_DATE         => $post['updated_date'],
+                               Common_enum::CREATED_DATE         => $post['created_date']
+                               );
+                    $results[] = $jsonobject;
+                }
+            }
+        }
+        //  Response
+        $data =  array(
+               'Status'     =>Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+               'Total'      =>  sizeof($results),
+               'Results'    =>$results
+        );
+
+        return $data;
+    }
+    
+    /**
+     * 
+     *  API get Post
+     * 
+     *  Menthod: GET
+     * 
+     *  @param $limit
+     *  @param $page
+     * 
+     *  Response: JSONObject
+     * 
+     */    
     public function get_detail_post($id){
         //  Get limit from client
         
