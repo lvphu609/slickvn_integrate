@@ -1514,10 +1514,13 @@
                 <li class="content_user_comment">
                   <p><?php echo $content_comment; ?></p>
                 </li>
-                <li class="like_user_comment" onclick="return like_comment(this)">
-                  <a href="javascript:;" ><span class="span_margin">like(</span>
-                    <span ><?php echo $number_like_comment;?></span>
-                  <span>)</span></a>
+                <li class="like_user_comment" >
+                  <input type="hidden" value="<?php echo $id_comment; ?>" id="id_comment">
+                  <a href="javascript:;" onclick="return like_comment(this)">
+                    <span class="span_margin">like(</span>
+                       <span class="text_number_like_comment"><?php echo $number_like_comment;?></span>
+                    <span>)</span>
+                  </a>
                 </li>
               </ul>
               <?php } 
@@ -1893,7 +1896,7 @@
    
     function like_comment(object){
       var session_id_user = $('#session_id_user').val();
-      var id_comment=$(object).closest('.assessment_item').find('#id_comment').val();
+      var id_comment=$(object).closest('.box_detail_comment_for_assessment').find('#id_comment').val();
       var url = $('#hidUrl').val();   
       if(typeof(session_id_user) == "undefined"){
             window.location=url+"index.php/home_controller/log_in";
@@ -1910,11 +1913,11 @@
                   type: 'POST',
                   data:data,
                   success: function(data){
-                      var  text_number_like_assessment=parseInt($(object).closest('.assessment_item').find('.text_number_like_assessment').html());
-                      text_number_like_assessment=text_number_like_assessment+1;
-                      text_number_like_assessment=text_number_like_assessment.toString();
+                      var  text_number_like_comment=parseInt($(object).closest('.box_detail_comment_for_assessment').find('.text_number_like_comment').html());
+                      text_number_like_comment=text_number_like_comment+1;
+                      text_number_like_comment=text_number_like_comment.toString();
                      if(data=="SUCCESSFUL"){
-                         $(object).closest('.assessment_item').find('.text_number_like_assessment').html(text_number_like_assessment);                       
+                         $(object).closest('.box_detail_comment_for_assessment').find('.text_number_like_comment').html(text_number_like_comment);                       
                       }
                       //$(object).closest('.assessment_item').find('#id_assessment').val();
                   },
