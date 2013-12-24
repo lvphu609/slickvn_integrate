@@ -893,9 +893,9 @@ class Home_controller extends CI_Controller {
                </div>
                <div class="comment_for_assessment">
                   <ul class="box_detail_comment_for_assessment">
-                    <textarea id="answer_assessment" class="answer_assessment"   placeholder="Trả lời bình luận..." style="resize: none; "></textarea>
+                    <textarea style="resize: none; display: none;" id="answer_assessment" class="answer_assessment"   placeholder="Trả lời bình luận..." style="resize: none; "></textarea>
                     <input style="resize: none; display: none;"  type="hidden" value="'.$id_assessment.'" id="id_assessment">
-                    <input style="resize: none; display: none;"  class="btn_answer_assessment" type="button" onclick="return send_answer_assessment(this)" value="Trả lời" >
+                    <input  class="btn_answer_assessment" type="button" onclick="return send_answer_assessment(this)" value="Trả lời" >
                   </ul>
                  
 
@@ -951,10 +951,13 @@ class Home_controller extends CI_Controller {
                 <li class="content_user_comment">
                   <p>'.$content.'</p>
                 </li>
-                <li class="like_user_comment">
-                  <a href="javascript:;"><span class="span_margin">like(</span>
-                    <span>0</span>
-                  <span>)</span></a>
+                <li class="like_user_comment" >
+                  <input type="hidden" value="'.$id_comment.'" id="id_comment">
+                  <a href="javascript:;" onclick="return like_comment(this)">
+                    <span class="span_margin">like(</span>
+                       <span class="text_number_like_comment">0</span>
+                    <span>)</span>
+                  </a>
                 </li>
               </ul>
        ';
