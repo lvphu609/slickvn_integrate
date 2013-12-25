@@ -510,12 +510,14 @@ class Restaurant_apis extends CI_Model{
      *  @param int    $page
      *  @param array $array_filter: array(
      *                                      {
-                                               field: favourite_list,
-                                               array:[
+                                               field => favourite_list,
+                                               array=>[
                                                     526f6ae1e13b975593dad23e,
                                                     526f6ae1e13b975453dad23d
                                                 ]
                                              },
+     * 
+     * 
                                             {
                                                 field: payment_type_list,
                                                 array:[
@@ -545,7 +547,7 @@ class Restaurant_apis extends CI_Model{
             $array_id = $value[Common_enum::ARRAY_ID];
             if(is_array($array_id) && sizeof($array_id)>0){
                 if(strcmp($field, 'meal_type') == 0){
-                    $list_restaurant_search_by_meal_type = search_restaurant_by_meal($limit, $page, $array_id);
+                    $list_restaurant_search_by_meal_type = $this->search_restaurant_by_meal($limit, $page, $array_id);
                 }
                 else{
                     $where [] = array( $field => array('$in' => array($array_id)) );
