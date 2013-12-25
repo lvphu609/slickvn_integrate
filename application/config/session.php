@@ -11,4 +11,4 @@ $config['sess_expiration'] = 7200;
 $config['sess_regenerate'] = FALSE;
 
 //The flashdata key (this only applies to flashmessages)
-$config['sess_flash_key']  = 'flash';
+$config['sess_flash_key']  = 'QCGUH-J8FF6-33WGA-UBY62';

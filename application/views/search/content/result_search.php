@@ -11,66 +11,210 @@
         </div>
         <ul id="menu_filter">
           <li>
-            <div class="title_item_search"> 
-              <span>Nhu cầu</span>
-            </div>
-            <div class="icon_show"></div>
-<!--            <ul class="listing_select">
-              <li>
-                 <span>Bún xào hột vịt</span>
-              </li>
-              <li>
-                 <span>Phở</span>
-              </li>
-              <li>
-                 <span>Cháo</span>
-              </li>
-              <li>
-                 <span>Cơm</span>
-              </li>
-            </ul>-->
+            <a href="javascript:;" onclick="return select_item_search(this)" >
+              <div class="title_item_search"> 
+                <span>Nhu cầu</span>
+              </div>
+              <div class="icon_show"></div>
+            </a>
+            <form id="FormAddListing_favourite">
+              <ul class="list_index">
+                  <?php 
+                    if(is_array($favourite_list)&&  sizeof($favourite_list)>0){
+                      foreach ($favourite_list as $value_favourite_list) {
+                        echo'<li onclick="return onclickLiCheckListing_favourite(this);">
+                              <span class="checkbox" id="'.$value_favourite_list['id'].'"></span>
+                              <p class="item_name">'.$value_favourite_list['name'].'</p>
+                      </li>';
+                        
+                      }
+                    } 
+                   ?>
+                   
+              </ul>
+            </form>
           </li>
           <li>
-            <div class="title_item_search"> 
-             <span>Món ăn</span>
-            </div>
-            <div class="icon_show"></div>
+             <a href="javascript:;" onclick="return select_item_search(this)" >
+              <div class="title_item_search"> 
+               <span>Món ăn</span>
+              </div>
+              <div class="icon_show"></div>
+             </a>
+             <form id="FormAddListing_meal">
+              <ul class="list_index">
+                <?php 
+                    if(is_array($meal_list)&&  sizeof($meal_list)>0){
+                      foreach ($meal_list as $value_meal_list){
+                         $meal_name=  urlencode($value_meal_list['name']);
+                        echo'<li onclick="return onclickLiCheckListing_meal(this);">
+                              <span class="checkbox" id="'.$meal_name.'"></span>
+                              <p class="item_name">'.$value_meal_list['name'].'</p>
+                        </li>';
+                        
+                      }
+                    } 
+                   ?>
+              </ul>
+            </form>
+            
           </li>
            <li>
-            <div class="title_item_search"> 
-             <span>Phong cách ẩm thực</span>
-            </div>
-            <div class="icon_show"></div>
+              <a href="javascript:;" onclick="return select_item_search(this)" >
+                <div class="title_item_search"> 
+                 <span>Phong cách ẩm thực</span>
+                </div>
+                <div class="icon_show"></div>
+              </a>
+             <form id="FormAddListing_Culinary_Style">
+              <ul class="list_index">
+                  <?php 
+                     if(is_array($culinary_style) && sizeof($culinary_style)>0){
+                        foreach ($culinary_style as $value_culinary_style) {
+                          echo'
+                                <li onclick="return onclickLiCheckListing_Culinary_Style(this);">
+                                    <span class="checkbox" id="'.$value_culinary_style['id'].'"></span>
+                                    <p class="item_name">'.$value_culinary_style['name'].'</p>
+                                </li>
+                            ';
+                         }
+                     }
+                   ?>
+                   
+              </ul>
+            </form>
+             
+             
           </li>
            <li>
-            <div class="title_item_search"> 
-             <span>Phương thức sử dụng</span>
-            </div>
-            <div class="icon_show"></div>
+              <a href="javascript:;" onclick="return select_item_search(this)" >
+                <div class="title_item_search"> 
+                 <span>Phương thức sử dụng</span>
+                </div>
+                <div class="icon_show"></div>
+              </a>
+             <form id="FormAddListing_Mode_Use_List">
+              <ul class="list_index">
+                   <?php 
+                     if(is_array($mode_use_list) && sizeof($mode_use_list)>0){
+                        foreach ($mode_use_list as $value_mode_use_list) {
+                          echo'
+                                <li onclick="return onclickLiCheckListing_Mode_Use_List(this);">
+                                    <span class="checkbox" id="'.$value_mode_use_list['id'].'"></span>
+                                    <p class="item_name">'.$value_mode_use_list['name'].'</p>
+                                </li>
+                            ';
+                         }
+                     }
+                   ?>
+                
+              </ul>
+            </form>
           </li>
            <li>
-            <div class="title_item_search"> 
-             <span>Hình thức thanh toán</span>
-            </div>
-            <div class="icon_show"></div>
+              <a href="javascript:;" onclick="return select_item_search(this)" >
+                <div class="title_item_search"> 
+                 <span>Hình thức thanh toán</span>
+                </div>
+                <div class="icon_show"></div>
+              </a>
+             
+             <form id="FormAddListing_Payment_Type_List">
+              <ul class="list_index">
+                    <?php 
+                     if(is_array($payment_type_list) && sizeof($payment_type_list)>0){
+                        foreach ($payment_type_list as $value_payment_type_list) {
+                          echo'
+                                <li onclick="return onclickLiCheckListing_Payment_Type_List(this);">
+                                    <span class="checkbox" id="'.$value_payment_type_list['id'].'"></span>
+                                    <p class="item_name">'.$value_payment_type_list['name'].'</p>
+                                </li>
+                            ';
+                         }
+                     }
+                   ?>
+              </ul>
+             </form>
+             
+             
           </li>
            <li>
-            <div class="title_item_search"> 
-             <span>Ngoại cảnh</span>
-            </div>
-            <div class="icon_show"></div>
+              <a href="javascript:;" onclick="return select_item_search(this)" >
+                <div class="title_item_search"> 
+                 <span>Ngoại cảnh</span>
+                </div>
+                <div class="icon_show"></div>
+               </a>
+             <form id="FormAddListing_Landscape_List">
+              <ul class="list_index">
+                  <?php 
+                     if(is_array($landscape_list) && sizeof($landscape_list)>0){
+                        foreach ($landscape_list as $value_landscape_list) {
+                          echo'
+                                <li onclick="return onclickLiCheckListing_Landscape_List(this);">
+                                    <span class="checkbox" id="'.$value_landscape_list['id'].'"></span>
+                                    <p class="item_name">'.$value_landscape_list['name'].'</p>
+                                </li>
+                            ';
+                         }
+                     }
+                   ?>
+                   
+              </ul>
+             </form>
+             
           </li>
           <li>
-            <div class="title_item_search"> 
-             <span>Giá trung bình người</span>
-            </div>
-            <div class="icon_show"></div>
+             <a href="javascript:;" onclick="return select_item_search(this)" >
+              <div class="title_item_search"> 
+               <span>Giá trung bình người</span>
+              </div>
+              <div class="icon_show"></div>
+             </a>
+             <form id="FormAddListing_Price_Person_List">
+              <ul class="list_index">
+                 <?php 
+                     if(is_array($price_person_list) && sizeof($price_person_list)>0){
+                        foreach ($price_person_list as $value_price_person_list) {
+                          echo'
+                                <li onclick="return onclickLiCheckListing_Price_Person_List(this);">
+                                    <span class="checkbox" id="'.$value_price_person_list['id'].'"></span>
+                                    <p class="item_name">'.$value_price_person_list['name'].'</p>
+                                </li>
+                            ';
+                         }
+                     }
+                   ?>
+              </ul>
+             </form>           
+            
           </li>
           <li>
-            <div class="title_item_search"> 
-             <span>Các tiêu chí khác</span>
-            </div>
-            <div class="icon_show"></div>
+             <a href="javascript:;" onclick="return select_item_search(this)" >
+              <div class="title_item_search"> 
+               <span>Các tiêu chí khác</span>
+              </div>
+              <div class="icon_show"></div>
+             </a>
+              <form id="FormAddListing_Other_Criteria_List">
+              <ul class="list_index">
+                <?php 
+                     if(is_array($other_criteria_list) && sizeof($other_criteria_list)>0){
+                        foreach ($other_criteria_list as $value_other_criteria_list) {
+                          echo'
+                                <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);">
+                                    <span class="checkbox" id="'.$value_other_criteria_list['id'].'"></span>
+                                    <p class="item_name">'.$value_other_criteria_list['name'].'</p>
+                                </li>
+                            ';
+                         }
+                     }
+                   ?>
+                   
+              </ul>
+             </form>
+            
+            
           </li>
           
           
@@ -497,3 +641,284 @@
     </div>
   </div>
 </div>
+	<script type="text/javascript" src="<?php echo $url;?>includes/plugins/rating_jquery/jRating.jquery.js"></script>
+
+<script>
+  
+   $(document).ready(function(){
+     $('#menu_filter').find('.list_index').css({
+          display: "none"
+          
+        });
+  
+   });
+  
+   //nhu cau-----------
+    function onclickLiCheckListing_favourite(obj){
+     if($(obj).find('span').first().hasClass('checkbox')){
+            $(obj).find('span').first().removeClass('checkbox').addClass('checkboxSelect');
+            var myText = $(obj).text();
+            var id = $(obj).find('span').first().attr('id');
+            var newEle = '<input type="hidden"  class="input_favourite_list" id="input_favourite_list' + id + '" value="' + id + '"/>';
+            $('#FormAddListing_favourite').append(newEle);
+        }else{
+            $(obj).find('span').first().removeClass('checkboxSelect').addClass('checkbox');
+            var id=$(obj).find('span').first().attr('id');
+            $("#input_favourite_list" + id ).remove();
+        }
+        
+        send_items_search();
+        
+    }
+    
+    //mon an-----------------
+    function onclickLiCheckListing_meal(obj){
+     if($(obj).find('span').first().hasClass('checkbox')){
+            $(obj).find('span').first().removeClass('checkbox').addClass('checkboxSelect');
+            var myText = $(obj).text();
+            var id = $(obj).find('span').first().attr('id');
+            var newEle = '<input type="hidden"  class="input_meal_list" id="input_meal_list' + id + '" value="' + id + '"/>';
+            $('#FormAddListing_meal').append(newEle);
+        }else{
+            $(obj).find('span').first().removeClass('checkboxSelect').addClass('checkbox');
+            var id=$(obj).find('span').first().attr('id');
+            $("#input_meal_list" + id ).remove();
+        }
+        
+        send_items_search();
+        
+    }
+    //phong cach am thuc-----------------
+     function onclickLiCheckListing_Culinary_Style(obj){
+        if($(obj).find('span').first().hasClass('checkbox')){
+                $(obj).find('span').first().removeClass('checkbox').addClass('checkboxSelect');
+                var myText = $(obj).text();
+                var id = $(obj).find('span').first().attr('id');
+                var newEle = '<input type="hidden"  class="input_culinary_style_class" id="input_culinary_style' + id + '" value="' + id + '"/>';
+                $('#FormAddListing_Culinary_Style').append(newEle);
+            }else{
+                $(obj).find('span').first().removeClass('checkboxSelect').addClass('checkbox');
+                var id=$(obj).find('span').first().attr('id');
+                $("#input_culinary_style" + id ).remove();
+            }
+            
+            send_items_search();
+       }
+   //phung thuc su dung-----------------
+    function onclickLiCheckListing_Mode_Use_List(obj){
+    if($(obj).find('span').first().hasClass('checkbox')){
+            $(obj).find('span').first().removeClass('checkbox').addClass('checkboxSelect');
+            var myText = $(obj).text();
+            var id = $(obj).find('span').first().attr('id');
+            var newEle = '<input type="hidden"  class="input_mode_use_list_class" id="input_mode_use_list' + id + '" value="' + id + '"/>';
+            $('#FormAddListing_Mode_Use_List').append(newEle);
+        }else{
+            $(obj).find('span').first().removeClass('checkboxSelect').addClass('checkbox');
+            var id=$(obj).find('span').first().attr('id');
+            $("#input_mode_use_list" + id ).remove();
+        }
+       send_items_search();
+    }
+  //hinh thuc thanh toan-----------------
+   function onclickLiCheckListing_Payment_Type_List(obj){
+    if($(obj).find('span').first().hasClass('checkbox')){
+            $(obj).find('span').first().removeClass('checkbox').addClass('checkboxSelect');
+            var myText = $(obj).text();
+            var id = $(obj).find('span').first().attr('id');
+            var newEle = '<input type="hidden" name="arr_payment_type_list[]" class="input_payment_type_list_class" id="input_payment_type_list' + id + '" value="' + id + '"/>';
+            $('#FormAddListing_Payment_Type_List').append(newEle);
+        }else{
+            $(obj).find('span').first().removeClass('checkboxSelect').addClass('checkbox');
+            var id=$(obj).find('span').first().attr('id');
+            $("#input_payment_type_list" + id ).remove();
+            
+        }
+        send_items_search();
+    }
+  //ngoai canh-----------------
+   function onclickLiCheckListing_Landscape_List(obj){
+    if($(obj).find('span').first().hasClass('checkbox')){
+            $(obj).find('span').first().removeClass('checkbox').addClass('checkboxSelect');
+            var myText = $(obj).text();
+            var id = $(obj).find('span').first().attr('id');
+            var newEle = '<input type="hidden" name="arr_landscape_list[]" class="input_landscape_list_class" id="input_landscape_list' + id + '" value="' + id + '"/>';
+            $('#FormAddListing_Landscape_List').append(newEle);
+        }else{
+            $(obj).find('span').first().removeClass('checkboxSelect').addClass('checkbox');
+            var id=$(obj).find('span').first().attr('id');
+            $("#input_landscape_list" + id ).remove();
+        }
+        send_items_search();
+    }
+    //gia trung binh nguoi-----------------
+   function onclickLiCheckListing_Price_Person_List(obj){
+    if($(obj).find('span').first().hasClass('checkbox')){
+            $(obj).find('span').first().removeClass('checkbox').addClass('checkboxSelect');
+            var myText = $(obj).text();
+            var id = $(obj).find('span').first().attr('id');
+            var newEle = '<input type="hidden" name="arr_price_person_list[]" class="input_price_person_list_class" id="input_price_person_list' + id + '" value="' + id + '"/>';
+            $('#FormAddListing_Price_Person_List').append(newEle);
+        }else{
+            $(obj).find('span').first().removeClass('checkboxSelect').addClass('checkbox');
+            var id=$(obj).find('span').first().attr('id');
+            $("#input_price_person_list" + id ).remove();
+        }
+        send_items_search();
+   }
+   
+    //cac tieu chi khac-----------------
+   function onclickLiCheckListing_Other_Criteria_List(obj){
+        if($(obj).find('span').first().hasClass('checkbox')){
+            $(obj).find('span').first().removeClass('checkbox').addClass('checkboxSelect');
+            var myText = $(obj).text();
+            var id = $(obj).find('span').first().attr('id');
+            var newEle = '<input type="hidden" name="arr_other_criteria_list[]" class="input_other_criteria_list_class" id="input_other_criteria_list' + id + '" value="' + id + '"/>';
+            $('#FormAddListing_Other_Criteria_List').append(newEle);
+        }else{
+            $(obj).find('span').first().removeClass('checkboxSelect').addClass('checkbox');
+            var id=$(obj).find('span').first().attr('id');
+            $("#input_other_criteria_list" + id ).remove();
+        }
+        send_items_search();
+     }
+   
+   
+   
+   
+   
+   
+  function get_value_search(){
+     var array_return = [];
+     
+     /*nhu cau*/
+      var elem_favourite_search = document.getElementsByClassName("input_favourite_list");
+      var favourite_list_search="";
+       for (var i = 0; i < elem_favourite_search.length; ++i) {
+        if (typeof elem_favourite_search[i].value !== "undefined") {
+            favourite_list_search +=elem_favourite_search[i].value+',';
+          }
+        }
+      favourite_list_search=favourite_list_search.slice(0,-1);
+      array_return[0]=favourite_list_search;
+      
+      /*mon an*/
+      var elem_meal_search = document.getElementsByClassName("input_meal_list");
+      var meal_list_search="";
+       for (var i = 0; i < elem_meal_search.length; ++i) {
+        if (typeof elem_meal_search[i].value !== "undefined") {
+            meal_list_search +=elem_meal_search[i].value+',';
+          }
+        }
+      meal_list_search=meal_list_search.slice(0,-1);
+      array_return[1]=meal_list_search;
+      
+      /*phong cach am thuc*/
+      var elem_culinary_style = document.getElementsByClassName("input_culinary_style_class");
+      var culinary_style="";
+       for (var i = 0; i < elem_culinary_style.length; ++i) {
+        if (typeof elem_culinary_style[i].value !== "undefined") {
+            culinary_style +=elem_culinary_style[i].value+',';
+          }
+        }
+      culinary_style=culinary_style.slice(0,-1);
+      array_return[2]=culinary_style;
+      
+     /*phương thức sử dụng*/
+     var elem_mode_use_list = document.getElementsByClassName("input_mode_use_list_class");
+      var mode_use_list="";
+       for (var i = 0; i < elem_mode_use_list.length; ++i) {
+        if (typeof elem_mode_use_list[i].value !== "undefined") {
+            mode_use_list +=elem_mode_use_list[i].value+',';
+          }
+        }
+        mode_use_list=mode_use_list.slice(0,-1);
+        array_return[3]=mode_use_list;
+        
+     /*hinh thuc thanh toan */
+      var elem_payment_type_list = document.getElementsByClassName("input_payment_type_list_class");
+      var payment_type_list="";
+       for (var i = 0; i < elem_payment_type_list.length; ++i) {
+        if (typeof elem_payment_type_list[i].value !== "undefined") {
+            payment_type_list +=elem_payment_type_list[i].value+',';
+          }
+        }
+        payment_type_list=payment_type_list.slice(0,-1);
+        array_return[4]=payment_type_list;
+        
+      /*ngoai canh */
+      var elem_landscape_list = document.getElementsByClassName("input_landscape_list_class");
+      var landscape_list="";
+       for (var i = 0; i < elem_landscape_list.length; ++i) {
+        if (typeof elem_landscape_list[i].value !== "undefined") {
+            landscape_list +=elem_landscape_list[i].value+',';
+          }
+        }
+       landscape_list=landscape_list.slice(0,-1);
+       array_return[5]=landscape_list;
+       
+     /*gia trung binh nguoi*/
+      var elem_price_person_list = document.getElementsByClassName("input_price_person_list_class");
+      var price_person_list="";
+       for (var i = 0; i < elem_price_person_list.length; ++i) {
+        if (typeof elem_price_person_list[i].value !== "undefined") {
+            price_person_list +=elem_price_person_list[i].value+',';
+          }
+        }
+        price_person_list=price_person_list.slice(0,-1);
+        array_return[6]=price_person_list;
+      
+      /*cac tieu chi khac*/
+      var elem_other_criteria_list = document.getElementsByClassName("input_other_criteria_list_class");
+      var other_criteria_list="";
+       for (var i = 0; i < elem_other_criteria_list.length; ++i) {
+        if (typeof elem_other_criteria_list[i].value !== "undefined") {
+            other_criteria_list +=elem_other_criteria_list[i].value+',';
+          }
+        }
+        other_criteria_list=other_criteria_list.slice(0,-1);
+       array_return[7]=other_criteria_list;
+      
+      
+     /*return array search*/
+     return array_return;
+  }
+  
+  
+  function send_items_search(){
+    var array_search = get_value_search();
+    var data={
+         array_search:array_search
+    };
+    console.log(array_search);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  }
+  
+  
+  function select_item_search(object){
+     
+      $(object).closest('#menu_filter').find('.list_index').css({
+         display: "none"
+          
+        });
+     $(object).closest('li').find('.list_index').css({
+         display: "block"
+          
+        });
+   
+                
+                
+  }
+  
+ 
+  
+</script>

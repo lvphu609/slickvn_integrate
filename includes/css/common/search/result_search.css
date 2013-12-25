@@ -68,10 +68,9 @@
 
 
 #result_search .box_align_center .box_detail_left ul#menu_filter li{
-  width: 258px;
+  width: 260px;
   height:auto;
   float: left;
-  border: 1px solid #ddd;
   margin-top: 2px;
   background: #FFF;
   cursor: pointer;
@@ -114,20 +113,70 @@
   background-size: 8px 8px;
 }
 
-#result_search .box_align_center .box_detail_left ul#menu_filter li .listing_select{
+#result_search .box_align_center .box_detail_left ul#menu_filter li .list_index{
   width: 250px;
   height:auto;
   float: left;
   list-style: none;
+  margin-left: 10px;
   
 }
-#result_search .box_align_center .box_detail_left ul#menu_filter li .listing_select li{
-  width: 250px;
+#result_search .box_align_center .box_detail_left ul#menu_filter li .list_index li{
+  width: 240px;
   height:auto;
   float: left;
   margin-left: 4px;
   margin-bottom: 5px;
 }
+#result_search .box_align_center .box_detail_left ul#menu_filter li .list_index li .item_name{
+ font-size: 12px;
+ font-family: sans-serif;
+ color: #419641;
+ 
+}
+
+ul.list_index {
+width: 100%;
+height: auto;
+float: left;
+clear: both;
+margin: 0px;
+padding: 0px;
+list-style: none;
+margin-top: 10px;
+}
+ul.list_index li {
+width: 19%;
+height: auto;
+float: left;
+clear: none;
+margin-left: 5px;
+cursor: pointer;
+color:#000000;
+font-size: 15px;
+font-family: sans-serif;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+ul.list_index li .checkbox {
+width: 16px;
+height: 18px;
+background: url(../../../../includes/images/icon/check.png) no-repeat;
+cursor: pointer;
+display: inline-block;
+float: left;
+/*margin-right: 5px;*/
+}
+ul.list_index li .checkboxSelect {
+background: url(../../../../includes/images/icon/checked.png) no-repeat;
+/*margin-right: 5px;*/
+display: inline-block;
+float: left;
+width: 16px;
+height: 18px;
+}
+
 
 
 

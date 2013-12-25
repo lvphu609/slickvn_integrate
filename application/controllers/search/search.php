@@ -26,7 +26,7 @@ class Search extends CI_Controller {
     if(isset($_GET['meal_name'])){
       $meal_name=$_GET['meal_name'];
       $meal_name=  trim($meal_name);
-      $meal_name= urlencode($meal_name);
+      //$meal_name= urlencode($meal_name);
       //var_dump($meal_name);
     }
     else {
@@ -34,7 +34,7 @@ class Search extends CI_Controller {
        }
     
     
-    $key=$meal_name;
+    $key=array($meal_name);
     
     $json_search_meal = $this->restaurant_apis->search_restaurant_by_meal(Restaurantenum::LIMIT_PAGE_SEARCH_MEAL,1,$key);
     $data['result_search_meal']=$json_search_meal["Results"];
@@ -62,6 +62,38 @@ class Search extends CI_Controller {
   /*================LOCATION============================================================================*/
    $this->load->view('search/content/location_page'); 
  /*================END LOCATION============================================================================*/
+   
+ /*send data for form filter*/
+    
+   //danh sách phong cách ẩm thực
+     $json_culinary_style = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_CULINARY_STYLE);
+     $data['culinary_style']=$json_culinary_style["Results"];
+   //phương thức sử dụng
+     $json_mode_use_list =$this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MODE_USE);
+     $data['mode_use_list']=$json_mode_use_list["Results"];
+   //nhu cầu
+     $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
+     $data['favourite_list']=$json_favourite_list["Results"];
+    //hình thức thanh toán
+    
+     $json_payment_type_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_PAYMENT);
+     $data['payment_type_list']=$json_payment_type_list["Results"];
+    //ngoại cảnh
+     
+     $json_landscape_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_LANDSCAPE);
+     $data['landscape_list']=$json_landscape_list["Results"];
+    //giá trung bình người
+    
+     $json_price_person_list = $this->common_apis->get_base_collection( Api_link_enum::COLLECTION_PRICE_PERSION);
+     $data['price_person_list']=$json_price_person_list["Results"];
+    //các tiêu chí khác
+   
+     $json_other_criteria_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_OTHER_CRITERIA);
+     $data['other_criteria_list']=$json_other_criteria_list["Results"];
+        
+ /*end send data for form filter*/
+     
+     
     $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
     $this->load->view('search/content/result_search',$data); 
   
@@ -113,6 +145,36 @@ class Search extends CI_Controller {
   /*================LOCATION============================================================================*/
    $this->load->view('search/content/location_page'); 
  /*================END LOCATION============================================================================*/
+    /*send data for form filter*/
+    
+   //danh sách phong cách ẩm thực
+     $json_culinary_style = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_CULINARY_STYLE);
+     $data['culinary_style']=$json_culinary_style["Results"];
+   //phương thức sử dụng
+     $json_mode_use_list =$this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MODE_USE);
+     $data['mode_use_list']=$json_mode_use_list["Results"];
+   //nhu cầu
+     $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
+     $data['favourite_list']=$json_favourite_list["Results"];
+    //hình thức thanh toán
+    
+     $json_payment_type_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_PAYMENT);
+     $data['payment_type_list']=$json_payment_type_list["Results"];
+    //ngoại cảnh
+     
+     $json_landscape_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_LANDSCAPE);
+     $data['landscape_list']=$json_landscape_list["Results"];
+    //giá trung bình người
+    
+     $json_price_person_list = $this->common_apis->get_base_collection( Api_link_enum::COLLECTION_PRICE_PERSION);
+     $data['price_person_list']=$json_price_person_list["Results"];
+    //các tiêu chí khác
+   
+     $json_other_criteria_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_OTHER_CRITERIA);
+     $data['other_criteria_list']=$json_other_criteria_list["Results"];
+        
+ /*end send data for form filter*/
+     
    $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
    $this->load->view('search/content/result_search',$data); 
   
@@ -155,6 +217,37 @@ class Search extends CI_Controller {
   /*================LOCATION============================================================================*/
    $this->load->view('search/content/location_page'); 
  /*================END LOCATION============================================================================*/
+   
+ /*send data for form filter*/
+    
+   //danh sách phong cách ẩm thực
+     $json_culinary_style = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_CULINARY_STYLE);
+     $data['culinary_style']=$json_culinary_style["Results"];
+   //phương thức sử dụng
+     $json_mode_use_list =$this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MODE_USE);
+     $data['mode_use_list']=$json_mode_use_list["Results"];
+   //nhu cầu
+     $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
+     $data['favourite_list']=$json_favourite_list["Results"];
+    //hình thức thanh toán
+    
+     $json_payment_type_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_PAYMENT);
+     $data['payment_type_list']=$json_payment_type_list["Results"];
+    //ngoại cảnh
+     
+     $json_landscape_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_LANDSCAPE);
+     $data['landscape_list']=$json_landscape_list["Results"];
+    //giá trung bình người
+    
+     $json_price_person_list = $this->common_apis->get_base_collection( Api_link_enum::COLLECTION_PRICE_PERSION);
+     $data['price_person_list']=$json_price_person_list["Results"];
+    //các tiêu chí khác
+   
+     $json_other_criteria_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_OTHER_CRITERIA);
+     $data['other_criteria_list']=$json_other_criteria_list["Results"];
+        
+ /*end send data for form filter*/
+   
    $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
    $this->load->view('search/content/result_search',$data); 
   
@@ -195,6 +288,36 @@ class Search extends CI_Controller {
   /*================LOCATION============================================================================*/
    $this->load->view('search/content/location_page'); 
  /*================END LOCATION============================================================================*/
+    /*send data for form filter*/
+    
+   //danh sách phong cách ẩm thực
+     $json_culinary_style = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_CULINARY_STYLE);
+     $data['culinary_style']=$json_culinary_style["Results"];
+   //phương thức sử dụng
+     $json_mode_use_list =$this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MODE_USE);
+     $data['mode_use_list']=$json_mode_use_list["Results"];
+   //nhu cầu
+     $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
+     $data['favourite_list']=$json_favourite_list["Results"];
+    //hình thức thanh toán
+    
+     $json_payment_type_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_PAYMENT);
+     $data['payment_type_list']=$json_payment_type_list["Results"];
+    //ngoại cảnh
+     
+     $json_landscape_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_LANDSCAPE);
+     $data['landscape_list']=$json_landscape_list["Results"];
+    //giá trung bình người
+    
+     $json_price_person_list = $this->common_apis->get_base_collection( Api_link_enum::COLLECTION_PRICE_PERSION);
+     $data['price_person_list']=$json_price_person_list["Results"];
+    //các tiêu chí khác
+   
+     $json_other_criteria_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_OTHER_CRITERIA);
+     $data['other_criteria_list']=$json_other_criteria_list["Results"];
+        
+ /*end send data for form filter*/
+     
    $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
    $this->load->view('search/content/result_search',$data); 
   

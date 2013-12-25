@@ -439,7 +439,7 @@
             
            // $('ul.listSelectDanhBaDiaDiem .select' + id).remove();
         }
-}
+   }
 
 //phương thức sử dụng======================================================================>
   function onclickLiCheckListing_Mode_Use_List(obj){
