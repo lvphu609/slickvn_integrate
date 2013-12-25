@@ -128,6 +128,7 @@
               $coupon_start_date =$value['coupon_start_date'];
               $coupon_due_date   =$value['coupon_due_date'];
               $coupon_desc       =$value['coupon_desc'];
+              $coupon_desc=substr($coupon_desc,0,120) . '...';
               $updated_date      =$value['updated_date'];  
               $created_date      =$value['created_date'];  
               $status_coupon      =$value['status_coupon']; 

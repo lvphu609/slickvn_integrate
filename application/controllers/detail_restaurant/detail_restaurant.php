@@ -30,6 +30,11 @@ class Detail_restaurant extends CI_Controller {
     $json_detail_restaurant = $this->restaurant_apis->get_detail_restaurant($id_restaurant);
     $data['info_restaurant']=$json_detail_restaurant["Results"];
     $data['BASE_IMAGE_USER_PROFILE_URL']=Api_link_enum::$BASE_IMAGE_USER_PROFILE_URL;
+    $data['BASE_PROFILE_RESTAURANT_URL']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
+    //danh sach nha hang tuong tu
+    $json_restaurant_similar = $this->restaurant_apis->get_all_restaurant_similar(1000, 1,$id_restaurant);
+    $data['restaurant_similar']=$json_restaurant_similar["Results"];
+    //var_dump($data['restaurant_similar']);
       if($data['info_restaurant']!=NULL){//if get data not NULL
         
                $json_comment_restaurant = $this->restaurant_apis->get_assessment_by_id_restaurant($limit=100,$page=1,$id_restaurant);

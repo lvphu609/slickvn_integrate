@@ -1,3 +1,4 @@
+<?php $url=  base_url(); ?>
 <div id="main_page">
  <div id="content_main_page">
    <div class="main_page_title">
@@ -11,13 +12,13 @@
        <ul class="box_in">
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="#">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/member_page">
            <span class="sub_title_box_in">Tìm kiếm thành viên</span>
            </a>
          </li>
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="#">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/create_new_member">
            <span class="sub_title_box_in">Tạo mới thành viên</span>
            </a>
          </li>
@@ -47,13 +48,13 @@
        <ul class="box_in">
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="#">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/restaurant_page">
            <span class="sub_title_box_in">Tìm kiếm nhà hàng</span>
            </a>
          </li>
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="#">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/form_create_new_restaurant">
            <span class="sub_title_box_in">Tạo mới nhà hàng</span>
            </a>
          </li>
@@ -65,13 +66,13 @@
        <ul class="box_in">
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="#">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/coupon_page">
            <span class="sub_title_box_in">Tìm kiếm khuyến mãi</span>
            </a>
          </li>
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="#">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/coupon_page">
            <span class="sub_title_box_in">Tạo mới khuyến mãi</span>
            </a>
          </li>

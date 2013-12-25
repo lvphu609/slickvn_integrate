@@ -6,8 +6,25 @@
 <div id="result_search">
   <div class="box_align_center">
     <div class="box_detail_left">
-
-    
+        <div class="title_filter">
+          <span>Lọc Kết Quả</span>
+        </div>
+        <ul id="menu_filter">
+          <li>
+            <div class="title_item_search"> 
+             <span>Nhu cầu</span>
+            </div>
+            <div class="icon_show"></div>
+          </li>
+          <li>
+            <div class="title_item_search"> 
+             <span>Món ăn</span>
+            </div>
+            <div class="icon_show"></div>
+          </li>
+          
+          
+        </ul>
       
     </div>
     <div class="box_detail_right">

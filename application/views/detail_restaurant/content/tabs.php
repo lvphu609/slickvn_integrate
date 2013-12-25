@@ -502,12 +502,13 @@
               <span>BÌNH LUẬN</span>
             </li>
           </a>
+          <?php if(strcmp($id_coupon,"")!=0){ ?>
           <a href="javascript:;" id="btn_coupon_restaurant">
             <li>
               <div class="coupon_logo"></div>
             </li>
           </a>
-          
+          <?php } ?>
           
         </ul>
       </div>
@@ -1695,102 +1696,44 @@
     <div class="tabs_right">
       <div class="similar_restaurant">
         <ul class="show_list_restaurant">
-          <a href="javascript:;">
-            <li>
-              <div class="left">
-                <div class="avatar_restaurant">
-                  <img src="http://dendau.vn/style/avatar/10.gif">
-                </div>
-              </div>
-              <div class="right">
-                <div class="name_restaurant">
-                  <span>Nhà hàng Kim Chi Hàn Quốc</span>
-                </div>
-                <div class="address_restaurant">
-                  <span>
-                    349 Hoàng Văn Thụ, Phường 2, 
-                    Quận Tân Bình, Tp. Hồ Chí Minh
-
-                  </span>
-                </div>
-
-              </div>            
-            </li>
-           </a>
           
-          <a href="javascript:;">
-            <li>
-              <div class="left">
-                <div class="avatar_restaurant">
-                  <img src="http://dendau.vn/style/avatar/10.gif">
-                </div>
-              </div>
-              <div class="right">
-                <div class="name_restaurant">
-                  <span>Nhà hàng Kim Chi Hàn Quốc</span>
-                </div>
-                <div class="address_restaurant">
-                  <span>
-                    349 Hoàng Văn Thụ, Phường 2, 
-                    Quận Tân Bình, Tp. Hồ Chí Minh
+          <?php 
+               if(is_array($restaurant_similar)&&  sizeof($restaurant_similar)>0){
+                 foreach ($restaurant_similar as $value_res_similar) {
+                    $id_res_similar=                    $value_res_similar['id'];
+                    $name_res_similar=                  $value_res_similar['name'];
+                    $address_res_similar=               $value_res_similar['address'];
+                    $avatar_res_similar=                 $value_res_similar['avatar'];
+                    
+            
+            ?>
+          
+                <a href="<?php echo $url;?>index.php/detail_restaurant/detail_restaurant?id_restaurant=<?php echo $id_res_similar; ?>">
+                  <li>
+                    <div class="left">
+                      <div class="avatar_restaurant">
+                        <img src="<?php echo $BASE_PROFILE_RESTAURANT_URL.$avatar_res_similar; ?>">
+                      </div>
+                    </div>
+                    <div class="right">
+                      <div class="name_restaurant">
+                        <span><?php echo $name_res_similar;?></span>
+                      </div>
+                      <div class="address_restaurant">
+                        <span>
+                          <?php echo $address_res_similar;?>
 
-                  </span>
-                </div>
+                        </span>
+                      </div>
 
-              </div>            
-            </li>
-           </a>
+                    </div>            
+                  </li>
+                 </a>
           
-          <a href="javascript:;">
-            <li>
-              <div class="left">
-                <div class="avatar_restaurant">
-                  <img src="http://dendau.vn/style/avatar/10.gif">
-                </div>
-              </div>
-              <div class="right">
-                <div class="name_restaurant">
-                  <span>Nhà hàng Kim Chi Hàn Quốc</span>
-                </div>
-                <div class="address_restaurant">
-                  <span>
-                    349 Hoàng Văn Thụ, Phường 2, 
-                    Quận Tân Bình, Tp. Hồ Chí Minh
-
-                  </span>
-                </div>
-
-              </div>            
-            </li>
-           </a>
-          
-          <a href="javascript:;">
-            <li>
-              <div class="left">
-                <div class="avatar_restaurant">
-                  <img src="http://dendau.vn/style/avatar/10.gif">
-                </div>
-              </div>
-              <div class="right">
-                <div class="name_restaurant">
-                  <span>Nhà hàng Kim Chi Hàn Quốc</span>
-                </div>
-                <div class="address_restaurant">
-                  <span>
-                    349 Hoàng Văn Thụ, Phường 2, 
-                    Quận Tân Bình, Tp. Hồ Chí Minh
-
-                  </span>
-                </div>
-
-              </div>            
-            </li>
-           </a>
-          
-          
-          
-          
-          
+          <?php
+               }
+             }
+          ?>
           
         </ul>
       </div>
