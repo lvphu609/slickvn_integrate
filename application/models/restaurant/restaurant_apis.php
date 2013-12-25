@@ -539,9 +539,7 @@ class Restaurant_apis extends CI_Model{
     public function search_restaurant_multi_field($limit, $page, $array_filter=array()){
         //  Query
         $where = array();
-        
         $list_restaurant_search_by_meal_type = array();
-        
         foreach ($array_filter as $value) {
             $field = $value[Common_enum::FIELD];
             $array_id = $value[Common_enum::ARRAY_ID];
@@ -1075,7 +1073,7 @@ class Restaurant_apis extends CI_Model{
         }
         
         $list_menu_dish = $this->restaurant_model->searchMenuDish(array( '$or'=>$where));
-        var_dump($list_menu_dish);
+//        var_dump($list_menu_dish);
         //  List restaurant
         $list_restaurant = array();
         

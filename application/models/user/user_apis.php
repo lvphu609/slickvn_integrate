@@ -527,7 +527,7 @@ class user_apis extends CI_Model{
         $this->user_model->updateUser($action, $id, $array_value);
         $error = $this->user_model->getError();
         
-        if($error == null){
+        if( $is_delete!=0 && $error == null && isset($array_value[Common_enum::_ID])){
             $data = $this->get_user_by_id($array_value[Common_enum::_ID]->{'$id'});
             return $data;
         }
