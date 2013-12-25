@@ -511,22 +511,26 @@ class Restaurant_apis extends CI_Model{
      *  @param array $array_filter: array(
      *                                      {
                                                field: favourite_list,
-                                               array_id:[
+                                               array:[
                                                     526f6ae1e13b975593dad23e,
                                                     526f6ae1e13b975453dad23d
                                                 ]
                                              },
                                             {
                                                 field: payment_type_list,
-                                                array_id:[
+                                                array:[
                                                      526f6ae1e13b975593dad23e,
                                                      526f6ae1e13b975453dad23d
                                                  ],
                                              },
                                             {
                                                 field: meal_type_list,
-                                                array_id:[],
-                                             }
+                                                array:[]
+                                             },
+                                            {
+                                                field: meal_type,
+                                                array:[Ph?, C?m,...]
+                                            }
                                              ...
      *                                      }
      * 
@@ -536,15 +540,25 @@ class Restaurant_apis extends CI_Model{
         //  Query
         $where = array();
         
+        $list_restaurant_search_by_meal_type = array();
+        
         foreach ($array_filter as $value) {
             $field = $value[Common_enum::FIELD];
             $array_id = $value[Common_enum::ARRAY_ID];
             if(is_array($array_id) && sizeof($array_id)>0){
-                $where [] = array( $field => array('$in' => array($array_id)) );
+                if(strcmp($field, 'meal_type') == 0){
+                    $list_restaurant_search_by_meal_type = search_restaurant_by_meal($limit, $page, $array_id);
+                }
+                else{
+                    $where [] = array( $field => array('$in' => array($array_id)) );
+                }
             }
         }
         
-        $list_restaurant = $this->restaurant_model->searchRestaurant(array( '$or' => $where));
+        $list_restaurant_search_by_orther_filter = $this->restaurant_model->searchRestaurant(array( '$or' => $where));
+        
+        $list_restaurant = array_merge($list_restaurant_search_by_meal_type, $list_restaurant_search_by_orther_filter);
+        
 //        var_dump($this->common_model->removeElementArrayNull($where));
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
@@ -574,9 +588,45 @@ class Restaurant_apis extends CI_Model{
                         //  Create JSONObject Restaurant
                         $jsonobject = array( 
                             Restaurant_enum::ID                         => $restaurant['_id']->{'$id'},
-                            Restaurant_enum::NAME                       => $restaurant[Restaurant_enum::NAME],
-                            Restaurant_enum::EMAIL                       => $restaurant[Restaurant_enum::EMAIL],
-                            Restaurant_enum::PHONE_NUMBER               => $restaurant[Restaurant_enum::PHONE_NUMBER],
+                            //Restaurant_enum::ID_USER                    => $restaurant['id_user'],
+                            Restaurant_enum::ID_MENU_DISH               => $restaurant['id_menu_dish'],
+                            Restaurant_enum::ID_COUPON                  => $restaurant['id_coupon'],
+                            Restaurant_enum::NAME                       => $restaurant['name'],
+                            Restaurant_enum::AVATAR                     => $restaurant['avatar'],
+
+                            Restaurant_enum::NUMBER_VIEW                => $restaurant['number_view'],
+                            Restaurant_enum::NUMBER_ASSESSMENT          => $this->restaurant_model->countAssessmentForRestaurant($restaurant['_id']->{'$id'}),
+                            Restaurant_enum::RATE_POINT                 => $this->restaurant_model->getRatePoint(),
+
+                            Restaurant_enum::FAVOURITE_LIST    		=> $this->common_model->getValueFeildNameBaseCollectionById(Common_enum::FAVOURITE_TYPE,   $restaurant['favourite_list']),
+                            Restaurant_enum::PRICE_PERSON_LIST      	=> $this->common_model->getValueFeildNameBaseCollectionById(Common_enum::PRICE_PERSON,   $restaurant['price_person_list']),
+                            Restaurant_enum::CULINARY_STYLE_LIST    	=> $this->common_model->getValueFeildNameBaseCollectionById(Common_enum::CULINARY_STYLE,   $restaurant['culinary_style_list']),
+							
+                            //  Number LIKE of Restaurant
+                            Restaurant_enum::NUMBER_LIKE                 => $this->user_model->countUserLogByAction(array ( 
+                                                                                                                            User_log_enum::ID_RESTAURANT => $restaurant['_id']->{'$id'}, 
+                                                                                                                            User_log_enum::ACTION        => Common_enum::LIKE_RESTAURANT
+                                                                                                                            )),
+                            //  Number SHARE of Restaurant
+                            Restaurant_enum::NUMBER_SHARE                => $this->user_model->countUserLogByAction(array ( 
+                                                                                                                        User_log_enum::ID_RESTAURANT => $restaurant['_id']->{'$id'}, 
+                                                                                                                        User_log_enum::ACTION        => Common_enum::SHARE_RESTAURANT
+                                                                                                                        )),
+
+                            Restaurant_enum::RATE_SERVICE               => $this->restaurant_model->getRateService(),
+                            Restaurant_enum::RATE_LANDSCAPE             => $this->restaurant_model->getRateLandscape(),
+                            Restaurant_enum::RATE_TASTE                 => $this->restaurant_model->getRateTaste(),
+                            Restaurant_enum::RATE_PRICE                 => $this->restaurant_model->getRatePrice(),
+
+                            Restaurant_enum::ADDRESS                    => $restaurant['address'],
+                            Restaurant_enum::CITY                       => $restaurant['city'],
+                            Restaurant_enum::DISTRICT                   => $restaurant['district'],
+                            Restaurant_enum::EMAIL                      => $restaurant['email'],
+                            Restaurant_enum::IMAGE_INTRODUCE_LINK       => $restaurant['image_introduce_link'],
+                            Restaurant_enum::IMAGE_CAROUSEL_LINK        => $restaurant['image_carousel_link'], 
+
+                            Common_enum::UPDATED_DATE         => $restaurant['updated_date'],
+                            Common_enum::CREATED_DATE         => $restaurant['created_date']
                         );
                         $results[] = $jsonobject;
                     }
@@ -1006,7 +1056,7 @@ class Restaurant_apis extends CI_Model{
      *  Response: JSONObject
      * 
      */
-    public function search_restaurant_by_meal($limit, $page, $key) {
+    public function search_restaurant_by_meal($limit, $page, $key=array()) {
         
         //  Get param from client
 //        $limit = $this->get("limit");
@@ -1018,9 +1068,14 @@ class Restaurant_apis extends CI_Model{
         $key = Encode_utf8::toUTF8($key);
         
         //  Query find collection Menu Dish by name
-        $where = array(Menu_dish_enum::DISH_LIST.'.'.Menu_dish_enum::NAME => new MongoRegex('/'.$key.'/i'));
-        $list_menu_dish = $this->restaurant_model->searchMenuDish($where);
-//        var_dump($list_menu_dish);
+        var_dump($key);
+        $where = array();
+        foreach ($key as $value) {
+            $where[] = array(Menu_dish_enum::DISH_LIST.'.'.Menu_dish_enum::NAME => new MongoRegex('/'.$value.'/i'));
+        }
+        
+        $list_menu_dish = $this->restaurant_model->searchMenuDish(array( '$or'=>$where));
+        var_dump($list_menu_dish);
         //  List restaurant
         $list_restaurant = array();
         
