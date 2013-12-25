@@ -46,9 +46,9 @@
                 <?php 
                     if(is_array($meal_list)&&  sizeof($meal_list)>0){
                       foreach ($meal_list as $value_meal_list){
-                         $meal_name=  urlencode($value_meal_list['name']);
+                         //$meal_name=  urlencode($value_meal_list['name']);
                         echo'<li onclick="return onclickLiCheckListing_meal(this);">
-                              <span class="checkbox" id="'.$meal_name.'"></span>
+                              <span class="checkbox" id="'.$value_meal_list['name'].'"></span>
                               <p class="item_name">'.$value_meal_list['name'].'</p>
                         </li>';
                         
@@ -889,6 +889,8 @@
   function send_items_search(){
 
     var div_disable_screen='<div id="disable_screen" style="width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:999999; background-color:#000; opacity:0.2;"> </div>'
+    var div_loading
+    $('.box_results_search').append(div_disable_screen);
     $('.box_results_search').append(div_disable_screen);
     $('.box_results_search').fadeTo(500, 0.25);
     $("*").css("cursor", "wait");
