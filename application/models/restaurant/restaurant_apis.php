@@ -109,11 +109,8 @@ class Restaurant_apis extends CI_Model{
                             Assessment_enum::COMMENT_LIST                =>  $this->restaurant_model->getCommentByIdAssessment($assessment['_id']->{'$id'}),
                             Common_enum::UPDATED_DATE                   => $assessment['updated_date'],
                             Common_enum::CREATED_DATE                    => $assessment['created_date']
-
                         );
-
                         $results[] = $jsonobject;
-
                     }
                 }
             }
@@ -125,7 +122,6 @@ class Restaurant_apis extends CI_Model{
                'Results'    =>$results
         );
         return $data;
-        
     }
     
     /**
@@ -463,7 +459,7 @@ class Restaurant_apis extends CI_Model{
         
         //  Count object restaurant
         $count = 0;
-        if (is_array($list_restaurant)){
+        if (is_array($list_restaurant)){   
             
             foreach ($list_restaurant as $restaurant){
                 //  Current date
@@ -514,7 +510,7 @@ class Restaurant_apis extends CI_Model{
      *  @param int    $page
      *  @param array $array_filter: array(
      *                                      {
-        *                                      field: favourite_list,
+                                               field: favourite_list,
                                                array_id:[
                                                     526f6ae1e13b975593dad23e,
                                                     526f6ae1e13b975453dad23d
@@ -537,7 +533,6 @@ class Restaurant_apis extends CI_Model{
      *  @return array
      */
     public function search_restaurant_multi_field($limit, $page, $array_filter=array()){
-        
         //  Query
         $where = array();
         
@@ -549,7 +544,7 @@ class Restaurant_apis extends CI_Model{
             }
         }
         
-        $list_restaurant = $this->restaurant_model->searchRestaurant(array( '$and' => $where));
+        $list_restaurant = $this->restaurant_model->searchRestaurant(array( '$or' => $where));
 //        var_dump($this->common_model->removeElementArrayNull($where));
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
@@ -1019,8 +1014,8 @@ class Restaurant_apis extends CI_Model{
 //
 //        //  Key search
 //        $key = $this->get('key');
-        
-        $key = iconv('UTF-8', 'UTF-8//IGNORE', $key);
+//        var_dump($key);
+        $key = Encode_utf8::toUTF8($key);
         
         //  Query find collection Menu Dish by name
         $where = array(Menu_dish_enum::DISH_LIST.'.'.Menu_dish_enum::NAME => new MongoRegex('/'.$key.'/i'));
@@ -1321,13 +1316,8 @@ class Restaurant_apis extends CI_Model{
      */
     public function get_all_restaurant_deleted($limit, $page){
         
-        //  Get param from client
-//        $limit = $this->get("limit");
-//        $page = $this->get("page");
-
         //  End
         $position_end_get   = ($page == 1) ? $limit : ($limit * $page);
-        
         //  Start
         $position_start_get = ($page == 1) ? $page : ( $position_end_get - ($limit - 1) );
         
@@ -1423,16 +1413,23 @@ class Restaurant_apis extends CI_Model{
                     $is_delete = $restaurant['is_delete'];
 
                     if($interval_expired >= 0 && $is_delete == 0){
+                        
                         $array_coupon = $this->restaurant_model->getCouponById($restaurant['id_coupon']);
-                        $coupon = $array_coupon[$restaurant['id_coupon']];
-    //                    var_dump($coupon);
-                        $due_date = $this->common_model->getInterval($current_date, $coupon['coupon_due_date']);
+                        if(is_array($array_coupon) && sizeof($array_coupon)>0){
+                            $coupon = $array_coupon[$restaurant['id_coupon']];
+        //                    var_dump($coupon);
+                            $due_date = $this->common_model->getInterval($current_date, $coupon['coupon_due_date']);
+                        }
+                        else{
+                            $coupon = null;
+                            $due_date = -1;
+                        }
                         
                         //  Create JSONObject Restaurant
                         $jsonobject = array( 
                             Restaurant_enum::ID                         => $restaurant['_id']->{'$id'},
                             Restaurant_enum::ID_MENU_DISH               => $restaurant['id_menu_dish'],
-                            Restaurant_enum::ID_COUPON                  => ($due_date<0)? '' : $restaurant['id_coupon'],
+                            Restaurant_enum::ID_COUPON                  => ($coupon == null || $due_date<0)? '' : $restaurant['id_coupon'],
                             Restaurant_enum::NAME                       => $restaurant['name'],
                             Restaurant_enum::AVATAR                     => $restaurant['avatar'],
                             Restaurant_enum::NUMBER_VIEW                => $restaurant['number_view'],
@@ -1473,10 +1470,10 @@ class Restaurant_apis extends CI_Model{
                             Restaurant_enum::START_DATE                 => $restaurant['start_date'],
                             Restaurant_enum::END_DATE                   => $restaurant['end_date'],
                             Restaurant_enum::DESC                       => $restaurant['desc'],        
-                            Coupon_enum::VALUE_COUPON                   => ($due_date<0)? '' : $coupon['value_coupon'],
-                            Coupon_enum::START_DATE                     => ($due_date<0)? '' : $coupon['coupon_start_date'],
-                            Coupon_enum::DUE_DATE                       => ($due_date<0)? '' : $coupon['coupon_due_date'],        
-                            Coupon_enum::DESC                           => ($due_date<0)? '' : $coupon['coupon_desc'],
+                            Coupon_enum::VALUE_COUPON                   => ($coupon == null || $due_date<0)? '' : $coupon['value_coupon'],
+                            Coupon_enum::START_DATE                     => ($coupon == null || $due_date<0)? '' : $coupon['coupon_start_date'],
+                            Coupon_enum::DUE_DATE                       => ($coupon == null || $due_date<0)? '' : $coupon['coupon_due_date'],        
+                            Coupon_enum::DESC                           => ($coupon == null || $due_date<0)? '' : $coupon['coupon_desc'],
                             Common_enum::UPDATED_DATE                   =>  $restaurant['updated_date'],
                             Common_enum::CREATED_DATE                   =>  $restaurant['created_date']
                         );
@@ -1545,13 +1542,18 @@ class Restaurant_apis extends CI_Model{
                 foreach ($get_collection as $restaurant){
 
                     $array_menu_dish = $this->common_model->getCollectionById(Menu_dish_enum::COLLECTION_MENU_DISH, $restaurant['id_menu_dish']);
-                    $menu_dish = $array_menu_dish[$restaurant['id_menu_dish']];
-                    
-                    $menu_dish_object = array(
-                            Menu_dish_enum::ID                => $menu_dish['_id']->{'$id'},
-                            Menu_dish_enum::DISH_LIST         => $menu_dish['dish_list'],        
-                            Common_enum::CREATED_DATE         => $menu_dish['created_date']
-                        );
+                    if(is_array($array_menu_dish) && sizeof($array_menu_dish) > 0){
+                        $menu_dish = $array_menu_dish[$restaurant['id_menu_dish']];
+
+                        $menu_dish_object = array(
+                                Menu_dish_enum::ID                => $menu_dish['_id']->{'$id'},
+                                Menu_dish_enum::DISH_LIST         => $menu_dish['dish_list'],        
+                                Common_enum::CREATED_DATE         => $menu_dish['created_date']
+                            );
+                    }
+                    else{
+                        $menu_dish_object = array();
+                    }
 
                     //  Create JSONObject Restaurant
                     $jsonobject = array( 
@@ -1864,7 +1866,7 @@ class Restaurant_apis extends CI_Model{
                 $is_delete = $restaurant['is_delete'];
 
                 //  Get interval
-                $interval = $this->common_model->getInterval($created_date, $current_date);
+                $interval = $this->common_model->getInterval($created_date, $current_date)/86400;
     //            var_dump($created_date);
     //            var_dump($current_date);
     //            var_dump($interval_expired);
@@ -2088,7 +2090,7 @@ class Restaurant_apis extends CI_Model{
                 $is_delete = $restaurant['is_delete'];
 
                 //  Get interval
-                $interval = $this->common_model->getInterval($created_date, $current_date);
+                $interval = $this->common_model->getInterval($created_date, $current_date)/86400;
 
                 if( ($interval > Common_enum::INTERVAL_NEWST_RESTAURANT) && ($interval_expired >=0 && $is_delete == 0) ){
                     $count++;
@@ -2462,10 +2464,12 @@ class Restaurant_apis extends CI_Model{
         if($is_edit==0){
             unset($array_value['number_view']);
             unset($array_value[Common_enum::CREATED_DATE]);
+            
         }
         $this->restaurant_model->updateRestaurant($action, $id, $array_value);
-        if($delete != 0){
-            $this->restaurant_model->updateMenuDish(Common_enum::EDIT, $id_menu_dish_new, array(Menu_dish_enum::ID_RESTAURANT => $array_value['_id']->{'$id'}) );
+        if(isset($array_value['_id']) || $id != null){
+            $id_restaurant = ($id != null)? $id : $array_value['_id']->{'$id'};
+            $this->restaurant_model->updateMenuDish(Common_enum::EDIT, $id_menu_dish_new, array(Menu_dish_enum::ID_RESTAURANT => $id_restaurant) );
         }
         
         $error = $this->restaurant_model->getError();

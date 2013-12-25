@@ -7,14 +7,28 @@
   <div class="box_align_center">
     <div class="box_detail_left">
         <div class="title_filter">
-          <span>Lọc Kết Quả</span>
+          <div class="text_center"><span>Lọc Kết Quả</span></div>
         </div>
         <ul id="menu_filter">
           <li>
             <div class="title_item_search"> 
-             <span>Nhu cầu</span>
+              <span>Nhu cầu</span>
             </div>
             <div class="icon_show"></div>
+<!--            <ul class="listing_select">
+              <li>
+                 <span>Bún xào hột vịt</span>
+              </li>
+              <li>
+                 <span>Phở</span>
+              </li>
+              <li>
+                 <span>Cháo</span>
+              </li>
+              <li>
+                 <span>Cơm</span>
+              </li>
+            </ul>-->
           </li>
           <li>
             <div class="title_item_search"> 
@@ -22,9 +36,46 @@
             </div>
             <div class="icon_show"></div>
           </li>
+           <li>
+            <div class="title_item_search"> 
+             <span>Phong cách ẩm thực</span>
+            </div>
+            <div class="icon_show"></div>
+          </li>
+           <li>
+            <div class="title_item_search"> 
+             <span>Phương thức sử dụng</span>
+            </div>
+            <div class="icon_show"></div>
+          </li>
+           <li>
+            <div class="title_item_search"> 
+             <span>Hình thức thanh toán</span>
+            </div>
+            <div class="icon_show"></div>
+          </li>
+           <li>
+            <div class="title_item_search"> 
+             <span>Ngoại cảnh</span>
+            </div>
+            <div class="icon_show"></div>
+          </li>
+          <li>
+            <div class="title_item_search"> 
+             <span>Giá trung bình người</span>
+            </div>
+            <div class="icon_show"></div>
+          </li>
+          <li>
+            <div class="title_item_search"> 
+             <span>Các tiêu chí khác</span>
+            </div>
+            <div class="icon_show"></div>
+          </li>
           
           
         </ul>
+        
       
     </div>
     <div class="box_detail_right">

@@ -26,25 +26,36 @@
   
   
   /*background: #000;
-  opacity: 0.3;
+  opacity: 0.3;*/
+  margin-bottom: 10px;
 
-  height: 100%;*/
-  
   
 }
 #result_search .box_align_center .box_detail_left .title_filter{
-  width: 260px;
-  height: auto;
+  width: 100%;
+  height: 30px;
   float: left;
   text-align: left;
+  margin-top: 10px;
+  background: #FFF;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-top-left-radius:  5px;
+  -moz-border-top-right-radius:5px; 
+  text-align: center;
 }
 #result_search .box_align_center .box_detail_left .title_filter span{
-  width: 260px;
-  height: auto;
-  float: left;
+  color: #999;
+  font-size: 15px;
+  font-weight: bold;
   
 }
-
+#result_search .box_align_center .box_detail_left .title_filter .text_center{
+  width: 100%;
+  height: 15px;
+  margin-top: 5px;
+  
+}
 
 
 
@@ -55,35 +66,30 @@
   list-style: none;
 }
 
-#result_search .box_align_center .box_detail_left ul#menu_filter li{
-  width: 260px;
-  height:35px;
-  float: left;
-  border: 1px solid #ddd;
-  margin-top: 2px;
-  background: #FFF;
-}
 
 #result_search .box_align_center .box_detail_left ul#menu_filter li{
-  width: 260px;
-  height:35px;
+  width: 258px;
+  height:auto;
   float: left;
   border: 1px solid #ddd;
   margin-top: 2px;
   background: #FFF;
+  cursor: pointer;
 }
 
 #result_search .box_align_center .box_detail_left ul#menu_filter li .title_item_search{
   width: 235px;
   height:20px;
   margin-top: 7px;
-  margin-left: 10px;
+  margin-bottom: 7px;
+  margin-left: 7px;
   float: left;
 }
 
 #result_search .box_align_center .box_detail_left ul#menu_filter li .title_item_search span{
   font-size: 17px;
   font-family: sans-serif;
+  color: #999;
 }
 #result_search .box_align_center .box_detail_left ul#menu_filter li .icon_show{
   width: 10px;
@@ -91,12 +97,37 @@
   float: left;
   margin-top: 7px;
   
-  background: #419641;
+  background: url('../../../../includes/images/icon/downnormal.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 8px 8px;
+}
+#result_search .box_align_center .box_detail_left ul#menu_filter li:hover .icon_show{
+  width: 10px;
+  height:20px;
+  float: left;
+  margin-top: 7px;
+  
+  background: url('../../../../includes/images/icon/downhover.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 8px 8px;
 }
 
-
-
-
+#result_search .box_align_center .box_detail_left ul#menu_filter li .listing_select{
+  width: 250px;
+  height:auto;
+  float: left;
+  list-style: none;
+  
+}
+#result_search .box_align_center .box_detail_left ul#menu_filter li .listing_select li{
+  width: 250px;
+  height:auto;
+  float: left;
+  margin-left: 4px;
+  margin-bottom: 5px;
+}
 
 
 
