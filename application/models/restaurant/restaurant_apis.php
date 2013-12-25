@@ -1272,7 +1272,7 @@ class Restaurant_apis extends CI_Model{
         
         $list_restaurant = $this->restaurant_model->getAllRestauranttSimilar(array( '$or' => $where));
         unset($list_restaurant[$id_restaurant]);
-        var_dump($list_restaurant);
+//        var_dump($list_restaurant);
         //  Array object post
         $results = array();
         //  Count object post
@@ -1288,9 +1288,9 @@ class Restaurant_apis extends CI_Model{
                             $jsonobject = array( 
 
                                 Restaurant_enum::ID                         => $restaurant['_id']->{'$id'},
-                                Restaurant_enum::NAME                       => $restaurant[Restaurant_enum::NAME],
-                                Restaurant_enum::EMAIL                       => $restaurant[Restaurant_enum::EMAIL],
-                                Restaurant_enum::PHONE_NUMBER               => $restaurant[Restaurant_enum::PHONE_NUMBER],
+                                Restaurant_enum::AVATAR                       => $restaurant[Restaurant_enum::AVATAR],
+                                Restaurant_enum::ADDRESS                       => $restaurant[Restaurant_enum::ADDRESS],
+                                Restaurant_enum::NAME                   => $restaurant[Restaurant_enum::NAME],
                             );
                             $results[] = $jsonobject;
                         }
