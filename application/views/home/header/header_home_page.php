@@ -3,23 +3,23 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <meta http-equiv="pragma" content="no-cache" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/default.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/menu.css" rel="stylesheet" /> 
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/carousel_slider.css" rel="stylesheet" /> 
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/sub_banner.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/menu_and_slide_show.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/restaurant_list.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/restaurant_list_content.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/promotion.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/articles.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/dang_ky_nhan_uu_dai.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/footer_content.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/default.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/menu.css" rel="stylesheet" /> 
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/carousel_slider.css" rel="stylesheet" /> 
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/sub_banner.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/menu_and_slide_show.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/restaurant_list.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/restaurant_list_content.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/promotion.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/articles.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/dang_ky_nhan_uu_dai.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/footer_content.css" rel="stylesheet" />
     
     <!--css Grid List Simple-->
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/append_restaurant_newest_List.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/append_restaurant_orther_List.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/append_restaurant_newest_Simple.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/append_restaurant_orther_Simple.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/append_restaurant_newest_List.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/append_restaurant_orther_List.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/append_restaurant_newest_Simple.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>includes/css/common/append_restaurant_orther_Simple.css" rel="stylesheet" />
     <!--end css Grid List Simple-->
     
     
