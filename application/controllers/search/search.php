@@ -475,12 +475,15 @@ class Search extends CI_Controller {
                    "array_id"=>$other_criteria_list
                )
      );
+   //  var_dump($array_filter);
+   
      
     $json_search_restaurant_filter = $this->restaurant_apis->search_restaurant_multi_field(100,1,$array_filter);
     $data['all_restaurant']=$json_search_restaurant_filter["Results"];
-     
-    var_dump($data['all_restaurant']);
-    if(is_array($data['all_restaurant']) && sizeof($data['all_restaurant'])>0){
+    $url=  base_url();
+    $url_res_frofile=Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
+   //var_dump($data['all_restaurant']);
+      if(is_array($data['all_restaurant']) && sizeof($data['all_restaurant'])>0){
                   echo "<ul>";
                               foreach ($data['all_restaurant'] as $info_detail_restaurant) {
                                   $id=                    $info_detail_restaurant['id'];
@@ -573,7 +576,9 @@ class Search extends CI_Controller {
                
            }
        
-  }
+  } 
+ 
+  
   
 }
 

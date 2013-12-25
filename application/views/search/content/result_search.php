@@ -46,9 +46,9 @@
                 <?php 
                     if(is_array($meal_list)&&  sizeof($meal_list)>0){
                       foreach ($meal_list as $value_meal_list){
-                         //$meal_name=  urlencode($value_meal_list['name']);
+                         $meal_name=  urlencode($value_meal_list['name']);
                         echo'<li onclick="return onclickLiCheckListing_meal(this);">
-                              <span class="checkbox" id="'.$value_meal_list['name'].'"></span>
+                              <span class="checkbox" id="'.$meal_name.'"></span>
                               <p class="item_name">'.$value_meal_list['name'].'</p>
                         </li>';
                         
@@ -898,7 +898,7 @@
     
     
     var array_search = get_value_search();
-    //console.log(array_search);
+    console.log(array_search);
     var url=$('#hidUrl').val();
     var url_api=url+"index.php/search/search/search_filter";
     var data={
@@ -912,12 +912,12 @@
      success: function(data){
        // alert(data);
         
-      /*  $('.box_results_search').fadeTo(500, 1);
+        $('.box_results_search').fadeTo(500, 1);
         $("*").css("cursor", "default");
         $('#disable_screen').remove();
         $('#load_ding').remove();
         $('.box_results_search').html("");
-        $('.box_results_search').append(data);*/
+        $('.box_results_search').append(data);
         
      },
        error: function(a,textStatus,b){
