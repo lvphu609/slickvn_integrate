@@ -206,9 +206,9 @@
           type: 'POST',
           data:data,
           success: function(data){
-            alert(data);
+            //alert(data);
            // alert('them thanh cong');
-           // window.location=url+"index.php/admin/admin_controller/member_page";
+           window.location=url+"index.php/admin/admin_controller/member_page";
             //alert(data)
           },
 

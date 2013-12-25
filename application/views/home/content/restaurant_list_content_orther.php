@@ -38,7 +38,7 @@
                                  <img  class="big" src="<?php echo $url_res_frofile.$avatar;?>" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
                              </a>
                              <div id="remove_comment_like_animate" class="">
-                               <a href="<?php echo $url;?>index.php/detail_restaurant/detail_restaurant?id_restaurant='.$id.'&comment_res=true">
+                               <a href="<?php echo $url;?>index.php/detail_restaurant/detail_restaurant?id_restaurant=<?php echo $id;?>&comment_res=true">
                                   <div class ="image_bg_comment_animate">
                                       <div class ="image_comment_animate">
                                       </div>

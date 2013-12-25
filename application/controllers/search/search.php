@@ -425,6 +425,65 @@ class Search extends CI_Controller {
    
        
   }
+   public function search_filter(){
+    
+    $array_search=$_POST['array_search'];
+    
+    
+    //var_dump($array_search);
+     $favourite_list=  explode(",",trim($array_search[0]));
+     $meal_type=  explode(",",trim($array_search[1]));
+     $culinary_style_list=  explode(",",trim($array_search[2]));
+     $mode_use_list=  explode(",",trim($array_search[3]));
+     $payment_type_list=  explode(",",trim($array_search[4]));
+     $landscape_list=  explode(",",trim($array_search[5]));
+     $price_person_list=  explode(",",trim($array_search[6]));
+     $other_criteria_list=  explode(",",trim($array_search[7]));
+     
+     
+     $array_filter=array(
+            array(
+                "field" => "favourite_list",
+                "array_id"=>$favourite_list
+            ),
+            array(
+                "field" => "meal_type",
+                "array_id"=>$meal_type
+            ),
+            array(
+                   "field" => "culinary_style_list",
+                   "array_id"=>$culinary_style_list
+               ),
+            array(
+                   "field" => "mode_use_list",
+                   "array_id"=>$mode_use_list
+               ),
+            array(
+                   "field" => "payment_type_list",
+                   "array_id"=>$payment_type_list
+               ),
+            array(
+                   "field" => "landscape_list",
+                   "array_id"=>$landscape_list
+               ),
+            array(
+                   "field" => "price_person_list",
+                   "array_id"=>$price_person_list
+               ),
+            array(
+                   "field" => "other_criteria_list",
+                   "array_id"=>$other_criteria_list
+               )
+     );
+     
+    $json_search_restaurant_filter = $this->restaurant_apis->search_restaurant_multi_field(100,1,$array_filter);
+    $data['all_restaurant']=$json_search_restaurant_filter["Results"];
+     
+    var_dump($data['all_restaurant']);
+    
+     
+       
+  }
   
 }
 

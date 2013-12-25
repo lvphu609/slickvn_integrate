@@ -644,7 +644,7 @@
   </div>
 </div>
 	<script type="text/javascript" src="<?php echo $url;?>includes/plugins/rating_jquery/jRating.jquery.js"></script>
-
+  <input type="hidden" value="<?php echo $url;?>" id="hidUrl">
 <script>
   
    $(document).ready(function(){
@@ -887,15 +887,40 @@
   
   
   function send_items_search(){
+
+    var div_disable_screen='<div id="disable_screen" style="width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:999999; background-color:#000; opacity:0.2;"> </div>'
+    $('.box_results_search').append(div_disable_screen);
+    $('.box_results_search').fadeTo(500, 0.25);
+    $("*").css("cursor", "wait");
     
-    $('.box_results_search').animate({opacity: 0.25},1000);
+    
     
     var array_search = get_value_search();
+    //console.log(array_search);
+    var url=$('#hidUrl').val();
+    var url_api=url+"index.php/search/search/search_filter";
     var data={
-         array_search:array_search
+      array_search:array_search
     };
-    console.log(array_search);
-    
+
+    $.ajax({
+     url: url_api ,
+     type: 'POST',
+     data:data,
+     success: function(data){
+       // alert(data);
+        
+        $('.box_results_search').fadeTo(500, 1);
+        $("*").css("cursor", "default");
+        $('#disable_screen').remove();
+        $('.box_results_search').html("");
+        $('.box_results_search').append(data);
+        
+     },
+       error: function(a,textStatus,b){
+         alert('error');
+       }
+     });
     
     
     
