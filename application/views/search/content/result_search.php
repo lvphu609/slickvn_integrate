@@ -223,6 +223,7 @@
       
     </div>
     <div class="box_detail_right">
+      
       <div class="box_results_search">
         
 <?php
@@ -638,6 +639,7 @@
         
         
       </div>
+      
     </div>
   </div>
 </div>
@@ -885,13 +887,14 @@
   
   
   function send_items_search(){
+    
+    $('.box_results_search').animate({opacity: 0.25},1000);
+    
     var array_search = get_value_search();
     var data={
          array_search:array_search
     };
     console.log(array_search);
-    
-    
     
     
     
@@ -914,6 +917,7 @@
          display: "block"
           
         });
+    
    
                 
                 
