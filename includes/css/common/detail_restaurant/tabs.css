@@ -1164,12 +1164,115 @@ ul li .right .rating .star_no_active{
  float: left;
  margin-top: 50px;
  margin-left: 50px;
- /*temp*/
  background: url(../../../../includes/images/icon/note.png);
  background-position: center;
  background-repeat: no-repeat;
  background-size: 200px 200px;
 }
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant .left 
+.time_left .title{
+ width: 150px;
+ float: left;
+ height: 15px;
+ margin-top: 50px;
+ margin-left: 20px;
+ -webkit-transform: rotate(-20deg);
+}
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant .left 
+.time_left .title span{
+ font-size: 14px;
+ font-family: sans-serif;
+ font-weight: bold;
+}
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant .left 
+.time_left .text_time_left{
+ width: 150px;
+ float: left;
+ height: auto;
+ margin-top: 30px;
+ margin-left: 45px;
+ -webkit-transform: rotate(-20deg);
+}
+
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant .left 
+.coupon_start{
+  width: 250px;
+  float: left;
+  height: auto;
+  float: left;
+  margin-top: 5px;
+  margin-left: 40px;
+}
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant .left 
+.coupon_start span{
+  font-size: 12px;
+  font-family: sans-serif;
+  
+}
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant .left 
+.coupon_due{
+  width: 250px;
+  float: left;
+  height: auto;
+  float: left;
+  margin-top: 10px;
+  margin-left: 40px;
+}
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant .left 
+.coupon_due span{
+  font-size: 12px;
+  font-family: sans-serif;
+  
+}
+
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant 
+.right {
+ width: 400px;
+ float: left;
+ height: auto;
+ float: left;
+ 
+  
+}
+
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant 
+.right .content_coupon{
+  width: 350px;
+  height: auto;
+  float: left;
+  margin-top: 30px;
+}
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant 
+.right .content_coupon .title{
+  width: 350px;
+  height: 20px;
+  float: left;
+  text-align: left;
+}
+
+
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant 
+.right .content_coupon .title span{
+ font-weight: bold;
+ font-size: 17px;
+}
+
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant 
+.right .content_coupon .detail_coupon{
+  width: 350px;
+  height: auto;
+  float: left;
+  text-align: left;
+  margin-top: 10px;
+}
+
+#tabs_detail_restaurant .tabs_align_center .tabs_left #coupon_restaurant .box_detail_coupon_restaurant 
+.right .content_coupon .detail_coupon span{
+  font-size: 12px;
+  font-family: sans-serif;
+  
+}
+
 
 
 /*====================================================TABS RIGHT===============*/

@@ -74,6 +74,7 @@
         $value_coupon         =$info_detail_restaurant['value_coupon'];
         $coupon_start_date    =$info_detail_restaurant['coupon_start_date'];
         $coupon_due_date      =$info_detail_restaurant['coupon_due_date'];
+         $coupon_due_date_timeleft=date("j F, Y H:i:s", strtotime($coupon_due_date)); 
         $coupon_desc          =$info_detail_restaurant['coupon_desc'];
 
  }
@@ -1638,10 +1639,47 @@
   <div class="box_detail_coupon_restaurant">
     <div class="left">
       <div class="time_left">
+        <div class="title"><span>Thời gian khuyến mãi còn lại</span></div>
+        <div class="text_time_left">
+          <script type="text/javascript" src="<?php echo $url."includes/js/time_left/remaining.js";?>"></script>
+          <script type="text/javascript">  
+            var timer = setInterval(function(){
+
+              var seconds = remaining.getSeconds('<?php echo $coupon_due_date_timeleft; ?>');
+              var remainingTime = remaining.getString(seconds);
+              if (remainingTime == '') {
+                $('#remaining').html('đã hết!');
+                clearInterval(timer);
+              } else {
+                $('#remaining').html(remainingTime);
+              }
+
+            }, 100);
+          </script>
+          <span>
+            <div id="remaining"></div>
+          </span>
         
+        </div>
+      </div>
+      <div class="coupon_start">
+        <span>Thời gian bắt đầu: <?php echo $coupon_start_date; ?></span>
+      </div>
+      <div class="coupon_due">
+        <span>Thời gian kết thúc: <?php echo $coupon_due_date; ?></span>
       </div>
     </div>
     <div class="right">
+      <div class="content_coupon">
+        <div class="title">
+          <span>『 Chi tiết khuyến mãi 』</span>
+        </div>
+        <div class="detail_coupon">
+          <span>
+            <?php echo $coupon_desc;?>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
