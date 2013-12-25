@@ -891,7 +891,7 @@
     var div_disable_screen='<div id="disable_screen" style="width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:999999; background-color:#000; opacity:0.2;"> </div>'
     var div_loading ='<div id="load_ding"></div>';
     $('.box_results_search').append(div_disable_screen);
-    $('.box_results_search').append(div_disable_screen);
+    $('.box_results_search').append(div_loading);
     $('.box_results_search').fadeTo(500, 0.25);
     $("*").css("cursor", "wait");
     
@@ -912,12 +912,12 @@
      success: function(data){
        // alert(data);
         
-        $('.box_results_search').fadeTo(500, 1);
+      /*  $('.box_results_search').fadeTo(500, 1);
         $("*").css("cursor", "default");
         $('#disable_screen').remove();
         $('#load_ding').remove();
         $('.box_results_search').html("");
-        $('.box_results_search').append(data);
+        $('.box_results_search').append(data);*/
         
      },
        error: function(a,textStatus,b){

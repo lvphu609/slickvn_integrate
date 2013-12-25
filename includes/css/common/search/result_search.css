@@ -210,6 +210,16 @@ height: 18px;
   background: #0066FF;*/
   
 }
+#result_search .box_align_center .box_detail_right .box_results_search #load_ding{
+  width: 300px;
+  height: 100px;
+  float: left;
+  margin-top: 20px;
+  margin-left: 230px;
+  position: absolute;
+  background: #FA9C20;
+  
+}
 
 #result_search .box_align_center .box_detail_right .box_results_search ul{
   width: 754px;
