@@ -27,6 +27,7 @@ class Common_apis extends CI_Model{
         $this->load->model('common/city_enum');
         $this->load->model('common/district_enum');
         $this->load->model('common/email_config_enum');
+        $this->load->model('common/config_page_enum');
         
     }
     //----------------------------------------------------//
@@ -1615,8 +1616,64 @@ class Common_apis extends CI_Model{
             return $this->common_model->encapsulationDataResponsePost(Common_enum::MESSAGE_RESPONSE_FALSE, $error);
         }
     }
+    
+    //----------------------------------------------------//
+    //                                                    //
+    //  APIs config_page                                  //
+    //                                                    //
+    //----------------------------------------------------//
 
-
+    public function get_config_page($key_code) {
+        $results = array();
+        $list_config_page = $this->common_model->getCollectionByField(Config_page_enum::COLLECTION_CONFIG_PAGE, array(Config_page_enum::KEY_CODE=>$key_code));
+        if(is_array($list_config_page) && sizeof($list_config_page)){
+            foreach ($list_config_page as $value) {
+                $doc = array(
+                             Config_page_enum::ID => $value[Common_enum::_ID]->{'$id'},
+                             Config_page_enum::KEY_CODE => $value[Config_page_enum::KEY_CODE],
+                             Config_page_enum::LIMIT => $value[Config_page_enum::LIMIT],
+                             Common_enum::CREATED_DATE => $value[Common_enum::CREATED_DATE],
+                             Common_enum::UPDATED_DATE => $value[Common_enum::UPDATED_DATE]
+                );
+                $results[]=$doc;
+            }
+        }
+        return $results;
+    }
+    
+    public function upage_config_page($action, $id = null, $key_code,
+                                        $limit = null, 
+                                        $created_date=null, $updated_date=null
+                                       ) {
+        
+        $is_insert = $this->common_model->checkAction( $action, Common_enum::INSERT );
+        $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
+        $is_delete = $this->common_model->checkAction( $action, Common_enum::DELETE );
+        
+        if($is_delete == TRUE){
+            $this->common_model->removeDocByFile(Config_page_enum::COLLECTION_CONFIG_PAGE, array(Common_enum::_ID => MongoId($id)) );
+        }
+        else{
+            $array_value = array(
+                Config_page_enum::ID => $id,
+                Config_page_enum::KEY_CODE => $key_code,
+                Config_page_enum::LIMIT => ($limit == null)? 5: $limit,
+                Common_enum::UPDATED_DATE    => ($updated_date==null) ? $this->common_model->getCurrentDate() : $updated_date,
+                Common_enum::CREATED_DATE    => ($created_date==null) ? $this->common_model->getCurrentDate() : $created_date
+            );
+            if($is_edit == TRUE){
+                unset($array_value[Common_enum::CREATED_DATE]);
+            }
+            $this->common_model->updateCollection(Config_page_enum::COLLECTION_CONFIG_PAGE, $action, $id, $array_value);
+        }
+        $error = $this->common_model->getError();
+        if( $error == null ){
+            return $this->common_model->encapsulationDataResponsePost(Common_enum::MESSAGE_RESPONSE_SUCCESSFUL, $error);
+        }else{
+            return $this->common_model->encapsulationDataResponsePost(Common_enum::MESSAGE_RESPONSE_FALSE, $error);
+        }
+    }
+    
     /**
      * 
      * API Send email

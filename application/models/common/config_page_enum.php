@@ -13,7 +13,7 @@
  */
 class Config_page_enum {
     
-    const NAME_FIELD = 'name_field';
+    const KEY_CODE = 'key_code';
     const LIMIT = 'limit';
     
     //  More
