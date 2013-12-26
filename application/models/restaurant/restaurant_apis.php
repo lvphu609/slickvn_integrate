@@ -644,7 +644,6 @@ class Restaurant_apis extends CI_Model{
             $field = $value[Common_enum::FIELD];
             $array_id = $value[Common_enum::ARRAY_ID];
             if(is_array($array_id) && sizeof($array_id)>0 && $array_id[0] != ''){
-
                 if(strcmp($field, 'meal_type') == 0){
                     $list_restaurant_search_by_meal_type = $this->search_restaurant_by_meal($limit, $page, $array_id);
                 }

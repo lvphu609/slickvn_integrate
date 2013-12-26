@@ -1673,7 +1673,7 @@ class Common_apis extends CI_Model{
                       );
     }
     
-    public function upage_config_page($action, $id = null, $key_code, $desc=null,
+    public function update_config_page($action, $id = null, $key_code, $desc=null,
                                         $limit = null, 
                                         $created_date=null, $updated_date=null
                                        ) {
@@ -1690,7 +1690,7 @@ class Common_apis extends CI_Model{
                 Config_page_enum::ID => $id,
                 Config_page_enum::KEY_CODE => $key_code,
                 Config_page_enum::DESC => $desc,
-                Config_page_enum::LIMIT => ($limit == null)? 5: $limit,
+                Config_page_enum::LIMIT => ($limit == null)? 5: (int)$limit,
                 Common_enum::UPDATED_DATE    => ($updated_date==null) ? $this->common_model->getCurrentDate() : $updated_date,
                 Common_enum::CREATED_DATE    => ($created_date==null) ? $this->common_model->getCurrentDate() : $created_date
             );
