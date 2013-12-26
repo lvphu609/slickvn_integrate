@@ -1645,7 +1645,10 @@ class Common_apis extends CI_Model{
                 $results[]=$doc;
             }
         }
-        return $results;
+        return array( Common_enum::STATUS => Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                      Common_enum::TOTAL => sizeof($results),
+                      Common_enum::RESULTS => $results
+                      );
     }
     
     public function get_config_page_by_id($id) {
@@ -1664,7 +1667,10 @@ class Common_apis extends CI_Model{
                 $results[]=$doc;
             }
         }
-        return $results;
+        return array( Common_enum::STATUS => Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                      Common_enum::TOTAL => sizeof($results),
+                      Common_enum::RESULTS => $results
+                      );
     }
     
     public function upage_config_page($action, $id = null, $key_code, $desc,
