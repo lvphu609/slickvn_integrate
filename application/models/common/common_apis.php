@@ -1623,14 +1623,15 @@ class Common_apis extends CI_Model{
     //                                                    //
     //----------------------------------------------------//
 
-    public function get_config_page($key_code) {
+    public function get_config_page() {
         $results = array();
-        $list_config_page = $this->common_model->getCollectionByField(Config_page_enum::COLLECTION_CONFIG_PAGE, array(Config_page_enum::KEY_CODE=>$key_code));
+        $list_config_page = $this->common_model->getCollection(Config_page_enum::COLLECTION_CONFIG_PAGE);
         if(is_array($list_config_page) && sizeof($list_config_page)){
             foreach ($list_config_page as $value) {
                 $doc = array(
                              Config_page_enum::ID => $value[Common_enum::_ID]->{'$id'},
                              Config_page_enum::KEY_CODE => $value[Config_page_enum::KEY_CODE],
+                             Config_page_enum::DESC => $value[Config_page_enum::DESC],
                              Config_page_enum::LIMIT => $value[Config_page_enum::LIMIT],
                              Common_enum::CREATED_DATE => $value[Common_enum::CREATED_DATE],
                              Common_enum::UPDATED_DATE => $value[Common_enum::UPDATED_DATE]
@@ -1641,7 +1642,26 @@ class Common_apis extends CI_Model{
         return $results;
     }
     
-    public function upage_config_page($action, $id = null, $key_code,
+    public function get_config_page_by_id($id) {
+        $results = array();
+        $list_config_page = $this->common_model->getCollectionById(Config_page_enum::COLLECTION_CONFIG_PAGE, $id);
+        if(is_array($list_config_page) && sizeof($list_config_page)){
+            foreach ($list_config_page as $value) {
+                $doc = array(
+                             Config_page_enum::ID => $value[Common_enum::_ID]->{'$id'},
+                             Config_page_enum::KEY_CODE => $value[Config_page_enum::KEY_CODE],
+                             Config_page_enum::DESC => $value[Config_page_enum::DESC],
+                             Config_page_enum::LIMIT => $value[Config_page_enum::LIMIT],
+                             Common_enum::CREATED_DATE => $value[Common_enum::CREATED_DATE],
+                             Common_enum::UPDATED_DATE => $value[Common_enum::UPDATED_DATE]
+                );
+                $results[]=$doc;
+            }
+        }
+        return $results;
+    }
+    
+    public function upage_config_page($action, $id = null, $key_code, $desc,
                                         $limit = null, 
                                         $created_date=null, $updated_date=null
                                        ) {
@@ -1657,6 +1677,7 @@ class Common_apis extends CI_Model{
             $array_value = array(
                 Config_page_enum::ID => $id,
                 Config_page_enum::KEY_CODE => $key_code,
+                Config_page_enum::DESC => $desc,
                 Config_page_enum::LIMIT => ($limit == null)? 5: $limit,
                 Common_enum::UPDATED_DATE    => ($updated_date==null) ? $this->common_model->getCurrentDate() : $updated_date,
                 Common_enum::CREATED_DATE    => ($created_date==null) ? $this->common_model->getCurrentDate() : $created_date

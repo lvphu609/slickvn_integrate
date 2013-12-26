@@ -14,6 +14,7 @@
 class Config_page_enum {
     
     const KEY_CODE = 'key_code';
+    const DESC = 'desc';
     const LIMIT = 'limit';
     
     //  More

@@ -583,6 +583,23 @@ class Restaurant_apis extends CI_Model{
         
     }
     
+    public function array_merge_recursive_distinct ( array &$array1, array &$array2 ){
+            
+	  $merged = $array1;
+
+	  foreach ( $array2 as $key => &$value )
+	  {
+		if ( is_array ( $value ) && isset ( $merged [$key] ) && is_array ( $merged [$key] ) )
+		{
+		  $merged [$key] = array_merge_recursive_distinct ( $merged [$key], $value );
+		}
+		else
+		{
+		  $merged [$key] = $value;
+		}
+	  }
+        }
+    
     /**
      *  API search_restaurant_multi_field
      * 
@@ -651,9 +668,9 @@ class Restaurant_apis extends CI_Model{
         $list_restaurant_search_by_orther_filter = $this->parse_to_restaurant($search_by_orther_filter);
 //        var_dump($list_restaurant_search_by_orther_filter);
         
-        $list_restaurant_search_by_meal_type_results = isset($list_restaurant_search_by_meal_type[Common_enum::RESULTS])? $list_restaurant_search_by_meal_type[Common_enum::RESULTS]: array();
-        
-        $list_restaurant = $this->common_model->array_merge_recursive_distinct($list_restaurant_search_by_meal_type_results, ($list_restaurant_search_by_orther_filter == null)? array() : $list_restaurant_search_by_orther_filter);
+        $list_restaurant_search_by_meal_type_results = (isset($list_restaurant_search_by_meal_type[Common_enum::RESULTS]))? $list_restaurant_search_by_meal_type[Common_enum::RESULTS]: array();
+        var_dump($this->array_merge_recursive_distinct(array(0=>'A'), array(0=>'B')));return;
+        $list_restaurant = $this->common_model->array_merge_recursive_distinct($list_restaurant_search_by_meal_type_results, (($list_restaurant_search_by_orther_filter == null)? array() : $list_restaurant_search_by_orther_filter));
         
 //        var_dump($list_restaurant_search_by_meal_type_results);return;
         
