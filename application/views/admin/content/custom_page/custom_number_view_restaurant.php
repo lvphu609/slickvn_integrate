@@ -42,7 +42,7 @@
        </li>
      </ul>
 
-         <ul class="box_info row_color">
+          <ul class="box_info row_color">
             <li class="stt_custom_view">
               <span>1</span>
             </li>
@@ -50,8 +50,10 @@
               <span>Nhà hàng mới nhất</span>
             </li>
             <li class="email_custom_view">
+              
               <input type="text" id="value_number_view" >
               <input type="hidden" id="field_name" value="newest_restauran">
+              <input type="hidden" id="id_config_page">
             </li>
             <li class="phonenumber_custom_view">
               
@@ -72,6 +74,7 @@
             <li class="email_custom_view">
               <input type="text" id="value_number_view" >
               <input type="hidden" id="field_name" value="orther_restauran">
+              
             </li>
             <li class="phonenumber_custom_view">
               <span></span>

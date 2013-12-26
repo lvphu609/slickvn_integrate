@@ -900,7 +900,7 @@ public function coupon_page()
      
        $json_config_page = $this->common_apis->get_config_page();
        $data['config_page']=$json_config_page["Results"];
-      var_dump($data['config_page']);
+        var_dump($data['config_page']);
       $this->load->view('admin/content/custom_page/custom_number_view_restaurant',$data);
       $this->load->view('admin/footer/footer_main');
     
