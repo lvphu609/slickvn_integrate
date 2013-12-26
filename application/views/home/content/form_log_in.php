@@ -39,11 +39,11 @@
             
             <li>
               <span>Email</span><br>
-              <input style="padding-left: 10px;" type="text" id="param_email" name="param_email"  placeholder="Email">
+              <input class="enter_key_login" style="padding-left: 10px;" type="text" id="param_email" name="param_email"  placeholder="Email">
             </li>
             <li>
               <span>Mật khẩu</span><br>
-              <input style="padding-left: 10px;" type="password" id="param_password" name="param_password"    placeholder="Mật khẩu">
+              <input class="enter_key_login" style="padding-left: 10px;" type="password" id="param_password" name="param_password"    placeholder="Mật khẩu">
             </li>
           </ul>
     </form>      
@@ -161,10 +161,8 @@
        }
        return true;
       }
-  
-   $(function(){
-     $('#btn_login').click(function() {
-      var email=$('#param_email').val();
+  function send_login(){
+    var email=$('#param_email').val();
       var password=$('#param_password').val();
       var url = $('#hidUrl').val();
       
@@ -253,16 +251,32 @@
 
          });
         
-       
-       
-       
-       }
-        
-        
-
+       }  
+    
+  };
+  
+  
+   $(function(){
+     $('#btn_login').click(function(event) {
+        send_login();
     });
     
+    $('.enter_key_login').on('keyup', function(e) {
+    if (e.which == 13) {
+             send_login();
+            e.stopPropagation();
+        }
+      });
+    
+    
+    
+    
+    
   }); 
+  
+   
+  
+ 
 </script>
 
 <div class="dialog_check_validate">

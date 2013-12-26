@@ -13,6 +13,7 @@
     <!--sub banner more, button animation nimble_style css-->
     <link type="text/css" href="<?php echo $url; ?>/includes/css/css_nimble_style_custom/style.css" rel="stylesheet" />
     <!--end sub banner more, nimble_style -->
+        <script src="<?php echo $url; ?>includes/js/carousel/jquery-1.7.min.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 
