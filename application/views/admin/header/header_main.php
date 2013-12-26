@@ -100,6 +100,13 @@
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/custom_number_view_restaurant.css">';
        echo '<script src="'.$url.'includes/plugins/date_time_picker/jquery-1.10.2.min.js"></script>';
        
+       //jquery show dialog
+       echo '<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+             <script type="text/javascript" src="http://localhost/slick_temp_api//includes/jquery/jquery-2.0.3.js"></script>
+             <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+             <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+           ';  
+       
      }    
     ?>
     
