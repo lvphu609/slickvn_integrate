@@ -585,8 +585,9 @@ class Restaurant_apis extends CI_Model{
                 if(!in_array($jsonobject, $results)){
                     $results[] = $jsonobject;
                 }
+                $this->restaurant_model->resetRate();
             }
-            $this->restaurant_model->resetRate();
+            
             return $results;
         }
         else{
