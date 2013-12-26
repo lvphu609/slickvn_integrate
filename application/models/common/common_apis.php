@@ -1556,7 +1556,10 @@ class Common_apis extends CI_Model{
                 $results[]=$doc;
             }
         }
-        return $results;
+        return $this->common_model->encapsulationDataResponseGet(Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                                                                     sizeof($results),
+                                                                     $results
+                                                                     );
     }
     
     public function get_email_config_by_id($id) {
@@ -1578,7 +1581,10 @@ class Common_apis extends CI_Model{
                 $results[]=$doc;
             }
         }
-        return $results;
+        return $this->common_model->encapsulationDataResponseGet(Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                                                                     sizeof($results),
+                                                                     $results
+                                                                     );
     }
     
     public function update_email_config($action, $id = null, $email_source,
