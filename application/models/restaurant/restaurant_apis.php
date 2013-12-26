@@ -697,24 +697,24 @@ class Restaurant_apis extends CI_Model{
         $list_restaurant_search_by_orther_filter = $this->parse_to_restaurant($search_by_orther_filter);
         $list_restaurant_search_by_meal_type_results = (isset($list_restaurant_search_by_meal_type[Common_enum::RESULTS]))? $list_restaurant_search_by_meal_type[Common_enum::RESULTS]: array();
         
-        print_r($list_restaurant_search_by_orther_filter);
-        var_dump('================================================================================');
-        var_dump('================================================================================');
-        var_dump('================================================================================');
-        var_dump('================================================================================');
-        
-        print_r($list_restaurant_search_by_meal_type_results);
-        
-        var_dump('================================================================================');
-        var_dump('===========================================lsfldjldfj=====================================');
-        var_dump('================================================================================');
-        var_dump('================================================================================');
+//        print_r($list_restaurant_search_by_orther_filter);
+//        var_dump('================================================================================');
+//        var_dump('================================================================================');
+//        var_dump('================================================================================');
+//        var_dump('================================================================================');
+//        
+//        print_r($list_restaurant_search_by_meal_type_results);
+//        
+//        var_dump('================================================================================');
+//        var_dump('===========================================lsfldjldfj=====================================');
+//        var_dump('================================================================================');
+//        var_dump('================================================================================');
         
         
         
         $list_restaurant =  $this->array_merge_recursive_distinct($list_restaurant_search_by_meal_type_results, $list_restaurant_search_by_orther_filter);
-        print_r( (in_array($list_restaurant_search_by_orther_filter[0], $list_restaurant_search_by_meal_type_results)) ? 'TTTTTTTTTT' : 'FFFFFFFFFFFFFFFFF');
-        return;
+//        print_r( (in_array($list_restaurant_search_by_orther_filter[0], $list_restaurant_search_by_meal_type_results)) ? 'TTTTTTTTTT' : 'FFFFFFFFFFFFFFFFF');
+//        return;
 //        var_dump($list_restaurant_search_by_meal_type_results);return;
         
 //        $list_restaurant_results = $list_restaurant[Common_enum::RESULTS];

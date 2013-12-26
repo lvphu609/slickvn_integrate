@@ -129,6 +129,9 @@
   margin-left: 4px;
   margin-bottom: 5px;
 }
+#result_search .box_align_center .box_detail_left ul#menu_filter li .list_index li:hover{
+ background: #eee;
+}
 #result_search .box_align_center .box_detail_left ul#menu_filter li .list_index li .item_name{
  font-size: 12px;
  font-family: sans-serif;
