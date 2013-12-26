@@ -897,15 +897,26 @@ public function coupon_page()
       $this->load->view('admin/taskbar_top/taskbar_top');
       $this->load->view('admin/menu/menu_main',$data);
 
-       //danh sách tất cả các thành viên
-     //  $json_all_user = $this->user_apis->get_all_user(Restaurantenum::LIMIT_PAGE_USER_ALL,1);
-     //  $data['all_user']=$json_all_user["Results"];
-
+     
+       $json_config_page = $this->common_apis->get_config_page();
+       $data['config_page']=$json_config_page["Results"];
+      var_dump($data['config_page']);
       $this->load->view('admin/content/custom_page/custom_number_view_restaurant',$data);
       $this->load->view('admin/footer/footer_main');
     
     
   } 
+  
+   public function save_custom_view_page()
+  {
+      $field_name         =$_POST['field_name'];
+      $value_number_view  =$_POST['value_number_view'];
+      
+      
+      echo $field_name." ".$value_number_view;
+    
+  } 
+  
   
   
   

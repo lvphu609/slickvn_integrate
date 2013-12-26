@@ -127,6 +127,10 @@
 <?php $url=  base_url(); ?>
 <input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
 <script>
+  $(document).ready(function () {
+         $('.dialog_note').hide();
+      });
+  
   function save_custom_view_page(object){
     $(object).closest('ul').find('#save_success').remove();
     var div_loading='<div id="save_loading"></div>';
@@ -138,38 +142,62 @@
     if (value_number_view==""){
       value_number_view=0;
     }
+//    
+//    setTimeout(function(){
+//      $(object).closest('ul').find('#save_loading').remove();
+//      var div_save_success='<div id="save_success"></div>';
+//      $(object).closest('ul').find('.phonenumber_custom_view').append(div_save_success);
+//    }, 2000);
     
-    setTimeout(function(){
-      $(object).closest('ul').find('#save_loading').remove();
-      var div_save_success='<div id="save_success"></div>';
-      $(object).closest('ul').find('.phonenumber_custom_view').append(div_save_success);
-    }, 2000);
-    
-    var data={
+    var intRegex = /^\d+$/;
+    if(intRegex.test(value_number_view)) {
+      var data={
         field_name        :field_name, 
         value_number_view :value_number_view
-    };
-    var url=$('#hidUrl').val();
-    var url_api=url+"index.php/admin/admin_controller/save_custom_view_page";
+        };
+        var url=$('#hidUrl').val();
+        var url_api=url+"index.php/admin/admin_controller/save_custom_view_page";
+        $.ajax({
+         url: url_api ,
+         type: 'POST',
+         data:data,
+         success: function(data){
+                //alert(data);
+
+                $(object).closest('ul').find('#save_loading').remove();
+                var div_save_success='<div id="save_success"></div>';
+                $(object).closest('ul').find('.phonenumber_custom_view').append(div_save_success);
+
+
+         },
+           error: function(a,textStatus,b){
+             alert('error');
+           }
+         });
+    }
+    else{
+      $(object).closest('ul').find('#save_loading').remove();
+      $(object).closest('ul').find('#save_success').remove();
+      $( ".dialog_note" ).dialog({
+          title: "Thông báo", 
+          show: "scale",
+          hide: "explode",
+          closeOnEscape: true,
+          modal: true
     
-    $.ajax({
-     url: url_api ,
-     type: 'POST',
-     data:data,
-     success: function(data){
-        alert(data);
-        
-           
-            $(object).closest('ul').find('#save_loading').remove();
-            var div_save_success='<div id="save_success"></div>';
-            $(object).closest('ul').find('.phonenumber_custom_view').append(div_save_success);
-          
-        
-     },
-       error: function(a,textStatus,b){
-         alert('error');
-       }
-     });
+      });
+       
+      
+    
+    }
+    
+    
+     
+     
+     
     
   } 
 </script>
+<div class="dialog_note" title="Thông báo">  
+    <lable class="label">Số lượng hiển thị là số nguyên không âm! ví dụ: 1 2 3 hoặc 4 ...</lable></br>
+ </div>
