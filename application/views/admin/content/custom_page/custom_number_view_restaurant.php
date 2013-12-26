@@ -197,7 +197,7 @@
     if (value_number_view==""){
       value_number_view=0;
     }
-    var id_config_page = $('#id_config_page').val();
+    var id_config_page = $(object).closest('ul').find('#id_config_page').val();
 //    
 //    setTimeout(function(){
 //      $(object).closest('ul').find('#save_loading').remove();
@@ -219,7 +219,7 @@
          type: 'POST',
          data:data,
          success: function(data){
-                //alert(data);
+              //  alert(data);
 
                 $(object).closest('ul').find('#save_loading').remove();
                 var div_save_success='<div id="save_success"></div>';

@@ -7,7 +7,7 @@
         <div class="search">
           <div class="form_search">
              <div class="form_search_input">
-               <input id="input_text_search" class="input_search" type="text"  placeholder="Bạn đang muốn tìm gì?" >
+               <input id="input_text_search" class="input_search enter_key_search" type="text"  placeholder="Bạn đang muốn tìm gì?" >
              <lable class="lable_search">
 <!--                   <select class="select_custom" id="slect_search">
                     <option value="restaurant">Nhà hàng</option>
@@ -224,8 +224,9 @@
 <input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
 
 <script>
-  $("#button_submit_search").click(function (){
-    var input_text_search=$("#input_text_search").val();
+  
+  function send_text_search(){
+     var input_text_search=$("#input_text_search").val();
    // input_text_search=String(input_text_search);
     var slect_search =document.getElementById("search_selected").innerHTML;  //document.getElementsByClassName('selected').innerHTML;
     //alert(slect_search);
@@ -253,12 +254,22 @@
       
       
         }
-   
     
-    
-    
-    
+  }
+  
+  
+  $("#button_submit_search").click(function (){
+    send_text_search();    
   });
+  
+  $('.enter_key_search').on('keyup', function(e) {
+    if (e.which == 13) {
+             send_text_search();
+         
+        }
+    });
+  
+  
 </script>
 
 

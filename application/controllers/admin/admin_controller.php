@@ -37,7 +37,7 @@ class Admin_controller extends CI_Controller {
     $this->load->view('admin/menu/menu_main',$data);
     
      //danh sách tất cả các thành viên
-     $json_all_user = $this->user_apis->get_all_user(Restaurantenum::LIMIT_PAGE_USER_ALL,1);
+     $json_all_user = $this->user_apis->get_all_user(Restaurantenum::LIMIT_PAGE_LIST_MEMBER,1);
      $data['all_user']=$json_all_user["Results"];
     
     $this->load->view('admin/content/member_page/member_page',$data);
@@ -914,8 +914,9 @@ public function coupon_page()
       $id_config_page      =$_POST['id_config_page'];
       $action="edit";
       $results = $this->common_apis->update_config_page($action,$id_config_page,$key_code,null,$limit);
-      echo $field_name." ".$value_number_view." ".$id_config_page;
-    
+      // echo $field_name." ".$value_number_view." ".$id_config_page;
+      //var_dump($id_config_page);
+      echo $id_config_page.' '.$key_code.' '.$limit;
   } 
   
   
