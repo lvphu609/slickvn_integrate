@@ -41,30 +41,82 @@
          
        </li>
      </ul>
+     <?php 
+         $stt=1;
+         //var_dump($config_page);
+         if(is_array($config_page)&&  sizeof($config_page)>0){
+            foreach ($config_page as $key => $value) {
+              
+              $id              = $value['id'];
+              $key_code        = $value['key_code'];
+              $desc            = $value['desc'];
+              $limit           = $value['limit'];
+              $created_date    = $value['created_date'];
+              $updated_date    = $value['updated_date'];
+              
+              
+              
+            if($stt%2!=0){ 
+       
+       ?>
+     
+     
+                <ul class="box_info row_color">
+                  <li class="stt_custom_view">
+                    <span><?php echo $stt; ?></span>
+                  </li>
+                  <li class="name_custom_view">
+                    <span><?php echo $desc; ?></span>
+                  </li>
+                  <li class="email_custom_view">
 
-          <ul class="box_info row_color">
-            <li class="stt_custom_view">
-              <span>1</span>
-            </li>
-            <li class="name_custom_view">
-              <span>Nhà hàng mới nhất</span>
-            </li>
-            <li class="email_custom_view">
-              
-              <input type="text" id="value_number_view" >
-              <input type="hidden" id="field_name" value="newest_restauran">
-              <input type="hidden" id="id_config_page">
-            </li>
-            <li class="phonenumber_custom_view">
-              
-            </li>
-            <li class="update_delete">
-              <a href="javascript:;" class="view_edit_user" onclick="return save_custom_view_page(this)"><div class="edit"></div></a>
-            </li>
-          </ul> 
-      
+                    <input type="text" id="value_number_view" value="<?php echo $limit; ?>">
+                    <input type="hidden" id="field_name" value="<?php echo $key_code; ?>">
+                    <input type="hidden" id="id_config_page" value="<?php echo $id; ?>">
+                  </li>
+                  <li class="phonenumber_custom_view">
+
+                  </li>
+                  <li class="update_delete">
+                    <a href="javascript:;" class="view_edit_user" onclick="return save_custom_view_page(this)"><div class="edit"></div></a>
+                  </li>
+                </ul> 
+     
+    <?php }else{?>
+                 <ul class="box_info">
+                  <li class="stt_custom_view">
+                    <span><?php echo $stt; ?></span>
+                  </li>
+                  <li class="name_custom_view">
+                    <span><?php echo $desc; ?></span>
+                  </li>
+                  <li class="email_custom_view">
+
+                    <input type="text" id="value_number_view" value="<?php echo $limit; ?>" >
+                    <input type="hidden" id="field_name" value="<?php echo $key_code; ?>">
+                    <input type="hidden" id="id_config_page" value="<?php echo $id; ?>">
+                  </li>
+                  <li class="phonenumber_custom_view">
+
+                  </li>
+                  <li class="update_delete">
+                    <a href="javascript:;" class="view_edit_user" onclick="return save_custom_view_page(this)"><div class="edit"></div></a>
+                  </li>
+                </ul> 
+     
+       <?php }
+            
+            $stt++;
+         }
+         
+    }
+      ?>
+     
+     
+     
+
     
-         <ul class="box_info ">
+<!--         <ul class="box_info ">
             <li class="stt_custom_view">
               <span>2</span>
             </li>
@@ -120,7 +172,7 @@
             <li class="update_delete">
               <a href="javascript:;" class="view_edit_user" onclick="return save_custom_view_page(this)"><div class="edit"></div></a>            
             </li>
-          </ul> 
+          </ul> -->
      
  
      
@@ -145,6 +197,7 @@
     if (value_number_view==""){
       value_number_view=0;
     }
+    var id_config_page = $('#id_config_page').val();
 //    
 //    setTimeout(function(){
 //      $(object).closest('ul').find('#save_loading').remove();
@@ -156,7 +209,8 @@
     if(intRegex.test(value_number_view)) {
       var data={
         field_name        :field_name, 
-        value_number_view :value_number_view
+        value_number_view :value_number_view,
+        id_config_page:id_config_page
         };
         var url=$('#hidUrl').val();
         var url_api=url+"index.php/admin/admin_controller/save_custom_view_page";
