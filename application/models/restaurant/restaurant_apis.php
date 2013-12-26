@@ -434,9 +434,11 @@ class Restaurant_apis extends CI_Model{
      */
     public function search_restaurant($limit, $page, $key){
         
-        //  Get param from client
-//        $limit = $this->get("limit");
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+        }
+
 
         //  Key search
         $key = Encode_utf8::toUTF8($key);
@@ -582,12 +584,13 @@ class Restaurant_apis extends CI_Model{
                     $results[] = $jsonobject;
                 }
             }
+            $this->restaurant_model->resetRate();
             return $results;
         }
         else{
             return array();
         }
-        $this->restaurant_model->resetRate();
+        
     }
     
     public function array_merge_recursive_distinct($array1, $array2) {
@@ -658,7 +661,12 @@ class Restaurant_apis extends CI_Model{
      *  @return array
      */
     public function search_restaurant_multi_field($limit, $page, $array_filter=array()){
-//        var_dump($array_filter);
+
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+        }
+        
         $count_null = 0;
         //  Query
         $where = array();
@@ -778,9 +786,10 @@ class Restaurant_apis extends CI_Model{
      */
     public function search_restaurant_by_name($limit, $page, $key){
         
-        //  Get param from client
-//        $limit = $this->get("limit");
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+        }
 
         //  Key search
         $key = Encode_utf8::toUTF8($key);
@@ -875,6 +884,7 @@ class Restaurant_apis extends CI_Model{
                         );
 
                         $results[] = $jsonobject;
+                        $this->restaurant_model->resetRate();
                     }
                 }
             }
@@ -895,7 +905,7 @@ class Restaurant_apis extends CI_Model{
             );
             return $data;
         }
-        $this->restaurant_model->resetRate();
+        
     }
     
     /**
@@ -913,14 +923,10 @@ class Restaurant_apis extends CI_Model{
      */
     public function search_restaurant_by_id_base_collection($limit, $page, $field, $key) {
         
-        //  Get param from client
-//        $limit = $this->get("limit");
-//        $page  = $this->get("page");
-
-        //  Field search
-//        $field = $this->get('field');
-        //  Key search
-//        $key  = $this->get('key');
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+        }
         
         //  Query
         $where = array($field => array('$in' => array($key)) );
@@ -1003,6 +1009,7 @@ class Restaurant_apis extends CI_Model{
                         );
 
                         $results[] = $jsonobject;
+                        $this->restaurant_model->resetRate();
                     }
                 }
             }
@@ -1023,7 +1030,7 @@ class Restaurant_apis extends CI_Model{
             );
             return $data;
         }
-        $this->restaurant_model->resetRate();
+        
     }
     
     /**
@@ -1041,9 +1048,10 @@ class Restaurant_apis extends CI_Model{
      */
     public function search_restaurant_by_coupon($limit, $page, $key) {
         
-        //  Get param from client
-//        $limit = $this->get("limit");
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+        }
     
         //  Key search
         $key = Encode_utf8::toUTF8($key);
@@ -1137,6 +1145,7 @@ class Restaurant_apis extends CI_Model{
                               );
 
                               $results[] = $jsonobject;
+                              $this->restaurant_model->resetRate();
                           }
                       }
                   }
@@ -1156,7 +1165,7 @@ class Restaurant_apis extends CI_Model{
                'Total'      =>  sizeof($results),
                'Results'    =>$results
         );
-        $this->restaurant_model->resetRate();
+        
         return $data;
         
     }
@@ -1176,13 +1185,11 @@ class Restaurant_apis extends CI_Model{
      */
     public function search_restaurant_by_meal($limit, $page, $key=array()) {
         
-        //  Get param from client
-//        $limit = $this->get("limit");
-//        $page = $this->get("page");
-//
-//        //  Key search
-//        $key = $this->get('key');
-//        var_dump($key);
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+        }
+        
         $key = Encode_utf8::toUTF8($key);
         
         //  Query find collection Menu Dish by name
@@ -1300,6 +1307,7 @@ class Restaurant_apis extends CI_Model{
                             );
 
                             $results[] = $jsonobject;
+                            $this->restaurant_model->resetRate();
                         }
                     }
                 }
@@ -1311,7 +1319,7 @@ class Restaurant_apis extends CI_Model{
                    'Total'      =>  sizeof($results),
                    'Results'    =>$results
             );
-            $this->restaurant_model->resetRate();
+            
             return $data;
         }
         else{
@@ -1321,7 +1329,7 @@ class Restaurant_apis extends CI_Model{
                    'Total'      =>  sizeof($results),
                    'Results'    =>$results
             );
-            $this->restaurant_model->resetRate();
+            
             return $data;
         }
         
@@ -1431,6 +1439,7 @@ class Restaurant_apis extends CI_Model{
                                 Common_enum::CREATED_DATE         => $restaurant['created_date']
                             );
                             $results[] = $jsonobject;
+                            $this->restaurant_model->resetRate();
                         }
                     }
                 }
@@ -1441,7 +1450,7 @@ class Restaurant_apis extends CI_Model{
                    'Total'      =>  sizeof($results),
                    'Results'    =>$results
             );
-            $this->restaurant_model->resetRate();
+            
             return $data;
         }
         else{
@@ -1451,7 +1460,7 @@ class Restaurant_apis extends CI_Model{
                    'Total'      =>  sizeof($results),
                    'Results'    =>$results
             );
-            $this->restaurant_model->resetRate();
+            
             return $data;
         }
     }
@@ -1720,6 +1729,7 @@ class Restaurant_apis extends CI_Model{
                             Common_enum::CREATED_DATE                   =>  $restaurant['created_date']
                         );
                         $results[] = $jsonobject;
+                        $this->restaurant_model->resetRate();
                     }
                 }
             }
@@ -1744,7 +1754,7 @@ class Restaurant_apis extends CI_Model{
                    'Total'      =>  sizeof($results),
                    'Results'    =>$results
             );
-            $this->restaurant_model->resetRate();
+            
             return $data;
         }
         else{
@@ -1753,7 +1763,7 @@ class Restaurant_apis extends CI_Model{
                    'Status'     =>Common_enum::MESSAGE_RESPONSE_FALSE,
                    'Error'      =>  $error
             );
-            $this->restaurant_model->resetRate();
+            
             return $data;
         }
         
