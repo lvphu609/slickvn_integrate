@@ -83,6 +83,7 @@
   margin-bottom: 7px;
   margin-left: 7px;
   float: left;
+  cursor: pointer;
 }
 
 #result_search .box_align_center .box_detail_left ul#menu_filter li .title_item_search span{
