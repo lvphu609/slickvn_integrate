@@ -653,7 +653,7 @@ class Restaurant_apis extends CI_Model{
         
         $list_restaurant_search_by_meal_type_results = isset($list_restaurant_search_by_meal_type[Common_enum::RESULTS])? $list_restaurant_search_by_meal_type[Common_enum::RESULTS]: array();
         
-        $list_restaurant = $this->array_merge_recursive_distinct($list_restaurant_search_by_meal_type_results, ($list_restaurant_search_by_orther_filter == null)? array() : $list_restaurant_search_by_orther_filter);
+        $list_restaurant = $this->common_model->array_merge_recursive_distinct($list_restaurant_search_by_meal_type_results, ($list_restaurant_search_by_orther_filter == null)? array() : $list_restaurant_search_by_orther_filter);
         
 //        var_dump($list_restaurant_search_by_meal_type_results);return;
         
