@@ -50,7 +50,8 @@
               <span>Nhà hàng mới nhất</span>
             </li>
             <li class="email_custom_view">
-              <input type="text" >
+              <input type="text" id="value_number_view" >
+              <input type="hidden" id="field_name" value="newest_restauran">
             </li>
             <li class="phonenumber_custom_view">
               
@@ -69,7 +70,8 @@
               <span>Nhà hàng gần đây</span>
             </li>
             <li class="email_custom_view">
-              <input type="text" >
+              <input type="text" id="value_number_view" >
+              <input type="hidden" id="field_name" value="orther_restauran">
             </li>
             <li class="phonenumber_custom_view">
               <span></span>
@@ -87,7 +89,8 @@
               <span>Nhà hàng khuyến mãi</span>
             </li>
             <li class="email_custom_view">
-              <input type="text" >
+              <input type="text" id="value_number_view" >
+              <input type="hidden" id="field_name" value="coupon_restauran">
             </li>
             <li class="phonenumber_custom_view">
               <span></span>
@@ -97,7 +100,7 @@
             </li>
           </ul> 
          
-          <ul class="box_info ">
+          <ul class="box_info ">            
             <li class="stt_custom_view">
               <span>4</span>
             </li>
@@ -105,7 +108,8 @@
               <span>Số lượng bài viết</span>
             </li>
             <li class="email_custom_view">
-              <input type="text" >
+              <input type="text" id="value_number_view" >
+              <input type="hidden" id="field_name" value="post_restauran">
             </li>
             <li class="phonenumber_custom_view">
               
@@ -124,8 +128,48 @@
 <input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
 <script>
   function save_custom_view_page(object){
+    $(object).closest('ul').find('#save_success').remove();
     var div_loading='<div id="save_loading"></div>';
-    var div_save_success='<div id="save_success"></div>';
     $(object).closest('ul').find('.phonenumber_custom_view').append(div_loading);
+    
+  
+    var field_name = $(object).closest('ul').find('#field_name').val();
+    var value_number_view = $(object).closest('ul').find('#value_number_view').val();
+    if (value_number_view==""){
+      value_number_view=0;
+    }
+    
+    setTimeout(function(){
+      $(object).closest('ul').find('#save_loading').remove();
+      var div_save_success='<div id="save_success"></div>';
+      $(object).closest('ul').find('.phonenumber_custom_view').append(div_save_success);
+    }, 2000);
+    
+    var data={
+        field_name        :field_name, 
+        value_number_view :value_number_view
+    };
+    var url=$('#hidUrl').val();
+    var url_api=url+"index.php/admin/admin_controller/save_custom_view_page";
+    
+    $.ajax({
+     url: url_api ,
+     type: 'POST',
+     data:data,
+     success: function(data){
+        alert(data);
+        
+           
+            $(object).closest('ul').find('#save_loading').remove();
+            var div_save_success='<div id="save_success"></div>';
+            $(object).closest('ul').find('.phonenumber_custom_view').append(div_save_success);
+          
+        
+     },
+       error: function(a,textStatus,b){
+         alert('error');
+       }
+     });
+    
   } 
 </script>

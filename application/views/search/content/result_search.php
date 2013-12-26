@@ -894,7 +894,7 @@
     var div_loading ='<div id="load_ding"></div>';
     $('.box_results_search').append(div_disable_screen);
     $('.box_results_search').append(div_loading);
-    $('.box_results_search').fadeTo(500, 0.25);
+    $('.box_results_search').fadeTo(300, 0.25);
     $("*").css("cursor", "wait");
     
     
@@ -914,7 +914,7 @@
      success: function(data){
        // alert(data);
         
-        $('.box_results_search').fadeTo(500, 1);
+        $('.box_results_search').fadeTo(100, 1);
         $("*").css("cursor", "default");
         $('#disable_screen').remove();
         $('#load_ding').remove();
