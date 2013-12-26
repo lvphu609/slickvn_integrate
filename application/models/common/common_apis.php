@@ -1673,7 +1673,7 @@ class Common_apis extends CI_Model{
                       );
     }
     
-    public function upage_config_page($action, $id = null, $key_code, $desc,
+    public function upage_config_page($action, $id = null, $key_code, $desc=null,
                                         $limit = null, 
                                         $created_date=null, $updated_date=null
                                        ) {
@@ -1696,6 +1696,7 @@ class Common_apis extends CI_Model{
             );
             if($is_edit == TRUE){
                 unset($array_value[Common_enum::CREATED_DATE]);
+                unset($array_value[Config_page_enum::DESC]);
             }
             $this->common_model->updateCollection(Config_page_enum::COLLECTION_CONFIG_PAGE, $action, $id, $array_value);
         }
