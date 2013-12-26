@@ -47,8 +47,9 @@
                     if(is_array($meal_list)&&  sizeof($meal_list)>0){
                       foreach ($meal_list as $value_meal_list){
                          $meal_name=  urlencode($value_meal_list['name']);
+                         $id_meal=$value_meal_list['id'];
                         echo'<li onclick="return onclickLiCheckListing_meal(this);">
-                              <span class="checkbox" id="'.$meal_name.'"></span>
+                              <span class="checkbox" id="'.$id_meal.'" data-value_name_meal="'.$value_meal_list['name'].'" ></span>
                               <p class="item_name">'.$value_meal_list['name'].'</p>
                         </li>';
                         
@@ -679,7 +680,8 @@
             $(obj).find('span').first().removeClass('checkbox').addClass('checkboxSelect');
             var myText = $(obj).text();
             var id = $(obj).find('span').first().attr('id');
-            var newEle = '<input type="hidden"  class="input_meal_list" id="input_meal_list' + id + '" value="' + id + '"/>';
+            var value_name_meal=$(obj).find('span').first().attr('data-value_name_meal');
+            var newEle = '<input type="hidden"  class="input_meal_list" id="input_meal_list' + id + '" value="' + value_name_meal + '"/>';
             $('#FormAddListing_meal').append(newEle);
         }else{
             $(obj).find('span').first().removeClass('checkboxSelect').addClass('checkbox');
