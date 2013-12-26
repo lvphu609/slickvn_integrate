@@ -217,7 +217,12 @@ height: 18px;
   margin-top: 20px;
   margin-left: 230px;
   position: absolute;
-  background: #FA9C20;
+  background: url('../../../../includes/images/icon/animated_progress_bar.gif');
+  z-index: 99999;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 300px 20px;
+  
   
 }
 

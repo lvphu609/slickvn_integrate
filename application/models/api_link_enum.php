@@ -51,8 +51,9 @@ class Api_link_enum {
   const LINK_RESTAURANT_PROFILE = "slickvn_integrate/restaurant_profile/"; //link image in restaurant profile
   const LINK_IMAGE_POST = "slickvn_integrate/posts/";  //link image post
   const LINK_IMAGE_UPLOAD_TEMP="slickvn_integrate/";   //link image upload temp
-  const LINK_CALL_UPLOAD_IMAGE_TEMP="../../../../../../../../slickvn_api_project_xinh/slickvn_api/"; //link call php upload temp
+  const LINK_CALL_UPLOAD_IMAGE_TEMP="../../../../../../../../slickvn/"; //link call php upload temp
   const LINK_IMAGE_USER_PROFILE="slickvn_integrate/user_profile/";
+ // const LINK_IMAGE_USER_PROFILE_DEFAULT="slickvn_integrate/user_profile/default_avatar";
 
   const MODE_USE_LIST_API = "get_base_collection";
   const PAYMENT_TYPE_LIST_API = "get_base_collection";

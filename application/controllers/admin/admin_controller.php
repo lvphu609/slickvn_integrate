@@ -885,9 +885,28 @@ public function coupon_page()
     $this->load->view('admin/header/header_main',$data);
     $this->load->view('admin/taskbar_top/taskbar_top');
     $this->load->view('admin/menu/menu_main',$data);
-    //$this->load->view('admin/content/main_page/member_page');
+    $this->load->view('admin/content/custom_page/custom_page');
     $this->load->view('admin/footer/footer_main');
     
   } 
+  
+   public function custom_number_view_restaurant()
+  {
+      $data['chosed']="custom_page";
+      $this->load->view('admin/header/header_main',$data);
+      $this->load->view('admin/taskbar_top/taskbar_top');
+      $this->load->view('admin/menu/menu_main',$data);
+
+       //danh sách tất cả các thành viên
+     //  $json_all_user = $this->user_apis->get_all_user(Restaurantenum::LIMIT_PAGE_USER_ALL,1);
+     //  $data['all_user']=$json_all_user["Results"];
+
+      $this->load->view('admin/content/custom_page/custom_number_view_restaurant',$data);
+      $this->load->view('admin/footer/footer_main');
+    
+    
+  } 
+  
+  
   
 }
