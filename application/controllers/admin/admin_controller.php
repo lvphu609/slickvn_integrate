@@ -900,7 +900,7 @@ public function coupon_page()
      
        $json_config_page = $this->common_apis->get_config_page();
        $data['config_page']=$json_config_page["Results"];
-        var_dump($data['config_page']);
+       // var_dump($data['config_page']);
       $this->load->view('admin/content/custom_page/custom_number_view_restaurant',$data);
       $this->load->view('admin/footer/footer_main');
     
@@ -909,11 +909,12 @@ public function coupon_page()
   
    public function save_custom_view_page()
   {
-      $field_name         =$_POST['field_name'];
-      $value_number_view  =$_POST['value_number_view'];
-      
-      
-      echo $field_name." ".$value_number_view;
+      $key_code         =$_POST['field_name'];
+      $limit  =$_POST['value_number_view'];
+      $id_config_page      =$_POST['id_config_page'];
+      $action="edit";
+      $results = $this->common_apis->update_config_page($action,$id_config_page,$key_code,null,$limit);
+      echo $field_name." ".$value_number_view." ".$id_config_page;
     
   } 
   
