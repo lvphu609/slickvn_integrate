@@ -1139,15 +1139,18 @@ class Common_apis extends CI_Model{
             $count = 0;
             if(is_array($get_collection)){
                 foreach ($get_collection as $value){
-                    $count ++;
-                    //  Create JSONObject
-                    $jsonobject = array( 
-                                Common_enum::ID              => $value['_id']->{'$id'},
-                                Common_enum::NAME            => $value['name'],
-                                Common_enum::UPDATED_DATE    => $value['updated_date'],
-                                Common_enum::CREATED_DATE    => $value['created_date']
-                               );
-                    $results[] = $jsonobject;
+                    $approval = (isset($value[Common_enum::APPROVAL]))? $value[Common_enum::APPROVAL]:1;
+                    if($approval == 1){
+                        $count ++;
+                        //  Create JSONObject
+                        $jsonobject = array( 
+                                    Common_enum::ID              => $value['_id']->{'$id'},
+                                    Common_enum::NAME            => $value['name'],
+                                    Common_enum::UPDATED_DATE    => $value['updated_date'],
+                                    Common_enum::CREATED_DATE    => $value['created_date']
+                                   );
+                        $results[] = $jsonobject;
+                    }
                 }
             }
             $data =  array(
@@ -1179,7 +1182,7 @@ class Common_apis extends CI_Model{
      * Response: JSONObject
      */
     public function update_base_collection($action, $collection=null, $id=null,
-                                            $name=null, $updated_date=null, $created_date=null
+                                            $name=null, $approval = null, $updated_date=null, $created_date=null
                                            ){
         //  Get param from client
 //        $action         = $this->post('action');
@@ -1203,6 +1206,7 @@ class Common_apis extends CI_Model{
         //  Array value
         $array_value = ($is_delete != 0) ? array(
             Common_enum::NAME            => $name,
+            Common_enum::APPROVAL        => ($approval==null)?0:1,
             Common_enum::UPDATED_DATE    => ($updated_date==null) ? $this->common_model->getCurrentDate() : $updated_date,
             Common_enum::CREATED_DATE    => ($created_date==null) ? $this->common_model->getCurrentDate() : $created_date
         ) : array();

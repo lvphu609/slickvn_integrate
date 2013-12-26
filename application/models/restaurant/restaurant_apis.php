@@ -571,8 +571,9 @@ class Restaurant_apis extends CI_Model{
                     Common_enum::CREATED_DATE         => $restaurant['created_date']
 
                 );
-
-                $results[] = $jsonobject;
+                if(!in_array($jsonobject, $results)){
+                    $results[] = $jsonobject;
+                }
             }
             return $results;
         }

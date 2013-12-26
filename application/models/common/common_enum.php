@@ -12,6 +12,7 @@ class Common_enum {
     const _ID                       = '_id';
     const ID                        = 'id';
     const NAME                      = 'name';
+    const APPROVAL                  = 'approval';
     const UPDATED_DATE              = 'updated_date';
     const CREATED_DATE              = 'created_date';
     
