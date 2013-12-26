@@ -35,6 +35,13 @@ class Restaurant_model extends CI_Model{
         
     }
     
+    public function resetRate() {
+        $this->rate_point       = 0;
+        $this->rate_service     = 0;
+        $this->rate_landscape   = 0;
+        $this->rate_taste       = 0;
+        $this->rate_price       = 0;
+    }
     //  Get rate service
     public function getRateService() {
         return $this->rate_service;

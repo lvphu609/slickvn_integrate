@@ -1041,7 +1041,7 @@ class Common_model extends CI_Model{
 	return $str;
 	}
         
-        public function array_merge_recursive_distinct ( &$array1, &$array2 ){
+        public function &array_merge_recursive_distinct ( &$array1, &$array2 ){
             
 	  $merged = $array1;
 
