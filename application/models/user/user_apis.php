@@ -100,10 +100,10 @@ class user_apis extends CI_Model{
      * 
      */
     public function search_user($limit, $page, $key=null) {
-        //  Get limit from client
-//        $limit = $this->get("limit");
-        //  Get page from client
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+        }
         
         $key = Encode_utf8::toUTF8($key);
         
@@ -176,10 +176,10 @@ class user_apis extends CI_Model{
      * 
      */
     public function get_all_user($limit, $page) {
-        //  Get limit from client
-//        $limit = $this->get("limit");
-        //  Get page from client
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+        }
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
         //  Start
@@ -370,6 +370,10 @@ class user_apis extends CI_Model{
      * Response: JSONObject
      **/
     public function get_active_members($limit, $page) {
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+        }
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
         //  Start
