@@ -50,6 +50,12 @@ class Restaurant_apis extends CI_Model{
      */
     public function get_assessment_by_id_restaurant($limit=0, $page=0, $id_restaurant='') {
         
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
+        
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
         
@@ -667,10 +673,10 @@ class Restaurant_apis extends CI_Model{
         
         $list_restaurant_search_by_meal_type_results = (isset($list_restaurant_search_by_meal_type[Common_enum::RESULTS]))? $list_restaurant_search_by_meal_type[Common_enum::RESULTS]: array();
 //        var_dump($list_restaurant_search_by_meal_type_results);return;
-//        $a1 = array(0=>'a', 1=>'b');
-//	$a2 = array(0=>'c', 1=>'d');
-//	$a3 = array(0=>'a', 1=>'e', 'c', 'sdfds');
-//	print_r($this->array_merge_recursive_distinct ($a1, $a3));return;
+        $a1 = array(0=>array('0a'=>'a', '1a'=>'b'));
+	$a2 = array(0=>array('0c'=>'c', '1d'=>'d'));
+	$a3 = array(0=>'a', 1=>'e', 'c', 'sdfds');
+	print_r($this->array_merge_recursive_distinct ($a1, $a2));return;
         
         $list_restaurant = $this->array_merge_recursive_distinct ( $this->common_model->array_merge_recursive_distinct($list_restaurant_search_by_meal_type_results, (($list_restaurant_search_by_orther_filter == null)? array() : $list_restaurant_search_by_orther_filter)));
         
@@ -1302,9 +1308,11 @@ class Restaurant_apis extends CI_Model{
      */
     public function get_all_restaurant($limit, $page){
         
-        //  Get param from client
-//        $limit = $this->get("limit");
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
 
         //  End
         $position_end_get   = ($page == 1) ? $limit : ($limit * $page);
@@ -1423,6 +1431,13 @@ class Restaurant_apis extends CI_Model{
      * @return array
      */    
     public function get_all_restaurant_similar($limit, $page, $id_restaurant){
+        
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
+        
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
         //  Start
@@ -1501,6 +1516,12 @@ class Restaurant_apis extends CI_Model{
      * 
      */
     public function get_all_restaurant_deleted($limit, $page){
+        
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
         
         //  End
         $position_end_get   = ($page == 1) ? $limit : ($limit * $page);
@@ -1811,11 +1832,11 @@ class Restaurant_apis extends CI_Model{
      */
     public function get_all_restaurant_approval_show_carousel($limit, $page) {
         
-        //  Get limit from client
-//        $limit = $this->get("limit");
-//        
-//        //  Get page from client
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
         
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
@@ -1900,10 +1921,11 @@ class Restaurant_apis extends CI_Model{
      */
     public function get_order_by_restaurant($limit, $page, $order_by = 1) {
         
-        //  Get limit from client
-//        $limit = $this->get("limit");
-        //  Get page from client
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
         
 //        $order_by = ($this->get("order_by") == null)? 1 : (int)$this->get("order_by");
         
@@ -2015,10 +2037,11 @@ class Restaurant_apis extends CI_Model{
      */
     public function get_newest_restaurant_list($limit, $page) {
         
-        //  Get limit from client
-//        $limit = $this->get("limit");
-        //  Get page from client
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
         
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
@@ -2121,11 +2144,11 @@ class Restaurant_apis extends CI_Model{
      */
     public function get_restaurant_coupon_list($limit, $page) {
         
-        //  Get limit from client
-//        $limit = $this->get("limit");
-        
-        //  Get page from client
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
         
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
@@ -2235,8 +2258,11 @@ class Restaurant_apis extends CI_Model{
      */
     public function get_orther_restaurant_list($limit, $page) {
         
-        //  Get limit from client
-//        $limit = $this->get("limit");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
         
         //  Get page from client
 //        $page = $this->get("page");
@@ -2942,10 +2968,13 @@ class Restaurant_apis extends CI_Model{
      * 
      */    
     public function get_all_post($limit, $page){
-        //  Get limit from client
-//        $limit = $this->get("limit");
-        //  Get page from client
-//        $page = $this->get("page");
+        
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
+        
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
         //  Start
@@ -3003,10 +3032,13 @@ class Restaurant_apis extends CI_Model{
      * @return array
      */    
     public function get_all_post_similar($limit, $page, $id_post){
-        //  Get limit from client
-//        $limit = $this->get("limit");
-        //  Get page from client
-//        $page = $this->get("page");
+        
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
+        
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
         //  Start
@@ -3270,6 +3302,13 @@ class Restaurant_apis extends CI_Model{
      * 
      */
     public function get_all_subscribed_email($limit, $page) {
+        
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
+        
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
         
@@ -3408,10 +3447,11 @@ class Restaurant_apis extends CI_Model{
      */
     public function get_list_restaurant_liked_by_user($limit, $page, $id_user) {
         
-        //  Get limit from client
-//        $limit = $this->get("limit");
-        //  Get page from client
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
         
 //        $id_user = $this->get('id_user');
         
@@ -3510,10 +3550,11 @@ class Restaurant_apis extends CI_Model{
      */
     public function get_list_user_liked_restaurant($limit, $page, $id_restaurant) {
         
-        //  Get limit from client
-//        $limit = $this->get("limit");
-        //  Get page from client
-//        $page = $this->get("page");
+        if(!is_numeric($limit)){
+            $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
+            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+//            var_dump($limit);
+        }
         
 //        $id_restaurant = $this->get('id_restaurant');
         //  End

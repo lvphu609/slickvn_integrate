@@ -1651,6 +1651,28 @@ class Common_apis extends CI_Model{
                       );
     }
     
+    public function get_config_page_by_key_code($key_code) {
+        $results = array();
+        $list_config_page = $this->common_model->getCollectionByField(Config_page_enum::COLLECTION_CONFIG_PAGE, array(Config_page_enum::KEY_CODE => $key_code));
+        if(is_array($list_config_page) && sizeof($list_config_page)){
+            foreach ($list_config_page as $value) {
+                $doc = array(
+                             Config_page_enum::ID => $value[Common_enum::_ID]->{'$id'},
+                             Config_page_enum::KEY_CODE => $value[Config_page_enum::KEY_CODE],
+                             Config_page_enum::DESC => $value[Config_page_enum::DESC],
+                             Config_page_enum::LIMIT => $value[Config_page_enum::LIMIT],
+                             Common_enum::CREATED_DATE => $value[Common_enum::CREATED_DATE],
+                             Common_enum::UPDATED_DATE => $value[Common_enum::UPDATED_DATE]
+                );
+                $results[]=$doc;
+            }
+        }
+        return array( Common_enum::STATUS => Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                      Common_enum::TOTAL => sizeof($results),
+                      Common_enum::RESULTS => $results
+                      );
+    }
+    
     public function get_config_page_by_id($id) {
         $results = array();
         $list_config_page = $this->common_model->getCollectionById(Config_page_enum::COLLECTION_CONFIG_PAGE, $id);
@@ -1696,6 +1718,7 @@ class Common_apis extends CI_Model{
             );
             if($is_edit == TRUE){
                 unset($array_value[Common_enum::CREATED_DATE]);
+                unset($array_value[Config_page_enum::KEY_CODE]);
                 unset($array_value[Config_page_enum::DESC]);
             }
             $this->common_model->updateCollection(Config_page_enum::COLLECTION_CONFIG_PAGE, $action, $id, $array_value);
@@ -1773,7 +1796,6 @@ class Common_apis extends CI_Model{
             $this->response($resulte);
         }
     }
-    
 }
 
 ?>
