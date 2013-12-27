@@ -916,7 +916,7 @@ public function coupon_page()
       $results = $this->common_apis->update_config_page($action,$id_config_page,$key_code,null,$limit);
       // echo $field_name." ".$value_number_view." ".$id_config_page;
       //var_dump($id_config_page);
-      echo $id_config_page.' '.$key_code.' '.$limit;
+     // echo $id_config_page.' '.$key_code.' '.$limit;
   } 
  
 //====================================custom search======================== 
@@ -930,11 +930,26 @@ public function coupon_page()
       //nhu cầu
      $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
      $data['favourite_list']=$json_favourite_list["Results"];
-    
+     //var_dump($data['favourite_list']);
     $this->load->view('admin/content/custom_page/favourite',$data);
     $this->load->view('admin/footer/footer_main');
   }
-  
+    public function custom_favourite_edit()
+  {
+      $id           = $_POST['id_item']; 
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];    
+      $action="edit";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_FAVOURITE, $id,
+                                            $name, $approval);
+     
+      
+      //echo $id.' '.$name. ' '.$approval;
+      
+      
+      
+  }
   
   
   
