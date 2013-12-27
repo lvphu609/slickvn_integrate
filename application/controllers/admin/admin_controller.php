@@ -949,12 +949,21 @@ public function coupon_page()
   {
       $id           = $_POST['id_item'];    
       $action="delete";
-      
+     // echo $id;
       $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_FAVOURITE, $id,
                                             null, null);
      
   }
-  
+   public function custom_favourite_add()
+  {
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];
+      $action="insert";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_FAVOURITE, null,
+                                            $name, $approval);
+     
+  }
   
   
   

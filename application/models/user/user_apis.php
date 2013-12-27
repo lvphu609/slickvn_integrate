@@ -1176,7 +1176,7 @@ class user_apis extends CI_Model{
      * Response: JSONObject
      * 
      **/
-    public function update_function($action, $id=null, $name, $code, $desc=null, 
+    public function update_function($action, $id=null, $name=null, $code=null, $desc=null, 
                                     $created_date=null, $updated_date=null
                                     ) {
         
