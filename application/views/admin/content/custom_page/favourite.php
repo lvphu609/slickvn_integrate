@@ -61,7 +61,7 @@
      </ul>
      
      <div id="form_add_item">
-      <ul class="box_info form_add_item">
+       <ul class="box_info form_add_item">
         <input type="hidden" id="view_status_form_add" value="0">
         <input type="hidden" value="0" id="approval_item">
             <li class="stt_member">
@@ -79,8 +79,8 @@
             <li class="update_delete">
               
             </li>
-      </ul>   
-     </div>
+        </ul>   
+      </div>
 <?php 
 $stt=1;
 if(is_array($favourite_list)&&  sizeof($favourite_list)>0){
@@ -119,7 +119,7 @@ foreach ($favourite_list as $value){
     else{
       ?>
 
-         <ul class="box_info ">
+          <ul class="box_info ">
            <input type="hidden" value="<?php echo $id; ?>" id="id_item">
            <input type="hidden" value="<?php echo $approval;  ?>" id="approval_item">
            <input type="hidden" value="0" id="view_status">
@@ -139,7 +139,7 @@ foreach ($favourite_list as $value){
               <a href="javascript:;" onclick="return edit_item(this);"  data-value_edit="'.$id.'"><div class="edit"></div></a>
               <a href="javascript:;" class="delete_item" onclick="return delete_item(this);" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
             </li>
-          </ul>   
+          </ul>    
 
     
       

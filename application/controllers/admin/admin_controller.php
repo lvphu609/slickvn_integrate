@@ -962,7 +962,33 @@ public function coupon_page()
       
       $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_FAVOURITE, null,
                                             $name, $approval);
-     
+      
+      $id=$results['id'];
+        echo' 
+              <ul class="box_info ">
+               <input type="hidden" value="'.$id.'" id="id_item">
+               <input type="hidden" value="'.$approval.'" id="approval_item">
+               <input type="hidden" value="0" id="view_status">
+                <li class="stt_member">
+                  <span>'.$stt.'</span>
+                </li>
+                <li class="name_member">
+                   <input class="disabled" id="name_item" type="text" value="<?php echo $name;?>" disabled="disabled"> 
+                </li>
+                <li class="email_member">
+                   <input onclick="return status_check(this);" id="status_item" type="checkbox" disabled="disabled" <?php if($approval==1){echo "checked";} ?> >
+                </li>
+                <li class="phonenumber_member">
+
+                </li>
+                <li class="update_delete">
+                  <a href="javascript:;" onclick="return edit_item(this);"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+                  <a href="javascript:;" class="delete_item" onclick="return delete_item(this);" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
+                </li>
+              </ul> 
+
+          ';
+      
   }
   
   

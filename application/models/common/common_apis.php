@@ -1206,6 +1206,7 @@ class Common_apis extends CI_Model{
             //  Response
             $resulte =  array(
                'Status'     =>  Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                Common_enum::ID              => $array_value['_id']->{'$id'},
                'Error'      =>$error
             );
             return $resulte;
