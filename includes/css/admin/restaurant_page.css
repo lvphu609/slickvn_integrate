@@ -205,6 +205,7 @@
 #restaurant_page #content_restaurant_page .restaurant_list .box_info li.name_restaurant{
  width: 30%;
  margin-left: 1%;
+ text-align: left;
  /*temp
  background: #47a447;*/
 }
@@ -218,12 +219,14 @@
 #restaurant_page #content_restaurant_page .restaurant_list .box_info li.email_restaurant{
  width: 30%;
  margin-left: 1%;
+ text-align: left;
  /*temp
  background: #78A000;*/
 }
 #restaurant_page #content_restaurant_page .restaurant_list .box_info li.phonenumber_restaurant{
  width: 14%;
  margin-left: 1%;
+ text-align: left;
  /*temp
  background: #d5d59d;*/
 }

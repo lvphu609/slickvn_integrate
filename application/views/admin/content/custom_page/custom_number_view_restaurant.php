@@ -5,7 +5,7 @@
 <div id="custom_view_page">
   <div id="content_custom_view_page">
    <div class="custom_view_page_title">
-     <span><div class=custom_view_page_text">Tùy chỉnh hiển thị</div></span>
+     <span style="font-size: 15px;"><div class=custom_view_page_text">Tùy chỉnh > Cấu hình trang > Tùy chỉnh hiển thị</div></span>
    </div>
    <div class="line_title"></div></br>
    

@@ -918,8 +918,27 @@ public function coupon_page()
       //var_dump($id_config_page);
       echo $id_config_page.' '.$key_code.' '.$limit;
   } 
+ 
+//====================================custom search======================== 
+  public function custom_favourite()
+  {
+    $data['chosed']="custom_page";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+      //nhu cầu
+     $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
+     $data['favourite_list']=$json_favourite_list["Results"];
+    
+    $this->load->view('admin/content/custom_page/favourite',$data);
+    $this->load->view('admin/footer/footer_main');
+  }
   
   
   
   
+  
+  
+//====================================end custom favourite===================  
 }
