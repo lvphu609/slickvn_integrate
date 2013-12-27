@@ -98,6 +98,10 @@
      if($chosed=="custom_page"){
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/custom_page.css">';
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/custom_number_view_restaurant.css">';
+       //echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/favourite.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/favourite.css">';
+       
+       
        echo '<script src="'.$url.'includes/plugins/date_time_picker/jquery-1.10.2.min.js"></script>';
        
        //jquery show dialog

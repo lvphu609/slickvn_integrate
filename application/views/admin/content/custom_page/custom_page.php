@@ -14,7 +14,7 @@
        <ul class="box_in">
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php echo $url;?>index.php/admin/admin_controller/custom_number_view_restaurant">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/custom_favourite">
            <span class="sub_title_box_in">Nhu cầu</span>
            </a>
          </li>
@@ -26,9 +26,9 @@
            </a>
          </li>
          
-<!--         <li class="box_in_li">
+       <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php //echo $url;?>index.php/admin/admin_controller/custom_number_view_restaurant">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/custom_number_view_restaurant">
            <span class="sub_title_box_in">Phong cách ẩm thực</span>
            </a>
          </li>
@@ -42,7 +42,7 @@
          
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php //echo $url;?>index.php/admin/admin_controller/custom_number_view_restaurant">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/custom_number_view_restaurant">
            <span class="sub_title_box_in">Hình thức thanh toán</span>
            </a>
          </li>
@@ -54,16 +54,16 @@
          </li>
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php //echo $url;?>index.php/admin/admin_controller/custom_number_view_restaurant">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/custom_number_view_restaurant">
            <span class="sub_title_box_in">Giá trung bình người</span>
            </a>
          </li>
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php //echo $url;?>index.php/admin/admin_controller/custom_number_view_restaurant">
+           <a href="<?php echo $url;?>index.php/admin/admin_controller/custom_number_view_restaurant">
            <span class="sub_title_box_in">Các tiêu chí khác</span>
            </a>
-         </li>-->
+         </li>
          
          
          

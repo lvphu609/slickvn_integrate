@@ -1,10 +1,10 @@
-#member_page{
+#custom_favourite{
   width: 85%;
   height: auto;
   float: left;
   /*background-color: #00620C;*/
 }
-#member_page #content_member_page{
+#custom_favourite #content_custom_favourite{
   margin-top: 100px;
   width: 93%;
   height: auto;
@@ -15,7 +15,7 @@
  /* background: #0066FF;*/
   
 }
-#member_page #content_member_page .member_page_title{
+#custom_favourite #content_custom_favourite .custom_favourite_title{
  width: 35%;
  height: auto;
  float: left;
@@ -23,34 +23,34 @@
 /* background: #6c7670;*/
 }
 
-#member_page #content_member_page .member_page_title span{
+#custom_favourite #content_custom_favourite .custom_favourite_title span{
   color: #000;
   font-size: 30px;
   font-weight: bold;
   font-family: sans-serif, Arial;
 }
-#member_page #content_member_page .line_title{
+#custom_favourite #content_custom_favourite .line_title{
   width: 100%;
   height: 1px;
   float: left;
   background: #d4d4d4;
 }
 
-#member_page #content_member_page .create_new_member{
+#custom_favourite #content_custom_favourite .create_new_member{
   width: 190px;
   height: auto;
   float: left;
   
   /*background: #00BDFF;*/
 }
-#member_page #content_member_page .input_search_member{
+#custom_favourite #content_custom_favourite .input_search_member{
   width: 25%;
   height: 30px;
   float: right;
   border: 1px solid #d4d4d4;
   /*background: #00BDFF;*/
 }
-#member_page #content_member_page .input_search_member .logo_search{
+#custom_favourite #content_custom_favourite .input_search_member .logo_search{
   width: 13%;
   height: 30px;
   float: left;
@@ -60,13 +60,13 @@
    background-size: 100% 30px;
    
 }
-#member_page #content_member_page .input_search_member .box_text_search{
+#custom_favourite #content_custom_favourite .input_search_member .box_text_search{
   width: 74%;
   height: 30px;
   float: left;
   background: #a6e1ec;
 }
-#member_page #content_member_page .input_search_member .box_text_search .input_text_search{
+#custom_favourite #content_custom_favourite .input_search_member .box_text_search .input_text_search{
   width: 100%;
   height: 30px;
   float: left;
@@ -87,7 +87,7 @@
 }
 
 
-#member_page #content_member_page .input_search_member .image_btn_search{
+#custom_favourite #content_custom_favourite .input_search_member .image_btn_search{
   width: 13%;
   height: 30px;
   float: left;
@@ -107,13 +107,13 @@
 
 
 
-#member_page #content_member_page .create_new_member a{
+#custom_favourite #content_custom_favourite .create_new_member a{
   text-decoration: none;
 }
-#member_page #content_member_page .create_new_member a:hover .btn_create_new_member .middle span{
+#custom_favourite #content_custom_favourite .create_new_member a:hover .btn_create_new_member .middle span{
   color: #FFA54E;
 }
-#member_page #content_member_page .create_new_member .btn_create_new_member{
+#custom_favourite #content_custom_favourite .create_new_member .btn_create_new_member{
   width: 190px;
   height: 35px;
   
@@ -122,7 +122,7 @@
 
 
 
-#member_page #content_member_page .create_new_member .btn_create_new_member .left{
+#custom_favourite #content_custom_favourite .create_new_member .btn_create_new_member .left{
   width: 5px;
   height: 35px;
   float: left;
@@ -132,7 +132,7 @@
   background-size: 5px 35px;
   
 }
-#member_page #content_member_page .create_new_member .btn_create_new_member .middle{
+#custom_favourite #content_custom_favourite .create_new_member .btn_create_new_member .middle{
   width: 180px;
   height: 35px;
   float: left;
@@ -141,19 +141,19 @@
   text-align: center;
   background-size: 5px 35px;
 }
-#member_page #content_member_page .create_new_member .btn_create_new_member .middle span{
+#custom_favourite #content_custom_favourite .create_new_member .btn_create_new_member .middle span{
   color: #FFF;
   font-family: sans-serif;
   font-size: 17px;
 }
-#member_page #content_member_page .create_new_member .btn_create_new_member .middle
+#custom_favourite #content_custom_favourite .create_new_member .btn_create_new_member .middle
 .text_center{
   height: 10px;
   width: 180px;
   margin-top: 6px;
   float: left;
 }
-#member_page #content_member_page .create_new_member .btn_create_new_member .right{
+#custom_favourite #content_custom_favourite .create_new_member .btn_create_new_member .right{
   width: 5px;
   height: 35px;
   float: left;
@@ -165,7 +165,7 @@
 }
 
 /*member list*/
-#member_page #content_member_page .member_list{
+#custom_favourite #content_custom_favourite .member_list{
  width: 100%;
  height: auto;
  margin-top: 5%;
@@ -174,7 +174,7 @@
  background:#FFA54E; */
 }
 
-#member_page #content_member_page .member_list .box_info{
+#custom_favourite #content_custom_favourite .member_list .box_info{
  width: 100%;
  height: 50px;
  list-style: none;
@@ -185,83 +185,95 @@
  background:#FFA54E;*/
 }
 
-#member_page #content_member_page .member_list .row_color{
+#custom_favourite #content_custom_favourite .member_list .row_color{
   background: #a6e1ec;
 }
 
 
-#member_page #content_member_page .member_list .box_info li{
+#custom_favourite #content_custom_favourite .member_list .box_info li{
  height: auto;
  float: left;
  margin-top: 15px;
 }
-#member_page #content_member_page .member_list .box_info li .index_bole{
+#custom_favourite #content_custom_favourite .member_list .box_info li .index_bole{
  font-weight: bold;
  font-size: 15px;
  font-family: sans-serif, serif;
 }
 
-#member_page #content_member_page .member_list .box_info li .line_index{
+#custom_favourite #content_custom_favourite .member_list .box_info li .line_index{
  float: bottom;
  width: 100%;
  height: 2px;
  background: #a6e1ec;
 }
 
-#member_page #content_member_page .member_list .box_info li.stt_member{
+#custom_favourite #content_custom_favourite .member_list .box_info li.stt_member{
  width: 10%;
  /*temp
  background: #00AAE7;*/
 }
 
-#member_page #content_member_page .member_list .box_info li.code_member{
+#custom_favourite #content_custom_favourite .member_list .box_info li.code_member{
  width: 9%;
  margin-left: 1%;
  /*temp
  background: #d4d4d4;*/
 }
 
-#member_page #content_member_page .member_list .box_info li.name_member{
- width: 20%;
+#custom_favourite #content_custom_favourite .member_list .box_info li.name_member{
+ width: 40%;
  margin-left: 1%;
  text-align: left;
  /*temp
  background: #47a447;*/
 }
 
-#member_page #content_member_page .member_list .box_info li.job_member{
+
+
+#custom_favourite #content_custom_favourite .member_list .box_info li.name_member input{
+ width: 100%;
+ height: 25px;
+ margin-top: -2px;
+ border: 0px solid;
+ padding-left: 5px;
+ /*temp
+ background: #47a447;*/
+}
+#custom_favourite #content_custom_favourite .member_list .box_info li.name_member input.disabled{
+ background: #ddd;
+}
+#custom_favourite #content_custom_favourite .member_list .box_info li.job_member{
  width: 14%;
  margin-left: 1%;
  /*temp
  background: #5bc0de;*/
 }
-#member_page #content_member_page .member_list .box_info li.email_member{
- width: 25%;
+#custom_favourite #content_custom_favourite .member_list .box_info li.email_member{
+ width: 17%;
  margin-left: 1%;
- text-align: left;
  /*temp
  background: #78A000;*/
 }
-#member_page #content_member_page .member_list .box_info li.phonenumber_member{
- width: 25%;
+#custom_favourite #content_custom_favourite .member_list .box_info li.phonenumber_member{
+ width: 17%;
  margin-left: 1%;
- text-align: left;
  /*temp
  background: #d5d59d;*/
 }
-#member_page #content_member_page .member_list .box_info li.company{
+#custom_favourite #content_custom_favourite .member_list .box_info li.company{
  width: 14%;
  margin-left: 1%;
  /*temp
  background: #f8efc0;*/
 }
-#member_page #content_member_page .member_list .box_info li.update_delete{
+#custom_favourite #content_custom_favourite .member_list .box_info li.update_delete{
  width: 9%;
  margin-left: 1%;
  /*temp
  background: #A9D866;*/
 }
-#member_page #content_member_page .member_list .box_info li.update_delete .edit{
+#custom_favourite #content_custom_favourite .member_list .box_info li.update_delete .edit{
  width: 40px;
  height: 30px;
  float: left;
@@ -269,7 +281,7 @@
  background-repeat: no-repeat;
  background-position: center;
 }
-#member_page #content_member_page .member_list .box_info li.update_delete .delete{
+#custom_favourite #content_custom_favourite .member_list .box_info li.update_delete .delete{
  width: 40px;
  height: 30px;
  float: left;
@@ -277,6 +289,6 @@
  background-repeat: no-repeat;
  background-position: center;
 }
-#member_page #content_member_page .member_list .select_delete{
+#custom_favourite #content_custom_favourite .member_list .select_delete{
  background: #c9e2b3;
 }
