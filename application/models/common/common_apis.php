@@ -1072,7 +1072,7 @@ class Common_apis extends CI_Model{
      * Menthod: GET
      * 
      * @param String $collection_name
-     * @param int approval
+     * @param int approval // 1=> approval | 0=>not approval
      * 
      * Response: JSONObject
      * 
@@ -1186,13 +1186,13 @@ class Common_apis extends CI_Model{
         }
         
         if($is_delete == 0){
-            
+            $this->common_model->removeDocByField( $collection, array(Common_enum::_ID => MongoId($id)) );
         }
         
         //  Array value
         $array_value = array(
             Common_enum::NAME            => $name,
-            Common_enum::APPROVAL        => ($approval==null)?0:1,
+            Common_enum::APPROVAL        => ($approval==null)?0:$approval,
             Common_enum::UPDATED_DATE    => ($updated_date==null) ? $this->common_model->getCurrentDate() : $updated_date,
             Common_enum::CREATED_DATE    => ($created_date==null) ? $this->common_model->getCurrentDate() : $created_date
         );

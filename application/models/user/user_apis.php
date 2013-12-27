@@ -102,7 +102,9 @@ class user_apis extends CI_Model{
     public function search_user($limit, $page, $key=null) {
         if(!is_numeric($limit)){
             $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
-            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+            if(is_array($get_limit) && sizeof($get_limit)>0){
+                $limit = (sizeof($get_limit[Common_enum::RESULTS]) > 0)? $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT] : 1;
+            }
         }
         
         $key = Encode_utf8::toUTF8($key);
@@ -178,7 +180,9 @@ class user_apis extends CI_Model{
     public function get_all_user($limit, $page) {
         if(!is_numeric($limit)){
             $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
-            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+            if(is_array($get_limit) && sizeof($get_limit)>0){
+                $limit = (sizeof($get_limit[Common_enum::RESULTS]) > 0)? $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT] : 1;
+            }
         }
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
@@ -372,7 +376,9 @@ class user_apis extends CI_Model{
     public function get_active_members($limit, $page) {
         if(!is_numeric($limit)){
             $get_limit = $this->common_apis->get_config_page_by_key_code($limit);
-            $limit = $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT];
+            if(is_array($get_limit) && sizeof($get_limit)>0){
+                $limit = (sizeof($get_limit[Common_enum::RESULTS]) > 0)? $get_limit[Common_enum::RESULTS][0][Config_page_enum::LIMIT] : 1;
+            }
         }
         //  End
         $position_end_get   = ($page == 1)? $limit : ($limit * $page);
@@ -992,13 +998,13 @@ class user_apis extends CI_Model{
      * @param String $id
      * @param String $name
      * @param String $desc
-     * @param String $function_list
+     * @param String $function_list id_function_1,id_function_2,...id_function_n
      * @param String $created_date
      * 
      * Response: JSONObject
      * 
      **/
-    public function update_role($action, $id=null, $name, $desc, $function_list, 
+    public function update_role($action, $id=null, $name, $desc=null, $function_list, 
                                 $created_date=null, $updated_date=null
                                 ) {
         //  Get param from client
@@ -1099,7 +1105,7 @@ class user_apis extends CI_Model{
     }
     
     /**
-     * API All Get function
+     * API Get function by id
      * 
      * Menthod: GET
      * 
@@ -1170,7 +1176,7 @@ class user_apis extends CI_Model{
      * Response: JSONObject
      * 
      **/
-    public function update_function($action, $id=null, $name, $code, $desc, 
+    public function update_function($action, $id=null, $name, $code, $desc=null, 
                                     $created_date=null, $updated_date=null
                                     ) {
         
