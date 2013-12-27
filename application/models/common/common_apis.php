@@ -1186,7 +1186,7 @@ class Common_apis extends CI_Model{
         }
         
         if($is_delete == 0){
-            $this->common_model->removeDocByField( $collection, array(Common_enum::_ID => MongoId($id)) );
+            $this->common_model->removeDocByField( $collection, array(Common_enum::_ID => new MongoId($id)) );
         }
         
         //  Array value
