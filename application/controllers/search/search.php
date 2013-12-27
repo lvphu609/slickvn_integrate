@@ -49,8 +49,8 @@ class Search extends CI_Controller {
      /*===============MENU==========================================================================*/
     $info_user=$this->info_user;
     $data['info_user']=$info_user;
-    $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE);  
-    $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
+    $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+    $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
     
     $data['meal_list']=$json_meal_list["Results"];
     $data['favourite_list']=$json_favourite_list["Results"];    
@@ -132,8 +132,8 @@ class Search extends CI_Controller {
      /*===============MENU==========================================================================*/
     $info_user=$this->info_user;
     $data['info_user']=$info_user;
-    $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE);  
-    $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
+    $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+    $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
     
     $data['meal_list']=$json_meal_list["Results"];
     $data['favourite_list']=$json_favourite_list["Results"];    
@@ -204,8 +204,8 @@ class Search extends CI_Controller {
      /*===============MENU==========================================================================*/
     $info_user=$this->info_user;
     $data['info_user']=$info_user;
-    $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE);  
-    $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
+    $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+    $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
     
     $data['meal_list']=$json_meal_list["Results"];
     $data['favourite_list']=$json_favourite_list["Results"];    
@@ -275,8 +275,8 @@ class Search extends CI_Controller {
      /*===============MENU==========================================================================*/
     $info_user=$this->info_user;
     $data['info_user']=$info_user;
-     $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE);  
-    $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
+     $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+    $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
     
     $data['meal_list']=$json_meal_list["Results"];
     $data['favourite_list']=$json_favourite_list["Results"];    
@@ -344,8 +344,8 @@ class Search extends CI_Controller {
      /*===============MENU==========================================================================*/
     $info_user=$this->info_user;
     $data['info_user']=$info_user;
-    $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE);  
-    $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE);
+    $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+    $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
     
     $data['meal_list']=$json_meal_list["Results"];
     $data['favourite_list']=$json_favourite_list["Results"];    
