@@ -139,7 +139,7 @@ foreach ($favourite_list as $value){
 <script>
   
    $(document).ready(function () {
-         $('.delete_member').hide();
+         $('.delete_item_dialog').hide();
       });
       
   function edit_item(object){
@@ -217,10 +217,11 @@ foreach ($favourite_list as $value){
   function delete_item(object){
       
       $(object).parent().parent().addClass('select_delete');
-      var url=$("#hdUrl_delete_user").val();
+      var url=$("#hidUrl").val();
+      var url_api=url+"index.php/admin/admin_controller/custom_favourite_delete";
       var data_value_delete=$(object).attr('data-value_delete');
-   
-      $( ".delete_member" ).dialog({
+      var id_item        = $(object).closest('ul').find('#id_item').val();
+      $( ".delete_item_dialog" ).dialog({
           title: "Thông báo", 
           show: "scale",
           hide: "explode",
@@ -234,12 +235,28 @@ foreach ($favourite_list as $value){
           modal: true,
           buttons: {
             "Xóa": function() {
-              window.location=url+"?param_id="+data_value_delete;
-              $( object ).dialog( "close" );
+              $('.delete_item_dialog').dialog( "close" );
+              var data_delete={
+                id_item:id_item
+              } 
+              
+              $.ajax({
+                  url: url_api ,
+                  type: 'POST',
+                  data:data_delete,
+                  success: function(data){
+                     $(object).closest('ul').remove();
+                  },
+                 error: function(a,textStatus,b){
+                   alert('khong thanh cong');
+                 }
+               });
+               
+              
             },
             "Hủy": function() {
               $(".delete_item").parent().parent().removeClass('select_delete');
-              $('.delete_member').dialog( "close" );
+              $('.delete_item_dialog').dialog( "close" );
             }
           }
     
@@ -264,7 +281,7 @@ foreach ($favourite_list as $value){
   
 </script>
 
-  <div class="delete_member" title="Thông báo">  
+  <div class="delete_item_dialog" title="Thông báo">  
     <lable class="label">Bạn có chắc muốn xóa dữ liệu đang chọn không!</lable></br>
     <!--<button type="button" id="btnYes" class="btn btn-warning">Đồng ý</button>
     <button type="button" id="btnNo" class="btn btn-warning">Hủy</button>-->
