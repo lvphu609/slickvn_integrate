@@ -19,9 +19,40 @@ class Test extends CI_Controller{
         
     }
     
-    public function index() {
-        $this->load->model('restaurant/restaurant_apis');
-        $this->restaurant_apis->get_all_restaurant_similar(100, 1, '52b17e0b6b2bf5b80d000002');
+//    public function index() {
+//        $this->load->model('restaurant/restaurant_apis');
+//        $this->load->model('common/common_apis');
+//        
+//    }
+    
+    public function t($t, $t1) {
+        echo $t.' - '.$t1;
     }
+    
+    public function aaa($ac, $col, $id=null, $name=null) {
+        $this->load->model('common/common_apis');
+        $check = $this->common_apis->update_base_collection($ac, $col, $id, 
+                $name);
+        
+        print_r($check);
+        
+    }
+    
+    public function get_list_restaurant_liked_by_user($l, $p, $id_user) {
+        $this->load->model('restaurant/restaurant_apis');
+        $check = $this->restaurant_apis->get_list_restaurant_liked_by_user($l, $p, $id_user);
+        
+        print_r($check);
+        
+    }
+    
+    public function get_list_user_liked_restaurant($l, $p, $id_r) {
+        $this->load->model('restaurant/restaurant_apis');
+        $check = $this->restaurant_apis->get_list_user_liked_restaurant($l, $p, $id_r);
+        
+        print_r($check);
+        
+    }
+    
     
 }

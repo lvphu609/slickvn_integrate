@@ -1072,32 +1072,72 @@ class Common_apis extends CI_Model{
      * Menthod: GET
      * 
      * @param String $collection_name
+     * @param int approval
      * 
      * Response: JSONObject
      * 
      */
-    public function get_base_collection($collection) {
-        //  Get param from client
-//        $collection = $this->get('collection_name');
-        //  Get collection 
+    public function get_base_collection($collection, $mode_approval=null) {
         $get_collection = $this->common_model->getCollection($collection);
+            //  Array object
+            $results = array();
+            //  Count object
+            if(is_array($get_collection)){
+                foreach ($get_collection as $value){
+                    $approval = (isset($value[Common_enum::APPROVAL]))? $value[Common_enum::APPROVAL]:1;
+                    if($approval == 1){
+                        //  Create JSONObject
+                        $jsonobject = array( 
+                                    Common_enum::ID              => $value['_id']->{'$id'},
+                                    Common_enum::NAME            => $value['name'],
+                                    Common_enum::APPROVAL        => (isset($value[Common_enum::APPROVAL])) ? $value[Common_enum::APPROVAL] : 1,
+                                    Common_enum::UPDATED_DATE    => $value['updated_date'],
+                                    Common_enum::CREATED_DATE    => $value['created_date']
+                                   );
+                        $results[] = $jsonobject;
+                    }
+                }
+            }
+            $data =  array(
+                   'Status'     =>  Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                   'Total'      =>  sizeof($results),
+                   'Results'    =>$results
+            );
+            return $data;
+    }
+    
+    /**
+     * API Get Collection Base by Id
+     * 
+     * Menthod: GET
+     * 
+     * @param String $collection_name
+     * @param String $id
+     * Response: JSONObject
+     * 
+     */
+    public function get_base_collection_by_id($collection=null, $id=null) {
+        //  Get collection 
+        $get_collection = $this->common_model->getCollectionById($collection, $id);
 //        $error = $this->common_model->getError();
 //        if($error == null){
             //  Array object
             $results = array();
             //  Count object
-            $count = 0;
             if(is_array($get_collection)){
                 foreach ($get_collection as $value){
-                    $count ++;
-                    //  Create JSONObject
-                    $jsonobject = array( 
-                                Common_enum::ID              => $value['_id']->{'$id'},
-                                Common_enum::NAME            => $value['name'],
-                                Common_enum::UPDATED_DATE    => $value['updated_date'],
-                                Common_enum::CREATED_DATE    => $value['created_date']
-                               );
-                    $results[] = $jsonobject;
+                    $approval = (isset($value[Common_enum::APPROVAL]))? $value[Common_enum::APPROVAL]:1;
+                    if($approval == 1){
+                        //  Create JSONObject
+                        $jsonobject = array( 
+                                    Common_enum::ID              => $value['_id']->{'$id'},
+                                    Common_enum::NAME            => $value['name'],
+                                    Common_enum::APPROVAL        => (isset($value[Common_enum::APPROVAL])) ? $value[Common_enum::APPROVAL] : 1,
+                                    Common_enum::UPDATED_DATE    => $value['updated_date'],
+                                    Common_enum::CREATED_DATE    => $value['created_date']
+                                   );
+                        $results[] = $jsonobject;
+                    }
                 }
             }
             $data =  array(
@@ -1116,60 +1156,6 @@ class Common_apis extends CI_Model{
     }
     
     /**
-     * API Get Collection Base by Id
-     * 
-     * Menthod: GET
-     * 
-     * @param String $collection_name
-     * @param String $id
-     * Response: JSONObject
-     * 
-     */
-    public function get_base_collection_by_id($collection=null, $id=null 
-                                                ) {
-        //  Get param from client
-//        $collection = $this->get('collection_name');
-//        $id         = $this->get('id');
-        //  Get collection 
-        $get_collection = $this->common_model->getCollectionById($collection, $id);
-        $error = $this->common_model->getError();
-        if($error == null){
-            //  Array object
-            $results = array();
-            //  Count object
-            $count = 0;
-            if(is_array($get_collection)){
-                foreach ($get_collection as $value){
-                    $approval = (isset($value[Common_enum::APPROVAL]))? $value[Common_enum::APPROVAL]:1;
-                    if($approval == 1){
-                        $count ++;
-                        //  Create JSONObject
-                        $jsonobject = array( 
-                                    Common_enum::ID              => $value['_id']->{'$id'},
-                                    Common_enum::NAME            => $value['name'],
-                                    Common_enum::UPDATED_DATE    => $value['updated_date'],
-                                    Common_enum::CREATED_DATE    => $value['created_date']
-                                   );
-                        $results[] = $jsonobject;
-                    }
-                }
-            }
-            $data =  array(
-                   'Status'     =>  Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
-                   'Total'      =>  sizeof($results),
-                   'Results'    =>$results
-            );
-            return $data;
-        }else{
-            $data =  array(
-                   'Status'     =>  Common_enum::MESSAGE_RESPONSE_FALSE,
-                   'Error'      =>$error
-            );
-            return $data;
-        }
-    }
-    
-    /**
      * 
      * API Update Collection Base
      * 
@@ -1185,36 +1171,35 @@ class Common_apis extends CI_Model{
     public function update_base_collection($action, $collection=null, $id=null,
                                             $name=null, $approval = null, $updated_date=null, $created_date=null
                                            ){
-        //  Get param from client
-//        $action         = $this->post('action');
-//        $collection     = $this->post('collection_name');
-//        $id             = $this->post('id');
-//        $name           = $this->post('name');
-//        $updated_date   = $this->post('updated_date');
-        $created_date   = $this->post('created_date');
-        if($name == null){
+        
+        (int)$is_insert = strcmp( strtolower($action), Common_enum::INSERT );
+        $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
+        (int)$is_delete = strcmp( strtolower($action), Common_enum::DELETE );
+        
+        if($is_insert==0 && $name == null){
             //  Response
             $resulte =  array(
                'Status'     =>  Common_enum::MESSAGE_RESPONSE_FALSE,
                'Error'      =>'Name is null'
             );
-            $this->response($resulte);
-            return;
+            return($resulte);
         }
-        (int)$is_insert = strcmp( strtolower($action), Common_enum::INSERT );
-//        $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
-        (int)$is_delete = strcmp( strtolower($action), Common_enum::DELETE );
+        
+        if($is_delete == 0){
+            
+        }
+        
         //  Array value
-        $array_value = ($is_delete != 0) ? array(
+        $array_value = array(
             Common_enum::NAME            => $name,
             Common_enum::APPROVAL        => ($approval==null)?0:1,
             Common_enum::UPDATED_DATE    => ($updated_date==null) ? $this->common_model->getCurrentDate() : $updated_date,
             Common_enum::CREATED_DATE    => ($created_date==null) ? $this->common_model->getCurrentDate() : $created_date
-        ) : array();
+        );
         
-//        if($is_edit == TRUE){
-//            unset($array_value[Common_enum::CREATED_DATE]);
-//        }
+        if($is_edit == TRUE){
+            unset($array_value[Common_enum::CREATED_DATE]);
+        }
         $this->common_model->updateBaseCollection($action, $collection, $id, $array_value);
         $error = $this->common_model->getError();
         if( $error == null ){

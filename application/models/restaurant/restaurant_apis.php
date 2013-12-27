@@ -3555,6 +3555,7 @@ class Restaurant_apis extends CI_Model{
                                                                                                                                 
                         );
                         $results[] = $jsonobject;
+                        $this->restaurant_model->resetRate();
                 }
             }
             //  Response
@@ -3630,6 +3631,7 @@ class Restaurant_apis extends CI_Model{
                                     Common_enum::CREATED_DATE    => $user['created_date']
                                    );
                         $results[] = $jsonobject;
+                        $this->restaurant_model->resetRate();
                 }
             }
             //  Response
