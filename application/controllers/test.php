@@ -29,10 +29,9 @@ class Test extends CI_Controller{
         echo $t.' - '.$t1;
     }
     
-    public function aaa($ac, $col, $id=null, $name=null) {
-        $this->load->model('common/common_apis');
-        $check = $this->common_apis->update_base_collection($ac, $col, $id, 
-                $name);
+    public function aaa($action, $id=null, $name, $desc=null, $function_list) {
+        $this->load->model('user/user_apis');
+        $check = $this->user_apis->update_role($action, $id, $name, $desc, $function_list);
         
         print_r($check);
         
