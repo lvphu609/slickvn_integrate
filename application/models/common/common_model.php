@@ -683,7 +683,7 @@ class Common_model extends CI_Model{
      * @return bool if remove successful then return TRUE else FALSE
      * 
      **/
-    public function removeDocByFile($collection_name, $where=array()) {
+    public function removeDocByField($collection_name, $where=array()) {
         $result = FALSE;
         try{
             if($collection_name == null){

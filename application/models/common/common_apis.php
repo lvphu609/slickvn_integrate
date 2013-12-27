@@ -1085,7 +1085,7 @@ class Common_apis extends CI_Model{
             if(is_array($get_collection)){
                 foreach ($get_collection as $value){
                     $approval = (isset($value[Common_enum::APPROVAL]))? $value[Common_enum::APPROVAL]:1;
-                    if($approval == 1){
+                    if($approval == $mode_approval || $mode_approval == null){
                         //  Create JSONObject
                         $jsonobject = array( 
                                     Common_enum::ID              => $value['_id']->{'$id'},
@@ -1396,9 +1396,9 @@ class Common_apis extends CI_Model{
         $is_delete = $this->common_model->checkAction( $action, Common_enum::DELETE );
         
         if($is_delete == TRUE){
-            $remove_child = $this->common_model->removeDocByFile(District_enum::COLLECTION_DISTRICT, array(District_enum::ID_CITY => $id) );
+            $remove_child = $this->common_model->removeDocByField(District_enum::COLLECTION_DISTRICT, array(District_enum::ID_CITY => $id) );
             if($remove_child == TRUE){
-                $remove_parent = $this->common_model->removeDocByFile( City_enum::COLLECTION_CITY, array(Common_enum::_ID => MongoId($id)) );
+                $remove_parent = $this->common_model->removeDocByField( City_enum::COLLECTION_CITY, array(Common_enum::_ID => MongoId($id)) );
                 if($remove_parent == TRUE){
                     return $this->common_model->encapsulationDataResponsePost(Common_enum::MESSAGE_RESPONSE_SUCCESSFUL, '');
                 }
@@ -1486,7 +1486,7 @@ class Common_apis extends CI_Model{
         $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
         $is_delete = $this->common_model->checkAction( $action, Common_enum::DELETE );
         if($is_delete == TRUE){
-            $remove = $this->common_model->removeDocByFile(District_enum::COLLECTION_DISTRICT, array(Common_enum::_ID => MongoId($id)) );
+            $remove = $this->common_model->removeDocByField(District_enum::COLLECTION_DISTRICT, array(Common_enum::_ID => MongoId($id)) );
             if($remove == TRUE){
                 return $this->common_model->encapsulationDataResponsePost(Common_enum::MESSAGE_RESPONSE_SUCCESSFUL, '');
             }
@@ -1581,7 +1581,7 @@ class Common_apis extends CI_Model{
         $is_delete = $this->common_model->checkAction( $action, Common_enum::DELETE );
         
         if($is_delete == TRUE){
-            $this->common_model->removeDocByFile(Email_config_enum::COLLECTION_EMAIL_CONFIG, array(Common_enum::_ID => MongoId($id)) );
+            $this->common_model->removeDocByField(Email_config_enum::COLLECTION_EMAIL_CONFIG, array(Common_enum::_ID => MongoId($id)) );
         }
         else{
             $array_value = array(
@@ -1690,7 +1690,7 @@ class Common_apis extends CI_Model{
         $is_delete = $this->common_model->checkAction( $action, Common_enum::DELETE );
         
         if($is_delete == TRUE){
-            $this->common_model->removeDocByFile(Config_page_enum::COLLECTION_CONFIG_PAGE, array(Common_enum::_ID => MongoId($id)) );
+            $this->common_model->removeDocByField(Config_page_enum::COLLECTION_CONFIG_PAGE, array(Common_enum::_ID => MongoId($id)) );
         }
         else{
             $array_value = array(
