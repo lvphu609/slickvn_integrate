@@ -1192,7 +1192,7 @@ class Common_apis extends CI_Model{
         //  Array value
         $array_value = array(
             Common_enum::NAME            => $name,
-            Common_enum::APPROVAL        => ($approval==null)?0:1,
+            Common_enum::APPROVAL        => ($approval==null)?0:$approval,
             Common_enum::UPDATED_DATE    => ($updated_date==null) ? $this->common_model->getCurrentDate() : $updated_date,
             Common_enum::CREATED_DATE    => ($created_date==null) ? $this->common_model->getCurrentDate() : $created_date
         );
