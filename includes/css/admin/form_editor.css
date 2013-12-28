@@ -1,0 +1,167 @@
+#form_editor{
+  width: 85%;
+  height: 100%;
+  float: left;
+  
+  /* background-color: #00620C;*/
+}
+#form_editor #content_form_editor{
+  margin-top: 100px;;
+  width: 93%;
+  height: auto;
+  float: left;
+  margin-left: 5%;
+  margin-right: 2%;
+   
+  /*background: #0066FF;*/
+  
+}
+#form_editor #content_form_editor .form_editor_title{
+ width: 100%;
+ height: auto;
+ 
+/* background: #6c7670;*/
+}
+
+#form_editor #content_form_editor .form_editor_title span{
+  color: #000;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: sans-serif, Arial;
+}
+#form_editor #content_form_editor .line_title{
+  width: 100%;
+  height: 1px;
+  float: left;
+  background:  #d4d4d4;
+}
+
+#form_editor #content_form_editor .box_out{
+  list-style: none;
+  width: 100%;
+  height: auto;
+}
+#form_editor #content_form_editor .box_out{
+  list-style: none;
+  width: 100%;
+  height: auto;
+  /*temp*/
+}
+
+ #form_editor #content_form_editor .box_out ul.image_content_post {
+  width: 984px;
+  /*margin-top: 30px;*/
+  height: 200px;
+  list-style: none;
+  float: left;
+  margin-top: 10px;
+}
+#form_editor #content_form_editor .box_out  ul.image_content_post .preview_post {
+
+  margin-top: 10px;
+}
+ #form_editor #content_form_editor .box_out ul.image_content_post .preview_post {
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+}
+
+ #form_editor #content_form_editor .box_out .save_cancel{
+  float: left;
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+  
+
+/*btn save cancel*/
+#form_editor #content_form_editor .box_out .btn_save_cancel{
+  width: 100%;
+  height: 40px;
+  float: left;
+  margin-top: 15px;
+}
+
+
+
+#form_editor #content_form_editor .box_out .btn_save_cancel .btn_save{
+  width: 10%;
+  height: 40px;
+  float: left;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  text-align: center;
+  
+  background-image: -o-linear-gradient(bottom, #6ED60D 0%, #4D7D12 84%);
+  background-image: -moz-linear-gradient(bottom, #6ED60D 0%, #4D7D12 84%);
+  background-image: -webkit-linear-gradient(bottom, #6ED60D 0%, #4D7D12 84%);
+  background-image: -ms-linear-gradient(bottom, #6ED60D 0%, #4D7D12 84%);
+  background-image: linear-gradient(to bottom, #6ED60D 0%, #4D7D12 84%);
+
+}
+#form_editor #content_form_editor .box_out .btn_save_cancel .btn_save:hover{
+  width: 10%;
+  height: 40px;
+  float: left;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-image: -o-linear-gradient(bottom, #509C03 0%, #73CF0B 100%);
+  background-image: -moz-linear-gradient(bottom, #509C03 0%, #73CF0B 100%);
+  background-image: -webkit-linear-gradient(bottom, #509C03 0%, #73CF0B 100%);
+  background-image: -ms-linear-gradient(bottom, #509C03 0%, #73CF0B 100%);
+  background-image: linear-gradient(to bottom, #509C03 0%, #73CF0B 100%);
+
+}
+
+#form_editor #content_form_editor .box_out .btn_save_cancel .btn_save lable{
+  color: #FFF;
+  font-size: 23px;
+  font-family: sans-serif;
+
+}
+#form_editor #content_form_editor .box_out .btn_save_cancel .btn_save .center_text{
+  margin-top: 5px;
+
+}
+#form_editor #content_form_editor .box_out .btn_save_cancel .btn_cancel{
+  width: 10%;
+  height: 40px;
+  float: left;
+  margin-left: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  text-align: center;
+  
+  background-image: -o-linear-gradient(bottom, #DEDEDE 0%, #292929 100%);
+  background-image: -moz-linear-gradient(bottom, #DEDEDE 0%, #292929 100%);
+  background-image: -webkit-linear-gradient(bottom, #DEDEDE 0%, #292929 100%);
+  background-image: -ms-linear-gradient(bottom, #DEDEDE 0%, #292929 100%);
+  background-image: linear-gradient(to bottom, #DEDEDE 0%, #292929 100%);
+  
+}
+#form_editor #content_form_editor .box_out .btn_save_cancel .btn_cancel:hover{
+  width: 10%;
+  height: 40px;
+  float: left;
+  margin-left: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-image: -o-linear-gradient(bottom, #595959 0%, #D1D1D1 100%);
+  background-image: -moz-linear-gradient(bottom, #595959 0%, #D1D1D1 100%);
+  background-image: -webkit-linear-gradient(bottom, #595959 0%, #D1D1D1 100%);
+  background-image: -ms-linear-gradient(bottom, #595959 0%, #D1D1D1 100%);
+  background-image: linear-gradient(to bottom, #595959 0%, #D1D1D1 100%);
+  
+}
+#form_editor #content_form_editor .box_out .btn_save_cancel .btn_cancel lable{
+  color: #FFF;
+  font-size: 23px;
+  font-family: sans-serif;
+
+}
+#form_editor #content_form_editor .box_out .btn_save_cancel .btn_cancel .center_text{
+  margin-top: 5px;
+
+}

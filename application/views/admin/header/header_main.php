@@ -100,6 +100,15 @@
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/custom_number_view_restaurant.css">';
        //echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/favourite.css">';
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/favourite.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/meal.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/culinary_style.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/mode_use.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/payment_type.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/payment_type.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/landscape.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/price_person.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/other_criteria.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/form_editor.css">';
        
        
        echo '<script src="'.$url.'includes/plugins/date_time_picker/jquery-1.10.2.min.js"></script>';
@@ -110,6 +119,11 @@
              <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
              <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
            ';  
+      
+       
+        // <!--ckeditor-->
+       echo '<script src="'.$url.'includes/plugins/ckeditor/ckeditor.js"></script>';
+       // <!--end ckeditor--> 
        
      }    
     ?>

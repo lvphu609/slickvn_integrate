@@ -2,16 +2,16 @@
 <?php $url=  base_url();?>
 
 
-<div id="custom_favourite">
-  <div id="content_custom_favourite">
-   <div class="custom_favourite_title">
-     <span style="font-size: 15px;"><div class=member_page_text">Tùy chỉnh > Quản lý mục tìm kiếm > Nhu cầu</div></span>
+<div id="custom_payment_type">
+  <div id="content_custom_payment_type">
+   <div class="custom_payment_type_title">
+     <span style="font-size: 15px;"><div class=member_page_text">Tùy chỉnh > Quản lý mục tìm kiếm > Hình thức thanh toán</div></span>
    </div>
    <div class="create_new_member">
      <a href="javascript:;" onclick="return form_add_item();">
         <div class="btn_create_new_member">
             <div class="left"></div>
-            <div class="middle"><span><div class="text_center">Tạo nhu cầu mới</div></span></div>
+            <div class="middle"><span><div class="text_center">Tạo mới</div></span></div>
             <div class="right"></div>
         </div>
      </a>
@@ -84,8 +84,8 @@
       </div>
 <?php 
 $stt=1;
-if(is_array($favourite_list)&&  sizeof($favourite_list)>0){
-foreach ($favourite_list as $value){
+if(is_array($payment_type_list)&&  sizeof($payment_type_list)>0){
+foreach ($payment_type_list as $value){
       
       $id              =$value['id'];
       $name            =$value['name'];
@@ -188,8 +188,8 @@ foreach ($favourite_list as $value){
     var approval_item = $(object).closest('ul').find('#approval_item').val();
     
     var url=$("#hidUrl").val();
-    var url_api=url+"index.php/admin/admin_controller/custom_favourite_add";
-    var stt_item=parseInt($(object).closest('#custom_favourite').find('ul').last().find('#stt_item').text());
+    var url_api=url+"index.php/admin/admin_controller/custom_payment_type_add";
+    var stt_item=parseInt($(object).closest('#custom_payment_type').find('ul').last().find('#stt_item').text());
       var data={
 
                  name_item      :    name_item,
@@ -212,7 +212,7 @@ foreach ($favourite_list as $value){
             
             
             setTimeout(function(){
-               $('#custom_favourite').find('#div_save_success').remove();
+               $('#custom_payment_type').find('#div_save_success').remove();
             },1000);
             
             
@@ -271,7 +271,7 @@ foreach ($favourite_list as $value){
    var approval_item = $(object).closest('ul').find('#approval_item').val();
    
    var url=$("#hidUrl").val();
-   var url_api=url+"index.php/admin/admin_controller/custom_favourite_edit";
+   var url_api=url+"index.php/admin/admin_controller/custom_payment_type_edit";
      var data={
                 
                 id_item : id_item,          
@@ -295,7 +295,7 @@ foreach ($favourite_list as $value){
             $(object).closest('ul').find('#div_save_item').remove();
             
             setTimeout(function(){
-               $('#custom_favourite').find('#div_save_success').remove();
+               $('#custom_payment_type').find('#div_save_success').remove();
             },1000);
           },
          error: function(a,textStatus,b){
@@ -313,7 +313,7 @@ foreach ($favourite_list as $value){
       
       $(object).parent().parent().addClass('select_delete');
       var url=$("#hidUrl").val();
-      var url_api=url+"index.php/admin/admin_controller/custom_favourite_delete";
+      var url_api=url+"index.php/admin/admin_controller/custom_payment_type_delete";
       var data_value_delete=$(object).attr('data-value_delete');
       var id_item        = $(object).closest('ul').find('#id_item').val();
       $( ".delete_item_dialog" ).dialog({

@@ -44,13 +44,12 @@
           <li>
             <span class="title_link">SLICK.VN</span><br><br>
             <ul>
-              <li><a href="#">Chính sách bảo mật</a></li>
-              <li><a href="#">Điều khoản sử dụng</a></li>
-              <li><a href="#">Điều khoản sử dụng</a></li>
-              <li><a href="#">Việc làm</a></li>
-              <li><a href="#">Hỏi đáp</a></li>
-              <li><a href="#">Liên hệ</a></li>
-              <li><a href="#">Bảng báo giá</a> </li>
+              <li><a href="<?php echo $url;?>index.php/home_controller/show_terms_slick?field_value=privacy_policy">Chính sách bảo mật</a></li>
+              <li><a href="<?php echo $url;?>index.php/home_controller/show_terms_slick?field_value=terms_of_use">Điều khoản sử dụng</a></li>
+              <li><a href="<?php echo $url;?>index.php/home_controller/show_terms_slick?field_value=employment">Việc làm</a></li>
+              <li><a href="<?php echo $url;?>index.php/home_controller/show_terms_slick?field_value=faq">Hỏi đáp</a></li>
+              <li><a href="<?php echo $url;?>index.php/home_controller/show_terms_slick?field_value=contact_us">Liên hệ</a></li>
+              <li><a href="<?php echo $url;?>index.php/home_controller/show_terms_slick?field_value=quotation">Bảng báo giá</a> </li>
             </ul>
           </li>
         </ul>

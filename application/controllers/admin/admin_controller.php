@@ -920,6 +920,7 @@ public function coupon_page()
   } 
  
 //====================================custom search======================== 
+/*----------------------------nhu cầu------------------------------------*/
   public function custom_favourite()
   {
     $data['chosed']="custom_page";
@@ -958,6 +959,16 @@ public function coupon_page()
   {
       $name        = $_POST['name_item'];
       $approval   = $_POST['approval_item'];
+      $checked="";
+      if($approval==1){
+        $checked="checked";
+      }
+      $stt=$_POST['stt'];
+      $class_row="";
+      if($stt%2!=0){
+        $class_row="row_color";
+      }
+      $stt=$stt+1;
       $action="insert";
       
       $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_FAVOURITE, null,
@@ -965,18 +976,260 @@ public function coupon_page()
       
       $id=$results['id'];
         echo' 
-              <ul class="box_info ">
+              <ul class="box_info '.$class_row.'">
                <input type="hidden" value="'.$id.'" id="id_item">
                <input type="hidden" value="'.$approval.'" id="approval_item">
                <input type="hidden" value="0" id="view_status">
                 <li class="stt_member">
-                  <span>'.$stt.'</span>
+                  <span id="stt_item">'.$stt.'</span>
                 </li>
                 <li class="name_member">
-                   <input class="disabled" id="name_item" type="text" value="<?php echo $name;?>" disabled="disabled"> 
+                   <input class="disabled" id="name_item" type="text" value="'.$name.'" disabled="disabled"> 
                 </li>
                 <li class="email_member">
-                   <input onclick="return status_check(this);" id="status_item" type="checkbox" disabled="disabled" <?php if($approval==1){echo "checked";} ?> >
+                   <input onclick="return status_check(this);" id="status_item" type="checkbox" disabled="disabled" '.$checked.' >
+                </li>
+                <li class="phonenumber_member">
+
+                </li>
+                <li class="update_delete">
+                  <a href="javascript:;" onclick="return edit_item(this);"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+                  <a href="javascript:;" class="delete_item" onclick="return delete_item(this);" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
+                </li>
+              </ul> 
+
+          ';
+      
+  }
+  
+  /*----------------------------món ăn------------------------------------*/
+  public function custom_meal()
+  {
+    $data['chosed']="custom_page";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+      //nhu cầu
+     $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE);
+     $data['meal_list']=$json_favourite_list["Results"];
+    $this->load->view('admin/content/custom_page/meal',$data);
+    $this->load->view('admin/footer/footer_main');
+  }
+    public function custom_meal_edit()
+  {
+      $id           = $_POST['id_item']; 
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];    
+      $action="edit";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_MEAL_TYPE, $id,
+                                            $name, $approval);
+      
+  }
+  public function custom_meal_delete()
+  {
+      $id           = $_POST['id_item'];    
+      $action="delete";
+     // echo $id;
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_MEAL_TYPE, $id,
+                                            null, null);
+     
+  }
+   public function custom_meal_add()
+  {
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];
+      $checked="";
+      if($approval==1){
+        $checked="checked";
+      }
+      $stt=$_POST['stt'];
+      $class_row="";
+      if($stt%2!=0){
+        $class_row="row_color";
+      }
+      $stt=$stt+1;
+      $action="insert";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_MEAL_TYPE, null,
+                                            $name, $approval);
+      
+      $id=$results['id'];
+        echo' 
+              <ul class="box_info '.$class_row.'">
+               <input type="hidden" value="'.$id.'" id="id_item">
+               <input type="hidden" value="'.$approval.'" id="approval_item">
+               <input type="hidden" value="0" id="view_status">
+                <li class="stt_member">
+                  <span id="stt_item">'.$stt.'</span>
+                </li>
+                <li class="name_member">
+                   <input class="disabled" id="name_item" type="text" value="'.$name.'" disabled="disabled"> 
+                </li>
+                <li class="email_member">
+                   <input onclick="return status_check(this);" id="status_item" type="checkbox" disabled="disabled" '.$checked.' >
+                </li>
+                <li class="phonenumber_member">
+
+                </li>
+                <li class="update_delete">
+                  <a href="javascript:;" onclick="return edit_item(this);"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+                  <a href="javascript:;" class="delete_item" onclick="return delete_item(this);" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
+                </li>
+              </ul> 
+
+          ';
+      
+  }
+   /*----------------------------phong cách ẩm thực------------------------------------*/
+  public function custom_culinary_style()
+  {
+    $data['chosed']="custom_page";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+      //nhu cầu
+     $json_culinary_style = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_CULINARY_STYLE);
+     $data['culinary_style']=$json_culinary_style["Results"];
+    $this->load->view('admin/content/custom_page/culinary_style',$data);
+    $this->load->view('admin/footer/footer_main');
+  }
+    public function custom_culinary_style_edit()
+  {
+      $id           = $_POST['id_item']; 
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];    
+      $action="edit";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_CULINARY_STYLE, $id,
+                                            $name, $approval);
+      
+  }
+  public function custom_culinary_style_delete()
+  {
+      $id           = $_POST['id_item'];    
+      $action="delete";
+     // echo $id;
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_CULINARY_STYLE, $id,
+                                            null, null);
+     
+  }
+   public function custom_culinary_style_add()
+  {
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];
+      $checked="";
+      if($approval==1){
+        $checked="checked";
+      }
+      $stt=$_POST['stt'];
+      $class_row="";
+      if($stt%2!=0){
+        $class_row="row_color";
+      }
+      $stt=$stt+1;
+      $action="insert";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_CULINARY_STYLE, null,
+                                            $name, $approval);
+      
+      $id=$results['id'];
+        echo' 
+              <ul class="box_info '.$class_row.'">
+               <input type="hidden" value="'.$id.'" id="id_item">
+               <input type="hidden" value="'.$approval.'" id="approval_item">
+               <input type="hidden" value="0" id="view_status">
+                <li class="stt_member">
+                  <span id="stt_item">'.$stt.'</span>
+                </li>
+                <li class="name_member">
+                   <input class="disabled" id="name_item" type="text" value="'.$name.'" disabled="disabled"> 
+                </li>
+                <li class="email_member">
+                   <input onclick="return status_check(this);" id="status_item" type="checkbox" disabled="disabled" '.$checked.' >
+                </li>
+                <li class="phonenumber_member">
+
+                </li>
+                <li class="update_delete">
+                  <a href="javascript:;" onclick="return edit_item(this);"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+                  <a href="javascript:;" class="delete_item" onclick="return delete_item(this);" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
+                </li>
+              </ul> 
+
+          ';
+      
+  }
+  
+   /*----------------------------Phương thức sử dụng------------------------------------*/
+  public function custom_mode_use()
+  {
+    $data['chosed']="custom_page";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+      //nhu cầu
+     $json_mode_use = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MODE_USE);
+     $data['mode_use_list']=$json_mode_use["Results"];
+    $this->load->view('admin/content/custom_page/mode_use',$data);
+    $this->load->view('admin/footer/footer_main');
+  }
+    public function custom_mode_use_edit()
+  {
+      $id           = $_POST['id_item']; 
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];    
+      $action="edit";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_MODE_USE, $id,
+                                            $name, $approval);
+      
+  }
+  public function custom_mode_use_delete()
+  {
+      $id           = $_POST['id_item'];    
+      $action="delete";
+     // echo $id;
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_MODE_USE, $id,
+                                            null, null);
+     
+  }
+   public function custom_mode_use_add()
+  {
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];
+      $checked="";
+      if($approval==1){
+        $checked="checked";
+      }
+      $stt=$_POST['stt'];
+      $class_row="";
+      if($stt%2!=0){
+        $class_row="row_color";
+      }
+      $stt=$stt+1;
+      $action="insert";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_MODE_USE, null,
+                                            $name, $approval);
+      
+      $id=$results['id'];
+        echo' 
+              <ul class="box_info '.$class_row.'">
+               <input type="hidden" value="'.$id.'" id="id_item">
+               <input type="hidden" value="'.$approval.'" id="approval_item">
+               <input type="hidden" value="0" id="view_status">
+                <li class="stt_member">
+                  <span id="stt_item">'.$stt.'</span>
+                </li>
+                <li class="name_member">
+                   <input class="disabled" id="name_item" type="text" value="'.$name.'" disabled="disabled"> 
+                </li>
+                <li class="email_member">
+                   <input onclick="return status_check(this);" id="status_item" type="checkbox" disabled="disabled" '.$checked.' >
                 </li>
                 <li class="phonenumber_member">
 
@@ -992,7 +1245,446 @@ public function coupon_page()
   }
   
   
+  /*----------------------------Hình thức thanh toán------------------------------------*/
+  public function custom_payment_type()
+  {
+    $data['chosed']="custom_page";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+      //nhu cầu
+     $json_payment_type = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_PAYMENT);
+     $data['payment_type_list']=$json_payment_type["Results"];
+    $this->load->view('admin/content/custom_page/payment_type',$data);
+    $this->load->view('admin/footer/footer_main');
+  }
+    public function custom_payment_type_edit()
+  {
+      $id           = $_POST['id_item']; 
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];    
+      $action="edit";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_PAYMENT, $id,
+                                            $name, $approval);
+      
+  }
+  public function custom_payment_type_delete()
+  {
+      $id           = $_POST['id_item'];    
+      $action="delete";
+     // echo $id;
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_PAYMENT, $id,
+                                            null, null);
+     
+  }
+   public function custom_payment_type_add()
+  {
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];
+      $checked="";
+      if($approval==1){
+        $checked="checked";
+      }
+      $stt=$_POST['stt'];
+      $class_row="";
+      if($stt%2!=0){
+        $class_row="row_color";
+      }
+      $stt=$stt+1;
+      $action="insert";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_PAYMENT, null,
+                                            $name, $approval);
+      
+      $id=$results['id'];
+        echo' 
+              <ul class="box_info '.$class_row.'">
+               <input type="hidden" value="'.$id.'" id="id_item">
+               <input type="hidden" value="'.$approval.'" id="approval_item">
+               <input type="hidden" value="0" id="view_status">
+                <li class="stt_member">
+                  <span id="stt_item">'.$stt.'</span>
+                </li>
+                <li class="name_member">
+                   <input class="disabled" id="name_item" type="text" value="'.$name.'" disabled="disabled"> 
+                </li>
+                <li class="email_member">
+                   <input onclick="return status_check(this);" id="status_item" type="checkbox" disabled="disabled" '.$checked.' >
+                </li>
+                <li class="phonenumber_member">
+
+                </li>
+                <li class="update_delete">
+                  <a href="javascript:;" onclick="return edit_item(this);"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+                  <a href="javascript:;" class="delete_item" onclick="return delete_item(this);" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
+                </li>
+              </ul> 
+
+          ';
+      
+  }
+  /*----------------------------ngoại cảnh------------------------------------*/
+  public function custom_landscape()
+  {
+    $data['chosed']="custom_page";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+      //nhu cầu
+     $json_landscape_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_LANDSCAPE);
+     $data['landscape_list']=$json_landscape_list["Results"];
+     //var_dump($data['favourite_list']);
+    $this->load->view('admin/content/custom_page/landscape',$data);
+    $this->load->view('admin/footer/footer_main');
+  }
+    public function custom_landscape_edit()
+  {
+      $id           = $_POST['id_item']; 
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];    
+      $action="edit";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_LANDSCAPE, $id,
+                                            $name, $approval);
+      
+  }
+  public function custom_landscape_delete()
+  {
+      $id           = $_POST['id_item'];    
+      $action="delete";
+     // echo $id;
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_LANDSCAPE, $id,
+                                            null, null);
+     
+  }
+   public function custom_landscape_add()
+  {
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];
+      $checked="";
+      if($approval==1){
+        $checked="checked";
+      }
+      $stt=$_POST['stt'];
+      $class_row="";
+      if($stt%2!=0){
+        $class_row="row_color";
+      }
+      $stt=$stt+1;
+      $action="insert";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_LANDSCAPE, null,
+                                            $name, $approval);
+      
+      $id=$results['id'];
+        echo' 
+              <ul class="box_info '.$class_row.'">
+               <input type="hidden" value="'.$id.'" id="id_item">
+               <input type="hidden" value="'.$approval.'" id="approval_item">
+               <input type="hidden" value="0" id="view_status">
+                <li class="stt_member">
+                  <span id="stt_item">'.$stt.'</span>
+                </li>
+                <li class="name_member">
+                   <input class="disabled" id="name_item" type="text" value="'.$name.'" disabled="disabled"> 
+                </li>
+                <li class="email_member">
+                   <input onclick="return status_check(this);" id="status_item" type="checkbox" disabled="disabled" '.$checked.' >
+                </li>
+                <li class="phonenumber_member">
+
+                </li>
+                <li class="update_delete">
+                  <a href="javascript:;" onclick="return edit_item(this);"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+                  <a href="javascript:;" class="delete_item" onclick="return delete_item(this);" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
+                </li>
+              </ul> 
+
+          ';
+      
+  }
+    /*-------------------------Giá trung bình người------------------------------------*/
+  public function custom_price_person()
+  {
+    $data['chosed']="custom_page";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+  
+     $json_price_person_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_PRICE_PERSON);
+     $data['price_person_list']=$json_price_person_list["Results"];
+     //var_dump($data['favourite_list']);
+    $this->load->view('admin/content/custom_page/price_person',$data);
+    $this->load->view('admin/footer/footer_main');
+  }
+    public function custom_price_person_edit()
+  {
+      $id           = $_POST['id_item']; 
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];    
+      $action="edit";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_PRICE_PERSON, $id,
+                                            $name, $approval);
+      
+  }
+  public function custom_price_person_delete()
+  {
+      $id           = $_POST['id_item'];    
+      $action="delete";
+     // echo $id;
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_PRICE_PERSON, $id,
+                                            null, null);
+     
+  }
+   public function custom_price_person_add()
+  {
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];
+      $checked="";
+      if($approval==1){
+        $checked="checked";
+      }
+      $stt=$_POST['stt'];
+      $class_row="";
+      if($stt%2!=0){
+        $class_row="row_color";
+      }
+      $stt=$stt+1;
+      $action="insert";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_PRICE_PERSON, null,
+                                            $name, $approval);
+      
+      $id=$results['id'];
+        echo' 
+              <ul class="box_info '.$class_row.'">
+               <input type="hidden" value="'.$id.'" id="id_item">
+               <input type="hidden" value="'.$approval.'" id="approval_item">
+               <input type="hidden" value="0" id="view_status">
+                <li class="stt_member">
+                  <span id="stt_item">'.$stt.'</span>
+                </li>
+                <li class="name_member">
+                   <input class="disabled" id="name_item" type="text" value="'.$name.'" disabled="disabled"> 
+                </li>
+                <li class="email_member">
+                   <input onclick="return status_check(this);" id="status_item" type="checkbox" disabled="disabled" '.$checked.' >
+                </li>
+                <li class="phonenumber_member">
+
+                </li>
+                <li class="update_delete">
+                  <a href="javascript:;" onclick="return edit_item(this);"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+                  <a href="javascript:;" class="delete_item" onclick="return delete_item(this);" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
+                </li>
+              </ul> 
+
+          ';
+      
+  }
+  /*----------------------------Các tiêu chí khác------------------------------------*/
+  public function custom_other_criteria()
+  {
+    $data['chosed']="custom_page";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+      //nhu cầu
+     $json_other_criteria_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_OTHER_CRITERIA);
+     $data['other_criteria_list']=$json_other_criteria_list["Results"];
+     //var_dump($data['favourite_list']);
+    $this->load->view('admin/content/custom_page/other_criteria',$data);
+    $this->load->view('admin/footer/footer_main');
+  }
+    public function custom_other_criteria_edit()
+  {
+      $id           = $_POST['id_item']; 
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];    
+      $action="edit";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_OTHER_CRITERIA, $id,
+                                            $name, $approval);
+      
+  }
+  public function custom_other_criteria_delete()
+  {
+      $id           = $_POST['id_item'];    
+      $action="delete";
+     // echo $id;
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_OTHER_CRITERIA, $id,
+                                            null, null);
+     
+  }
+   public function custom_other_criteria_add()
+  {
+      $name        = $_POST['name_item'];
+      $approval   = $_POST['approval_item'];
+      $checked="";
+      if($approval==1){
+        $checked="checked";
+      }
+      $stt=$_POST['stt'];
+      $class_row="";
+      if($stt%2!=0){
+        $class_row="row_color";
+      }
+      $stt=$stt+1;
+      $action="insert";
+      
+      $results = $this->common_apis->update_base_collection($action,Api_link_enum::COLLECTION_OTHER_CRITERIA, null,
+                                            $name, $approval);
+      
+      $id=$results['id'];
+        echo' 
+              <ul class="box_info '.$class_row.'">
+               <input type="hidden" value="'.$id.'" id="id_item">
+               <input type="hidden" value="'.$approval.'" id="approval_item">
+               <input type="hidden" value="0" id="view_status">
+                <li class="stt_member">
+                  <span id="stt_item">'.$stt.'</span>
+                </li>
+                <li class="name_member">
+                   <input class="disabled" id="name_item" type="text" value="'.$name.'" disabled="disabled"> 
+                </li>
+                <li class="email_member">
+                   <input onclick="return status_check(this);" id="status_item" type="checkbox" disabled="disabled" '.$checked.' >
+                </li>
+                <li class="phonenumber_member">
+
+                </li>
+                <li class="update_delete">
+                  <a href="javascript:;" onclick="return edit_item(this);"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+                  <a href="javascript:;" class="delete_item" onclick="return delete_item(this);" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
+                </li>
+              </ul> 
+
+          ';
+      
+  }
   
   
-//====================================end custom favourite===================  
+//====================================end custom search===================  
+  
+//====================Chính sách bảo mật, điều khoản sử dụng, việc làm, hỏi đáp, liên hệ....========
+  //chính sách bảo mật------------
+  public function privacy_policy(){
+    $data['chosed']="custom_page";
+    $data['title_item']="Chính Sách Bảo Mật";
+    $data['field_value']="privacy_policy";
+    
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    $this->load->view('admin/content/custom_page/form_editor');
+    $this->load->view('admin/footer/footer_main');
+    
+    
+    
+  }
+  
+  
+  //Điều khoản sử dụng------------
+  public function terms_of_use(){
+    $data['chosed']="custom_page";
+    $data['title_item']="Điều Khoản Sử Dụng";
+    $data['field_value']="terms_of_use";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    $this->load->view('admin/content/custom_page/form_editor');
+    $this->load->view('admin/footer/footer_main');
+    
+    
+    
+  }
+  
+  //việc làm------------
+  public function employment(){
+    $data['chosed']="custom_page";
+    $data['title_item']="Việc Làm";
+    $data['field_value']="employment";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    $this->load->view('admin/content/custom_page/form_editor');
+    $this->load->view('admin/footer/footer_main');
+    
+    
+    
+  }
+  
+   //Hỏi đáp------------
+  public function faq(){
+    $data['chosed']="custom_page";
+    $data['title_item']="Hỏi Đáp";
+    $data['field_value']="faq";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    $this->load->view('admin/content/custom_page/form_editor');
+    $this->load->view('admin/footer/footer_main');
+    
+    
+    
+  }
+   //Liên hệ------------
+  public function contact_us(){
+    $data['chosed']="custom_page";
+    $data['title_item']="Liên Hệ";
+    $data['field_value']="contact_us";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    $this->load->view('admin/content/custom_page/form_editor');
+    $this->load->view('admin/footer/footer_main');
+    
+    
+    
+  }
+     //Bảng báo giá------------
+  public function quotation(){
+    $data['chosed']="custom_page";
+    $data['title_item']="Bảng Báo Giá";
+    $data['field_value']="quotation";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    $this->load->view('admin/content/custom_page/form_editor');
+    $this->load->view('admin/footer/footer_main');
+    
+    
+    
+  }
+  
+  //cập nhật các điều khoản của slick
+  public function update_terms_slick(){
+    $id               =$_POST['id'];
+    $content          =$_POST['content'];
+    $image_use        =$_POST['string_image_filter'];
+    $image_delete     =$_POST['string_image_delete_filter'];      
+    $field_value      =$_POST['field_value'];
+    
+    
+    echo "Xinh về rồi nên chưa có hàm xử lý :(";
+   /* echo "id: ".$id."</br>";
+    echo "nội dung: ".$content."</br>";
+    echo "image sử dụng: ".$image_use."</br>";
+    echo "image xoa: ".$image_delete."</br>";
+    echo "field update: ".$field_value."</br>";
+    */
+  }
+
+
+
+
+//==================== end Chính sách bảo mật, điều khoản sử dụng, việc làm, hỏi đáp, liên hệ....========  
+  
+  
 }

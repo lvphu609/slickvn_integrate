@@ -1,0 +1,132 @@
+/* 
+    Document   : content
+    Created on : 28-12-2013, 11:48:18
+    Author     : phule@innoria.com
+    Description:
+*/
+#content_show_terms{
+  float: left;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  background: url('../../../../includes/images/icon/slidebg.png'); 
+}
+#content_show_terms .box_align_center{
+  width: 1024px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/*left==================================================*/
+#content_show_terms .box_align_center .box_left{
+  width: 260px;
+  height: auto;
+  float: left;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  
+   /*temp
+  height: 500px;
+  background: #000;*/
+
+  
+}
+#content_show_terms .box_align_center .box_left ul{
+  width: 260px;
+  height: auto;
+  float: left;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  list-style: none;
+  
+   /*temp
+  height:100px;
+  background: #FFF;*/
+
+  
+}
+#content_show_terms .box_align_center .box_left ul li{
+  width: 260px;
+  height: 40px;;
+  float: left;
+  margin-bottom: 5px;  
+   /*temp
+  background: #00620C;*/
+
+  
+}
+
+#content_show_terms .box_align_center .box_left ul li .left{
+  width: 230px;
+  height: 40px;;
+  float: left;
+  cursor: pointer;
+   /*temp*/
+  background: url(../../../../includes/images/icon/bg_blurred_active.png);
+ text-align: center;
+  
+}
+
+#content_show_terms .box_align_center .box_left ul li .left:hover{
+  opacity: 0.5;
+  
+}
+
+#content_show_terms .box_align_center .box_left ul li .left span{
+ color: #FFF;
+ font-size: 17px;
+ font-weight: bold;
+  
+}
+
+#content_show_terms .box_align_center .box_left ul li .left span .text_center{
+ margin-top: 10px;
+  
+}
+#content_show_terms .box_align_center .box_left ul li .left span .selected{
+ color: #FF7E00;
+  
+}
+
+#content_show_terms .box_align_center .box_left ul li .right{
+  width: 30px;
+  height: 40px;;
+  float: left;
+  
+  
+   /*temp
+  background: #00AAE7;*/
+
+  
+}
+#content_show_terms .box_align_center .box_left ul li .right.selected{
+  width: 30px;
+  height: 40px;;
+  float: left;
+  
+   /*temp*/
+  background: url('../../../../includes/images/icon/icon_chosed.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px 40px;
+
+  
+}
+
+
+
+/*right===============================================================================*/
+#content_show_terms .box_align_center .box_right{
+  width: 764px;
+  height: auto;
+  float: left;
+  
+  margin-bottom: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  
+  /*temp*/
+  min-height: 300px;
+  background: #FFF;
+  
+}

@@ -1038,44 +1038,26 @@ class Common_model extends CI_Model{
 	            'y'=>'ý|ỳ|ỷ|ỹ|ỵ|Ý|Ỳ|Ỷ|Ỹ|Ỵ',
 	            );
 	    foreach($utf8 as $ascii=>$uni) $str = preg_replace("/($uni)/i",$ascii,$str);
-  	return $str;
+	return $str;
 	}
         
-  public function &array_merge_recursive_distinct ( &$array1, &$array2 ){            
+        public function &array_merge_recursive_distinct ( &$array1, &$array2 ){
+            
 	  $merged = $array1;
+
 	  foreach ( $array2 as $key => &$value )
 	  {
-		  if ( is_array ( $value ) && isset ( $merged [$key] ) && is_array ( $merged [$key] ) )
-		  {
-		    $merged [$key] = array_merge_recursive_distinct ( $merged [$key], $value );
-		  }
-		  else
-		  {
-		    $merged [$key] = $value;
-		  }
-    }
-   }
-        
- public function get_website_info_list()
- {
-   $this->collection = $this->slickvn_db->website_info;                
-   $results = iterator_to_array($this->collection->find(array(), array("code" => "code", "name" => "name")));
-   return $results;    
- }
- 
- public function get_website_info_by_code($code)
- {
-   $data = $this->slickvn_db->website_info->find(array("code"=>$code),array("content" => "content"));
-   $result="";
-   foreach($data as $value)
-   {
-      $result = $value['content'];
-   }
-   return $result;
-   var_dump($result);
- }
- 
-        
+		if ( is_array ( $value ) && isset ( $merged [$key] ) && is_array ( $merged [$key] ) )
+		{
+		  $merged [$key] = array_merge_recursive_distinct ( $merged [$key], $value );
+		}
+		else
+		{
+		  $merged [$key] = $value;
+		}
+	  }
+        }
+
 }
 
 ?>

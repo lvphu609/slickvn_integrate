@@ -189,6 +189,7 @@
   function save_custom_view_page(object){
     $(object).closest('ul').find('#save_success').remove();
     var div_loading='<div id="save_loading"></div>';
+    
     $(object).closest('ul').find('.phonenumber_custom_view').append(div_loading);
     
   
@@ -224,7 +225,9 @@
                 $(object).closest('ul').find('#save_loading').remove();
                 var div_save_success='<div id="save_success"></div>';
                 $(object).closest('ul').find('.phonenumber_custom_view').append(div_save_success);
-
+                  setTimeout(function(){
+                  $(object).closest('ul').find('#save_success').remove();
+                },1000);
 
          },
            error: function(a,textStatus,b){

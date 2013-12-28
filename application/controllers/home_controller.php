@@ -3,7 +3,7 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 require APPPATH.'/models/api_link_enum.php';
-
+require APPPATH.'/models/common/templater.php';
 class Home_controller extends CI_Controller {
    public function __construct() {
     parent::__construct();
@@ -13,9 +13,13 @@ class Home_controller extends CI_Controller {
     $this->load->model('restaurant/restaurant_apis');
     $this->load->model('common/common_apis');
     $this->load->model('user/user_apis');
-    
+    $this->load->model('common/common_model');
     $this->load->library('session');
     $this->info_user   = $this->session->userdata('info_user');
+    
+    
+    
+    
     
   }
   public function test_sess(){
@@ -1024,6 +1028,228 @@ class Home_controller extends CI_Controller {
      }
       
     }
-  
+    
+//=============================CÁC ĐIỀU KHOẢN CỦA SLICKVN=================
+  /*function show_terms_slick(){
+    
+    //privacy_policy chính sách bảo mật
+    //terms_of_use điều khoản sử dụng
+    //employment việc làm
+    //faq hỏi đáp
+    //contact_us liên hệ
+    //quotation bảng báo giá
+    
+    
+   if(isset($_GET['field_value'])){
+    if(!empty($_GET['field_value'])){
+      $field_value=$_GET['field_value'];
+      
+      //chính sách bảo mật----------------------------------------------------------
+      if(strcmp($field_value,"privacy_policy")==0){        
+        
+        $data['title_item']="Chính Sách Bảo Mật";
+        $this->load->view('terms_slick/header/header',$data);
+        $data['field_value']=$field_value;
+        //menu
+        $info_user=$this->info_user;
+        $data['info_user']=$info_user;
+
+        $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+        $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
+
+        $data['meal_list']=$json_meal_list["Results"];
+        $data['favourite_list']=$json_favourite_list["Results"];    
+        if($data['meal_list']!=NULL&& $data['favourite_list']!=NULL){
+         $this->load->view('home/menu/menu',$data);
+        }
+        //end menu
+        //content--
+        $this->load->view('terms_slick/content/location_page');
+        $this->load->view('terms_slick/content/content');
+        
+        //end content--
+        
+        $this->load->view('home/content/footer_content');
+        
+      }  
+      
+      //điều khoản sử dụng--------------------------------------------------------------
+      if(strcmp($field_value,"terms_of_use")==0){
+        $data['title_item']="Điều Khoản Sử Dụng";
+         $this->load->view('terms_slick/header/header',$data);
+         $data['field_value']=$field_value;
+        //menu
+        $info_user=$this->info_user;
+        $data['info_user']=$info_user;
+
+        $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+        $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
+
+        $data['meal_list']=$json_meal_list["Results"];
+        $data['favourite_list']=$json_favourite_list["Results"];    
+        if($data['meal_list']!=NULL&& $data['favourite_list']!=NULL){
+         $this->load->view('home/menu/menu',$data);
+        }
+        //end menu
+        //content--
+        $this->load->view('terms_slick/content/location_page');
+        $this->load->view('terms_slick/content/content');
+        
+        //end content--
+        
+        $this->load->view('home/content/footer_content');
+      }  
+      
+      //việc làm-------------------------------------------------------------------------
+      if(strcmp($field_value,"employment")==0){
+       $data['title_item']="Việc Làm";
+        $this->load->view('terms_slick/header/header',$data);
+        $data['field_value']=$field_value;
+        //menu
+        $info_user=$this->info_user;
+        $data['info_user']=$info_user;
+
+        $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+        $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
+
+        $data['meal_list']=$json_meal_list["Results"];
+        $data['favourite_list']=$json_favourite_list["Results"];    
+        if($data['meal_list']!=NULL&& $data['favourite_list']!=NULL){
+         $this->load->view('home/menu/menu',$data);
+        }
+        //end menu
+        //content--
+        $this->load->view('terms_slick/content/location_page');
+        $this->load->view('terms_slick/content/content');
+        
+        //end content--
+        
+        $this->load->view('home/content/footer_content');
+      }  
+      
+      //hỏi đáp--------------------------------------------------------------------------
+      if(strcmp($field_value,"faq")==0){
+        $data['title_item']="Hỏi Đáp";
+         $this->load->view('terms_slick/header/header',$data);
+         $data['field_value']=$field_value;
+        //menu
+        $info_user=$this->info_user;
+        $data['info_user']=$info_user;
+
+        $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+        $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
+
+        $data['meal_list']=$json_meal_list["Results"];
+        $data['favourite_list']=$json_favourite_list["Results"];    
+        if($data['meal_list']!=NULL&& $data['favourite_list']!=NULL){
+         $this->load->view('home/menu/menu',$data);
+        }
+        //end menu
+        //content--
+        $this->load->view('terms_slick/content/location_page');
+        $this->load->view('terms_slick/content/content');
+        
+        //end content--
+        
+        $this->load->view('home/content/footer_content');
+      }  
+      
+      //liên hệ---------------------------------------------------------------------------
+      if(strcmp($field_value,"contact_us")==0){
+        $data['title_item']="Liên Hệ";
+         $this->load->view('terms_slick/header/header',$data);
+         $data['field_value']=$field_value;
+        //menu
+        $info_user=$this->info_user;
+        $data['info_user']=$info_user;
+
+        $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+        $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
+
+        $data['meal_list']=$json_meal_list["Results"];
+        $data['favourite_list']=$json_favourite_list["Results"];    
+        if($data['meal_list']!=NULL&& $data['favourite_list']!=NULL){
+         $this->load->view('home/menu/menu',$data);
+        }
+        //end menu
+        //content--
+        $this->load->view('terms_slick/content/location_page');
+        $this->load->view('terms_slick/content/content');
+        
+        //end content--
+        
+        $this->load->view('home/content/footer_content');
+      }  
+      
+      //bảng báo giá---------------------------------------------------------------------
+      if(strcmp($field_value,"quotation")==0){
+        $data['title_item']="Bảng Báo Giá";
+         $this->load->view('terms_slick/header/header',$data);
+         $data['field_value']=$field_value;
+        //menu
+        $info_user=$this->info_user;
+        $data['info_user']=$info_user;
+
+        $json_meal_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_MEAL_TYPE,1);  
+        $json_favourite_list = $this->common_apis->get_base_collection(Api_link_enum::COLLECTION_FAVOURITE,1);
+
+        $data['meal_list']=$json_meal_list["Results"];
+        $data['favourite_list']=$json_favourite_list["Results"];    
+        if($data['meal_list']!=NULL&& $data['favourite_list']!=NULL){
+         $this->load->view('home/menu/menu',$data);
+        }
+        //end menu
+        //content--
+        $this->load->view('terms_slick/content/location_page');
+        $this->load->view('terms_slick/content/content');
+        
+        //end content--
+        
+        $this->load->view('home/content/footer_content');
+      }  
+      
+      
+      
+    }
+   }
+   
+   
+  }*/
+    
+    
+    function webinfo(){
+      $filter="";
+      if(isset($_GET['f'])){    
+        $filter=$_GET['f'];
+      }
+      $item_url=  base_url();
+      
+      $this->load->view('terms_slick/header/header');
+      
+      $name = 'C:\wamp\www\slickvn_integrate\application\views\terms_slick\content\info_item.tpl';      
+      $template = new Templater($name);
+                  
+      $data = $this->common_model->get_website_info_list();      
+      $result = "";
+      $i = 0;
+      foreach ($data as $value){
+        $template->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
+        $template->item_name = $value['name'];
+        if ((empty($filter) && (($i++==0))) || (strcmp ($filter, $value['code'])==0))
+        {
+          $template->is_selected = "selected";          
+          $content['item_selected_content'] = $this->common_model->get_website_info_by_code($value['code']);
+        }
+        else
+        {
+          $template->is_selected = "";
+        }                  
+        $result = $result.$template->parse();
+      }
+            
+      $content['item_list'] = $result;
+      
+      $this->load->view('terms_slick/content/content', $content);                 
+   }        
 }
 

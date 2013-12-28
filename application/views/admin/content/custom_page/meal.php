@@ -2,16 +2,16 @@
 <?php $url=  base_url();?>
 
 
-<div id="custom_favourite">
-  <div id="content_custom_favourite">
-   <div class="custom_favourite_title">
-     <span style="font-size: 15px;"><div class=member_page_text">Tùy chỉnh > Quản lý mục tìm kiếm > Nhu cầu</div></span>
+<div id="custom_meal">
+  <div id="content_custom_meal">
+   <div class="custom_meal_title">
+     <span style="font-size: 15px;"><div class=member_page_text">Tùy chỉnh > Quản lý mục tìm kiếm > Món ăn</div></span>
    </div>
    <div class="create_new_member">
      <a href="javascript:;" onclick="return form_add_item();">
         <div class="btn_create_new_member">
             <div class="left"></div>
-            <div class="middle"><span><div class="text_center">Tạo nhu cầu mới</div></span></div>
+            <div class="middle"><span><div class="text_center">Tạo món ăn mới</div></span></div>
             <div class="right"></div>
         </div>
      </a>
@@ -39,7 +39,7 @@
          <span>Mã thành viên</span>
        </li>-->
        <li class="name_member">
-         <span class="index_bole">Nhu cầu</span>
+         <span class="index_bole">Món ăn</span>
          <div class="line_index"></div>
        </li>
 <!--       <li class="job_member">
@@ -84,8 +84,8 @@
       </div>
 <?php 
 $stt=1;
-if(is_array($favourite_list)&&  sizeof($favourite_list)>0){
-foreach ($favourite_list as $value){
+if(is_array($meal_list)&&  sizeof($meal_list)>0){
+foreach ($meal_list as $value){
       
       $id              =$value['id'];
       $name            =$value['name'];
@@ -188,8 +188,8 @@ foreach ($favourite_list as $value){
     var approval_item = $(object).closest('ul').find('#approval_item').val();
     
     var url=$("#hidUrl").val();
-    var url_api=url+"index.php/admin/admin_controller/custom_favourite_add";
-    var stt_item=parseInt($(object).closest('#custom_favourite').find('ul').last().find('#stt_item').text());
+    var url_api=url+"index.php/admin/admin_controller/custom_meal_add";
+    var stt_item=parseInt($(object).closest('#custom_meal').find('ul').last().find('#stt_item').text());
       var data={
 
                  name_item      :    name_item,
@@ -212,7 +212,7 @@ foreach ($favourite_list as $value){
             
             
             setTimeout(function(){
-               $('#custom_favourite').find('#div_save_success').remove();
+               $('#custom_meal').find('#div_save_success').remove();
             },1000);
             
             
@@ -271,7 +271,7 @@ foreach ($favourite_list as $value){
    var approval_item = $(object).closest('ul').find('#approval_item').val();
    
    var url=$("#hidUrl").val();
-   var url_api=url+"index.php/admin/admin_controller/custom_favourite_edit";
+   var url_api=url+"index.php/admin/admin_controller/custom_meal_edit";
      var data={
                 
                 id_item : id_item,          
@@ -295,7 +295,7 @@ foreach ($favourite_list as $value){
             $(object).closest('ul').find('#div_save_item').remove();
             
             setTimeout(function(){
-               $('#custom_favourite').find('#div_save_success').remove();
+               $('#custom_meal').find('#div_save_success').remove();
             },1000);
           },
          error: function(a,textStatus,b){
@@ -313,7 +313,7 @@ foreach ($favourite_list as $value){
       
       $(object).parent().parent().addClass('select_delete');
       var url=$("#hidUrl").val();
-      var url_api=url+"index.php/admin/admin_controller/custom_favourite_delete";
+      var url_api=url+"index.php/admin/admin_controller/custom_meal_delete";
       var data_value_delete=$(object).attr('data-value_delete');
       var id_item        = $(object).closest('ul').find('#id_item').val();
       $( ".delete_item_dialog" ).dialog({

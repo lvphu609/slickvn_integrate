@@ -1,0 +1,332 @@
+#custom_meal{
+  width: 85%;
+  height: auto;
+  float: left;
+  /*background-color: #00620C;*/
+}
+#custom_meal #content_custom_meal{
+  margin-top: 100px;
+  width: 93%;
+  height: auto;
+  float: left;
+  margin-left: 5%;
+  margin-right: 2%;
+   
+ /* background: #0066FF;*/
+  
+}
+#custom_meal #content_custom_meal .custom_meal_title{
+ width: 35%;
+ height: auto;
+ float: left;
+ 
+/* background: #6c7670;*/
+}
+
+#custom_meal #content_custom_meal .custom_meal_title span{
+  color: #000;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: sans-serif, Arial;
+}
+#custom_meal #content_custom_meal .line_title{
+  width: 100%;
+  height: 1px;
+  float: left;
+  background: #d4d4d4;
+}
+
+#custom_meal #content_custom_meal .create_new_member{
+  width: 190px;
+  height: auto;
+  float: left;
+  
+  /*background: #00BDFF;*/
+}
+#custom_meal #content_custom_meal .input_search_member{
+  width: 25%;
+  height: 30px;
+  float: right;
+  border: 1px solid #d4d4d4;
+  /*background: #00BDFF;*/
+}
+#custom_meal #content_custom_meal .input_search_member .logo_search{
+  width: 13%;
+  height: 30px;
+  float: left;
+   background: url('../../../includes/images/icon/SLICK FAV ICON.png');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 30px;
+   
+}
+#custom_meal #content_custom_meal .input_search_member .box_text_search{
+  width: 74%;
+  height: 30px;
+  float: left;
+  background: #a6e1ec;
+}
+#custom_meal #content_custom_meal .input_search_member .box_text_search .input_text_search{
+  width: 100%;
+  height: 30px;
+  float: left;
+  border: 0px solid;
+  padding-left: 10px;
+  
+
+
+  background: #fff;
+  font-size: 15px;
+  font-style: oblique;
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
+  padding: 5px 0 6px 8px;
+  -webkit-appearance: none;
+  
+}
+
+
+#custom_meal #content_custom_meal .input_search_member .image_btn_search{
+  width: 13%;
+  height: 30px;
+  float: left;
+  
+  background: url('../../../includes/images/icon/image_btn_search.png'); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 65% 20px;
+  cursor: pointer;
+  
+  
+  
+  
+}
+
+
+
+
+
+#custom_meal #content_custom_meal .create_new_member a{
+  text-decoration: none;
+}
+#custom_meal #content_custom_meal .create_new_member a:hover .btn_create_new_member .middle span{
+  color: #FFA54E;
+}
+#custom_meal #content_custom_meal .create_new_member .btn_create_new_member{
+  width: 190px;
+  height: 35px;
+  
+ /* background: #d4d4d4;*/
+}
+
+
+
+#custom_meal #content_custom_meal .create_new_member .btn_create_new_member .left{
+  width: 5px;
+  height: 35px;
+  float: left;
+  background: url('../../../includes/images/icon/greenbutton_left.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 5px 35px;
+  
+}
+#custom_meal #content_custom_meal .create_new_member .btn_create_new_member .middle{
+  width: 180px;
+  height: 35px;
+  float: left;
+  background: url('../../../includes/images/icon/greenbutton_middle.png');
+  
+  text-align: center;
+  background-size: 5px 35px;
+}
+#custom_meal #content_custom_meal .create_new_member .btn_create_new_member .middle span{
+  color: #FFF;
+  font-family: sans-serif;
+  font-size: 17px;
+}
+#custom_meal #content_custom_meal .create_new_member .btn_create_new_member .middle
+.text_center{
+  height: 10px;
+  width: 180px;
+  margin-top: 6px;
+  float: left;
+}
+#custom_meal #content_custom_meal .create_new_member .btn_create_new_member .right{
+  width: 5px;
+  height: 35px;
+  float: left;
+  background: url('../../../includes/images/icon/greenbutton_right.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 5px 35px;
+  
+}
+
+/*member list*/
+#custom_meal #content_custom_meal .member_list{
+ width: 100%;
+ height: auto;
+ margin-top: 5%;
+ 
+ /*height:100px; 
+ background:#FFA54E; */
+}
+
+#custom_meal #content_custom_meal .member_list .box_info{
+ width: 100%;
+ height: 50px;
+ list-style: none;
+ float: left;
+ text-align: center;
+ 
+ /*height:100px; 
+ background:#FFA54E;*/
+}
+
+#custom_meal #content_custom_meal .member_list .row_color{
+  background: #a6e1ec;
+}
+
+#custom_meal #content_custom_meal .member_list .form_add_item{
+  background: #a6e1ec;
+}
+
+
+#custom_meal #content_custom_meal .member_list .box_info li{
+ height: auto;
+ float: left;
+ margin-top: 15px;
+}
+#custom_meal #content_custom_meal .member_list .box_info li .index_bole{
+ font-weight: bold;
+ font-size: 15px;
+ font-family: sans-serif, serif;
+}
+
+#custom_meal #content_custom_meal .member_list .box_info li .line_index{
+ float: bottom;
+ width: 100%;
+ height: 2px;
+ background: #a6e1ec;
+}
+
+#custom_meal #content_custom_meal .member_list .box_info li.stt_member{
+ width: 10%;
+ /*temp
+ background: #00AAE7;*/
+}
+
+#custom_meal #content_custom_meal .member_list .box_info li.code_member{
+ width: 9%;
+ margin-left: 1%;
+ /*temp
+ background: #d4d4d4;*/
+}
+
+#custom_meal #content_custom_meal .member_list .box_info li.name_member{
+ width: 40%;
+ margin-left: 1%;
+ text-align: left;
+ /*temp
+ background: #47a447;*/
+}
+
+
+
+#custom_meal #content_custom_meal .member_list .box_info li.name_member input{
+ width: 100%;
+ height: 25px;
+ margin-top: -2px;
+ border: 1px solid #eee;
+ padding-left: 5px;
+ /*temp
+ background: #47a447;*/
+}
+#custom_meal #content_custom_meal .member_list .box_info li.name_member input.disabled{
+ background: #eee;
+}
+#custom_meal #content_custom_meal .member_list .box_info li.job_member{
+ width: 14%;
+ margin-left: 1%;
+ /*temp
+ background: #5bc0de;*/
+}
+#custom_meal #content_custom_meal .member_list .box_info li.email_member{
+ width: 17%;
+ margin-left: 1%;
+ /*temp
+ background: #78A000;*/
+}
+#custom_meal #content_custom_meal .member_list .box_info li.phonenumber_member{
+ width: 17%;
+ margin-left: 1%;
+ float: left;
+ /*temp
+ background: #d5d59d;*/
+}
+#custom_meal #content_custom_meal .member_list .box_info li.phonenumber_member #div_save_item{
+ width: 30px;
+ height: 30px;
+ float: left;
+ background: url('../../../includes/images/icon/actions-file-save-icon.png');
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: 30px 30px;
+ cursor: pointer;
+  margin-top: -3px;
+}
+#custom_meal #content_custom_meal .member_list .box_info li.phonenumber_member #div_save_loading{
+  width: 30px;
+  height: 30px;
+  float: left;
+  background: url('../../../includes/images/icon/loading_3.gif');
+  background-size: 25px 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+   margin-top: -3px;
+}
+#custom_meal #content_custom_meal .member_list .box_info li.phonenumber_member #div_save_success{
+  width: 30px;
+  height: 30px;
+  float: left;
+  background: url('../../../includes/images/icon/checked.png');
+  background-size: 25px 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -5px;
+}
+
+
+#custom_meal #content_custom_meal .member_list .box_info li.company{
+ width: 14%;
+ margin-left: 1%;
+ /*temp
+ background: #f8efc0;*/
+}
+#custom_meal #content_custom_meal .member_list .box_info li.update_delete{
+ width: 9%;
+ margin-left: 1%;
+ /*temp
+ background: #A9D866;*/
+}
+#custom_meal #content_custom_meal .member_list .box_info li.update_delete .edit{
+ width: 40px;
+ height: 30px;
+ float: left;
+ background: url('../../../includes/images/icon/view_icn.png');
+ background-repeat: no-repeat;
+ background-position: center;
+}
+#custom_meal #content_custom_meal .member_list .box_info li.update_delete .delete{
+ width: 40px;
+ height: 30px;
+ float: left;
+ background: url('../../../includes/images/icon/delete_member.png');
+ background-repeat: no-repeat;
+ background-position: center;
+}
+#custom_meal #content_custom_meal .member_list .select_delete{
+ background: #c9e2b3;
+}
