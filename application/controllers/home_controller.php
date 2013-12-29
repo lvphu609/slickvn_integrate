@@ -117,8 +117,7 @@ class Home_controller extends CI_Controller {
       $item_url=  base_url();
       $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
       $template_footer_content_info_item = new Templater($footer_content_info_item);                  
-      $website_info_list = $this->common_apis->get_website_info_list(1);   
-      var_dump($website_info_list);
+      $website_info_list = $this->common_apis->get_website_info_list(1);  
       $result_website_info_list = "";
       $i = 0;
       foreach ($website_info_list['Results'] as $value){
@@ -169,10 +168,10 @@ class Home_controller extends CI_Controller {
           $item_url=  base_url();
           $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
           $template_footer_content_info_item = new Templater($footer_content_info_item);                  
-          $website_info_list = $this->common_model->get_website_info_list();      
+          $website_info_list = $this->common_apis->get_website_info_list(1);  
           $result_website_info_list = "";
           $i = 0;
-          foreach ($website_info_list as $value){
+          foreach ($website_info_list['Results'] as $value){
             $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
             $template_footer_content_info_item->item_name = $value['name'];
             $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();
@@ -216,10 +215,10 @@ class Home_controller extends CI_Controller {
           $item_url=  base_url();
           $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
           $template_footer_content_info_item = new Templater($footer_content_info_item);                  
-          $website_info_list = $this->common_model->get_website_info_list();      
+          $website_info_list = $this->common_apis->get_website_info_list(1);  
           $result_website_info_list = "";
           $i = 0;
-          foreach ($website_info_list as $value){
+          foreach ($website_info_list['Results'] as $value){
             $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
             $template_footer_content_info_item->item_name = $value['name'];
             $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();
@@ -256,10 +255,10 @@ class Home_controller extends CI_Controller {
         $item_url=  base_url();
         $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
         $template_footer_content_info_item = new Templater($footer_content_info_item);                  
-        $website_info_list = $this->common_model->get_website_info_list();      
+        $website_info_list = $this->common_apis->get_website_info_list(1);  
         $result_website_info_list = "";
         $i = 0;
-        foreach ($website_info_list as $value){
+        foreach ($website_info_list['Results'] as $value){
           $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
           $template_footer_content_info_item->item_name = $value['name'];
           $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();
@@ -795,10 +794,10 @@ class Home_controller extends CI_Controller {
           $item_url=  base_url();
           $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
           $template_footer_content_info_item = new Templater($footer_content_info_item);                  
-          $website_info_list = $this->common_model->get_website_info_list();      
+          $website_info_list = $this->common_apis->get_website_info_list(1);  
           $result_website_info_list = "";
           $i = 0;
-          foreach ($website_info_list as $value){
+          foreach ($website_info_list['Results'] as $value){
             $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
             $template_footer_content_info_item->item_name = $value['name'];
             $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();
@@ -1327,17 +1326,18 @@ class Home_controller extends CI_Controller {
      //content--- 
       $name = 'application/views/terms_slick/content/info_item.tpl';      
       $template = new Templater($name);                  
-      $data = $this->common_model->get_website_info_list();      
+      $data = $this->common_apis->get_website_info_list(1);      
       $result = "";
       $i = 0;
-      foreach ($data as $value){
+      foreach ($data['Results'] as $value){
         $template->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
         $template->item_name = $value['name'];
         if ((empty($filter) && (($i++==0))) || (strcmp ($filter, $value['code'])==0))
         {
           $template->is_selected = "selected";
           $data['title_item']=$value['name'];
-          $content['item_selected_content'] = $this->common_model->get_website_info_by_code($value['code']);
+           $result_content= $this->common_apis->get_website_info_by_code($value['code']);
+           $content['item_selected_content']=$result_content['Results'][0]['content'];
         }
         else
         {
@@ -1355,10 +1355,10 @@ class Home_controller extends CI_Controller {
           $item_url=  base_url();
           $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
           $template_footer_content_info_item = new Templater($footer_content_info_item);                  
-          $website_info_list = $this->common_model->get_website_info_list();      
+          $website_info_list = $this->common_apis->get_website_info_list(1);  
           $result_website_info_list = "";
           $i = 0;
-          foreach ($website_info_list as $value){
+          foreach ($website_info_list['Results'] as $value){
             $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
             $template_footer_content_info_item->item_name = $value['name'];
             $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();

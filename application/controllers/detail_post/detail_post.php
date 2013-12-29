@@ -57,7 +57,22 @@ class Detail_post extends CI_Controller {
                       
                  
                  
-                  $this->load->view('home/content/footer_content'); 
+                  /*footer content*/  
+                  $item_url=  base_url();
+                  $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
+                  $template_footer_content_info_item = new Templater($footer_content_info_item);                  
+                  $website_info_list = $this->common_apis->get_website_info_list(1);  
+                  $result_website_info_list = "";
+                  $i = 0;
+                  foreach ($website_info_list['Results'] as $value){
+                    $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
+                    $template_footer_content_info_item->item_name = $value['name'];
+                    $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();
+                  }
+
+                  $data['footer_content_info_item_list'] = $result_website_info_list;
+                  $this->load->view('home/content/footer_content',$data);
+               /*end footer content*/ 
                   $this->load->view('detail_post/footer/footer');
               }
             else{}
