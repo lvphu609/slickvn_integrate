@@ -258,8 +258,70 @@ class Common_apis extends CI_Model{
      */
     public function update_info_website_post($action, $id=null, $code=null,
                                              $name=null, $content=null, $approval = null,
+                                             $str_image_post,
                                              $updated_date=null, $created_date=null
                                             ) {
+        
+        $this->load->helper('url');
+        $url = base_url();
+        
+        $is_insert = $this->common_model->checkAction( $action, Common_enum::INSERT );
+        $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
+        $is_delete = $this->common_model->checkAction( $action, Common_enum::DELETE );
+        
+        //  Create directory $path
+        $base_path_website_info = Common_enum::ROOT.Common_enum::DIR_WEBSITE_INFO;
+        $file_temp = Common_enum::ROOT.Common_enum::PATH_TEMP;
+        
+        $this->common_model->createDirectory($base_path_website_info, Common_enum::WINDOWN);
+        if($is_insert == TRUE){
+            $array_image_post = explode(Common_enum::MARK, $str_image_post); //  ['image.jpg', 'image2.png' ,...]
+            foreach ($array_image_post as $i => $value) {
+                $temp = $file_temp.$value;
+                if (file_exists($temp)) {
+                    //  Move file from directory post
+                    $path_image_website_info = $base_path_website_info.$value;
+                    $move_file_content = $this->common_model->moveFileToDirectory($temp, $path_image_website_info);
+                    if(!$move_file_content){
+                        $this->common_model->setError('Move file introduce '.$move_file_content);
+                    }else{
+                        $content = str_replace(str_replace(Common_enum::ROOT, $url ,$temp), 'folder_image_website_info/'.$value, $content);
+                    }
+                }
+            }
+        }
+        else if($is_edit == TRUE){
+            $array_image_post = explode(Common_enum::MARK_, $str_image_post); //  [ {'new_content_1.jpg,new_content.jpg,...'}, {'deleted_introduce_1.jpg,deleted_introduce_2.jpg,...'}]
+            //  string image
+            $str_image_new_content = $array_image_post[0];   // {'new_content_1.jpg,new_content.jpg'}
+            $str_image_delete_content = $array_image_post[1]; //    {'deleted_introduce_1.jpg,deleted_introduce_2.jpg,...'}
+            
+            //  array imega new content
+            $array_image_new_content = explode(Common_enum::MARK, $str_image_new_content);//  [new_avatar.jpg, old_avatar.jpg]
+            
+            foreach ($array_image_new_content as $value) {
+                $temp = $file_temp.$value;
+              if(file_exists($temp)){                 //  check new content
+                    $path_image_website_info = $base_path_website_info.$value;
+                    $move_file_content = $this->common_model->moveFileToDirectory($temp, $path_image_website_info);
+                      if(!$move_file_content){
+                          $this->common_model->setError('Move file introduce '.$move_file_content);
+                      }else{
+                          $content = str_replace(str_replace(Common_enum::ROOT, $url ,$temp), 'folder_image_website_info/'.$value, $content);
+                      }
+                    }
+            }
+            //  array imega delete content
+            $array_image_delete_content = explode(Common_enum::MARK, $str_image_delete_content);//  [new_avatar.jpg, old_avatar.jpg]
+            foreach ($array_image_delete_content as $value) {
+                $path_image_website_info = $base_path_website_info.$value;
+                if(file_exists($path_image_website_info)){
+                    unlink($path_image_website_info);
+                }
+            }
+            
+            
+        }
         
         $array_value = array(
                         Info_website_enum::CODE    => $code,
