@@ -19,6 +19,6 @@ class Info_website_enum {
     const CONTENT = 'content';
     
     //  More
-    const COLLECTION_INFO_WEBSITE = 'info_website';
+    const COLLECTION_INFO_WEBSITE = 'website_info';
     
 }
