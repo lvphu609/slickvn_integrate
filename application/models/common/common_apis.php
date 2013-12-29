@@ -149,13 +149,9 @@ class Common_apis extends CI_Model{
     //----------------------------------------------------//
     
     /**
+     * get_info_website
      * 
-     * Get Collection Info website
-     * 
-     * Menthod: GET
-     * 
-     * Response: JSONObject
-     * 
+     * @return array
      */
     public function get_info_website() {
         $collection = Info_website_enum::COLLECTION_INFO_WEBSITE;
@@ -174,26 +170,78 @@ class Common_apis extends CI_Model{
                     //  Create JSONObject
                     $jsonobject = array( 
                                 Info_website_enum::ID                   => $value['_id']->{'$id'},
-                                Info_website_enum::SECURITY_POLICIES    => $value['security_policies'],
-                                Info_website_enum::TERMS_OF_USE         => $value['terms_of_use'],
-                                Info_website_enum::CAREER_OPPORTUNITIES => $value['career_opportunities'],
-                                Common_enum::UPDATED_DATE               => $value['updated_date'],
-                                Common_enum::CREATED_DATE               => $value['created_date']
+                                Info_website_enum::CODE    => $value[Info_website_enum::CODE],
+                                Info_website_enum::NAME         => $value[Info_website_enum::NAME],
+                                Info_website_enum::CONTENT => $value[Info_website_enum::CONTENT],
+                                Comment_enum::APPROVAL => $value[Comment_enum::APPROVAL],
+                                Common_enum::UPDATED_DATE               => $value[Common_enum::UPDATED_DATE],
+                                Common_enum::CREATED_DATE               => $value[Common_enum::CREATED_DATE]
                                );
                     $results[] = $jsonobject;
                 }
             }
             
             $data =  array(
-                   'Status'     =>'SUCCESSFUL',
-                   'Total'      =>$count,
+                   'Status'     =>  Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                   'Total'      =>  sizeof($results),
                    'Results'    =>$results
             );
             return $data;
             
         }else{
             $data =  array(
-                   'Status'     =>'FALSE',
+                   'Status'     =>Common_enum::MESSAGE_RESPONSE_FALSE,
+                   'Error'      =>$error
+            );
+            return $data;
+        }
+    }
+    
+    /**
+     * get_website_info_by_code
+     * 
+     * @param string $code
+     * 
+     * @return array
+     */
+    public function get_website_info_by_code($code) {
+        $collection = Info_website_enum::COLLECTION_INFO_WEBSITE;
+        //  Get collection 
+        $get_collection = $this->common_model->getCollectionByField($collection, array(Info_website_enum::CODE => $code), array());
+        $error = $this->common_model->getError();
+        if($error == null){
+            //  Array object
+            $results = array();
+            //  Count object
+            $count = 0;
+            
+            if(is_array($get_collection)){
+                foreach ($get_collection as $value){
+                    $count ++;
+                    //  Create JSONObject
+                    $jsonobject = array( 
+                                Info_website_enum::ID                   => $value['_id']->{'$id'},
+                                Info_website_enum::CODE    => $value[Info_website_enum::CODE],
+                                Info_website_enum::NAME         => $value[Info_website_enum::NAME],
+                                Info_website_enum::CONTENT => $value[Info_website_enum::CONTENT],
+                                Comment_enum::APPROVAL => $value[Comment_enum::APPROVAL],
+                                Common_enum::UPDATED_DATE               => $value[Common_enum::UPDATED_DATE],
+                                Common_enum::CREATED_DATE               => $value[Common_enum::CREATED_DATE]
+                               );
+                    $results[] = $jsonobject;
+                }
+            }
+            
+            $data =  array(
+                   'Status'     =>  Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                   'Total'      =>  sizeof($results),
+                   'Results'    =>$results
+            );
+            return $data;
+            
+        }else{
+            $data =  array(
+                   'Status'     =>Common_enum::MESSAGE_RESPONSE_FALSE,
                    'Error'      =>$error
             );
             return $data;
@@ -209,30 +257,22 @@ class Common_apis extends CI_Model{
      * Response: JSONObject
      * 
      */
-    public function update_info_website_post($action, $id=null, $security_policies=null,
-                                             $terms_of_use=null, $career_opportunities=null,
+    public function update_info_website_post($action, $id=null, $code=null,
+                                             $name=null, $content=null,
                                              $updated_date=null, $created_date=null
                                             ) {
-        //  Get param from client
-//        $action                     = $this->post('action');
-//        $id                         = $this->post('id');
-//        $security_policies          = $this->post('security_policies');
-//        $terms_of_use               = $this->post('terms_of_use');
-//        $career_opportunities       = $this->post('career_opportunities');
-//        $updated_date               = $this->post('updated_date');
-//        $created_date               = $this->post('created_date');
         
         $array_value = array(
-                        Info_website_enum::SECURITY_POLICIES    => $security_policies,
-                        Info_website_enum::TERMS_OF_USE         => $terms_of_use,
-                        Info_website_enum::CAREER_OPPORTUNITIES => $career_opportunities,
+                        Info_website_enum::CODE    => $code,
+                        Info_website_enum::NAME         => $name,
+                        Info_website_enum::CONTENT => $content,
                         Common_enum::UPDATED_DATE               => ($updated_date == null ) ? $this->common_model->getCurrentDate(): $updated_date,
                         Common_enum::CREATED_DATE               => ($created_date == null ) ? $this->common_model->getCurrentDate(): $created_date
                 );
-//        $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
-//        if($is_edit == TRUE){
-//            unset($array_value[Common_enum::CREATED_DATE]);
-//        }
+        $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
+        if($is_edit == TRUE){
+            unset($array_value[Common_enum::CREATED_DATE]);
+        }
         $this->common_model->updateCollection(Info_website_enum::COLLECTION_INFO_WEBSITE, $action, $id, $array_value);
         $error = $this->common_model->getError();
         if($error == null){

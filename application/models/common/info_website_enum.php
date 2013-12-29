@@ -14,9 +14,9 @@
 class Info_website_enum {
     
     const ID = 'id';
-    const SECURITY_POLICIES = 'security_policies';      //  chinh sach bao mat
-    const TERMS_OF_USE = 'terms_of_use';                //  quy dinh su dung
-    const CAREER_OPPORTUNITIES = 'career_opportunities';//  co hoi nge nghiep
+    const CODE = 'code';
+    const NAME = 'name';
+    const CONTENT = 'content';
     
     //  More
     const COLLECTION_INFO_WEBSITE = 'info_website';
