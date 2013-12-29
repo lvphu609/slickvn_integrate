@@ -149,11 +149,11 @@ class Common_apis extends CI_Model{
     //----------------------------------------------------//
     
     /**
-     * get_info_website
+     * get_website_info_list
      * 
      * @return array
      */
-    public function get_info_website() {
+    public function get_website_info_list($is_approval=null) {
         $collection = Info_website_enum::COLLECTION_INFO_WEBSITE;
         //  Get collection 
         $get_collection = $this->common_model->getCollection($collection);
@@ -161,23 +161,22 @@ class Common_apis extends CI_Model{
         if($error == null){
             //  Array object
             $results = array();
-            //  Count object
-            $count = 0;
-            
             if(is_array($get_collection)){
                 foreach ($get_collection as $value){
-                    $count ++;
-                    //  Create JSONObject
-                    $jsonobject = array( 
-                                Info_website_enum::ID                   => $value['_id']->{'$id'},
-                                Info_website_enum::CODE    => $value[Info_website_enum::CODE],
-                                Info_website_enum::NAME         => $value[Info_website_enum::NAME],
-                                Info_website_enum::CONTENT => $value[Info_website_enum::CONTENT],
-                                Comment_enum::APPROVAL => $value[Comment_enum::APPROVAL],
-                                Common_enum::UPDATED_DATE               => $value[Common_enum::UPDATED_DATE],
-                                Common_enum::CREATED_DATE               => $value[Common_enum::CREATED_DATE]
-                               );
-                    $results[] = $jsonobject;
+                    $approval = (isset($value[Comment_enum::APPROVAL]))? $value[Comment_enum::APPROVAL] : 1;
+                    if($approval == null || $approval = $is_approval){
+                        //  Create JSONObject
+                        $jsonobject = array( 
+                                    Info_website_enum::ID                   => $value['_id']->{'$id'},
+                                    Info_website_enum::CODE    => $value[Info_website_enum::CODE],
+                                    Info_website_enum::NAME         => $value[Info_website_enum::NAME],
+                                    Info_website_enum::CONTENT => $value[Info_website_enum::CONTENT],
+                                    Comment_enum::APPROVAL => $value[Comment_enum::APPROVAL],
+                                    Common_enum::UPDATED_DATE               => $value[Common_enum::UPDATED_DATE],
+                                    Common_enum::CREATED_DATE               => $value[Common_enum::CREATED_DATE]
+                                   );
+                        $results[] = $jsonobject;
+                    }
                 }
             }
             
@@ -258,7 +257,7 @@ class Common_apis extends CI_Model{
      * 
      */
     public function update_info_website_post($action, $id=null, $code=null,
-                                             $name=null, $content=null,
+                                             $name=null, $content=null, $approval = null,
                                              $updated_date=null, $created_date=null
                                             ) {
         
@@ -266,6 +265,7 @@ class Common_apis extends CI_Model{
                         Info_website_enum::CODE    => $code,
                         Info_website_enum::NAME         => $name,
                         Info_website_enum::CONTENT => $content,
+                        Common_enum::APPROVAL => ($approval == null)? 0 : $approval,
                         Common_enum::UPDATED_DATE               => ($updated_date == null ) ? $this->common_model->getCurrentDate(): $updated_date,
                         Common_enum::CREATED_DATE               => ($created_date == null ) ? $this->common_model->getCurrentDate(): $created_date
                 );
