@@ -219,13 +219,13 @@ class Common_apis extends CI_Model{
                     $count ++;
                     //  Create JSONObject
                     $jsonobject = array( 
-                                Info_website_enum::ID                   => $value['_id']->{'$id'},
-                                Info_website_enum::CODE    => $value[Info_website_enum::CODE],
-                                Info_website_enum::NAME         => $value[Info_website_enum::NAME],
+//                                Info_website_enum::ID                   => $value['_id']->{'$id'},
+//                                Info_website_enum::CODE    => $value[Info_website_enum::CODE],
+//                                Info_website_enum::NAME         => $value[Info_website_enum::NAME],
                                 Info_website_enum::CONTENT => $value[Info_website_enum::CONTENT],
-                                Comment_enum::APPROVAL => $value[Comment_enum::APPROVAL],
-                                Common_enum::UPDATED_DATE               => $value[Common_enum::UPDATED_DATE],
-                                Common_enum::CREATED_DATE               => $value[Common_enum::CREATED_DATE]
+//                                Comment_enum::APPROVAL => $value[Comment_enum::APPROVAL],
+//                                Common_enum::UPDATED_DATE               => $value[Common_enum::UPDATED_DATE],
+//                                Common_enum::CREATED_DATE               => $value[Common_enum::CREATED_DATE]
                                );
                     $results[] = $jsonobject;
                 }
