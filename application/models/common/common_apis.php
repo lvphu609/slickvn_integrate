@@ -158,7 +158,7 @@ class Common_apis extends CI_Model{
         //  Get collection 
         $get_collection = $this->common_model->getCollection($collection);
         $error = $this->common_model->getError();
-        if($error == null){
+//        if($error == null){
             //  Array object
             $results = array();
             if(is_array($get_collection)){
@@ -187,13 +187,13 @@ class Common_apis extends CI_Model{
             );
             return $data;
             
-        }else{
-            $data =  array(
-                   'Status'     =>Common_enum::MESSAGE_RESPONSE_FALSE,
-                   'Error'      =>$error
-            );
-            return $data;
-        }
+//        }else{
+//            $data =  array(
+//                   'Status'     =>Common_enum::MESSAGE_RESPONSE_FALSE,
+//                   'Error'      =>$error
+//            );
+//            return $data;
+//        }
     }
     
     /**
