@@ -123,6 +123,7 @@
   margin-bottom: 10px;
   border:1px solid #999;
   border-radius: 5px;
+  -moz-border-radius: 5px;
   
 }
 #result_search .box_align_center .box_detail_left ul#menu_filter li .list_index li{

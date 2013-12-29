@@ -944,7 +944,7 @@
     
    
     if($(object).closest('li').find('.list_index').css('display') == 'none'){
-      // $(object).closest('#menu_filter').find('.list_index').css('display','none'); 
+       $(object).closest('#menu_filter').find('.list_index').css('display','none'); 
       /* $(object).closest('#menu_filter').find('.list_index').animate({
               display:"none",
               height: "toggle"
@@ -955,10 +955,10 @@
       
       $(object).closest('li').find('.list_index').animate({
              display:"block",
-             width: [ "toggle", "swing" ],
-               height: [ "toggle", "swing" ],
+             /*width: [ "toggle", "swing" ],*/
+              height: [ "toggle", "swing" ],
              opacity: "toggle"
-           },300, function() {
+           },400, function() {
              // Animation complete.
            });
       
@@ -967,7 +967,7 @@
     {
       $(object).closest('li').find('.list_index').animate({
                display:"none",
-               width: [ "toggle", "swing" ],
+             /*  width: [ "toggle", "swing" ],*/
                height: [ "toggle", "swing" ],
                opacity: "toggle"
             },300, function() {
