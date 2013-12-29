@@ -939,17 +939,43 @@
   
   function select_item_search(object){
      
-      $(object).closest('#menu_filter').find('.list_index').css({
-         display: "none"
-          
-        });
-     $(object).closest('li').find('.list_index').css({
-         display: "block"
-          
-        });
+  
+   
     
    
-                
+    if($(object).closest('li').find('.list_index').css('display') == 'none'){
+      // $(object).closest('#menu_filter').find('.list_index').css('display','none'); 
+      /* $(object).closest('#menu_filter').find('.list_index').animate({
+              display:"none",
+              height: "toggle"
+            },300, function() {
+              // Animation complete.
+            });*/
+     //  $(object).closest('li').find('.list_index').css('display','block'); 
+      
+      $(object).closest('li').find('.list_index').animate({
+             display:"block",
+             width: [ "toggle", "swing" ],
+               height: [ "toggle", "swing" ],
+             opacity: "toggle"
+           },300, function() {
+             // Animation complete.
+           });
+      
+    }
+    else
+    {
+      $(object).closest('li').find('.list_index').animate({
+               display:"none",
+               width: [ "toggle", "swing" ],
+               height: [ "toggle", "swing" ],
+               opacity: "toggle"
+            },300, function() {
+              // Animation complete.
+            });
+      // $(object).closest('li').find('.list_index').css('display','none'); 
+  ////css('display','none');
+    }            
                 
   }
   

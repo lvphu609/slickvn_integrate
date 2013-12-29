@@ -115,18 +115,20 @@
 }
 
 #result_search .box_align_center .box_detail_left ul#menu_filter li .list_index{
-  width: 250px;
+  width: 240px;
   height:auto;
   float: left;
   list-style: none;
   margin-left: 10px;
+  margin-bottom: 10px;
+  border:1px solid #999;
+  border-radius: 5px;
   
 }
 #result_search .box_align_center .box_detail_left ul#menu_filter li .list_index li{
   width: 240px;
   height:auto;
   float: left;
-  margin-left: 4px;
   margin-bottom: 5px;
 }
 #result_search .box_align_center .box_detail_left ul#menu_filter li .list_index li:hover{
@@ -136,34 +138,10 @@
  font-size: 12px;
  font-family: sans-serif;
  color: #419641;
- 
+ margin-top: 5px;
 }
 
-ul.list_index {
-width: 100%;
-height: auto;
-float: left;
-clear: both;
-margin: 0px;
-padding: 0px;
-list-style: none;
-margin-top: 10px;
-}
-ul.list_index li {
-width: 19%;
-height: auto;
-float: left;
-clear: none;
-margin-left: 5px;
-cursor: pointer;
-color:#000000;
-font-size: 15px;
-font-family: sans-serif;
-margin-top: 5px;
-margin-bottom: 5px;
-}
-
-ul.list_index li .checkbox {
+#result_search .box_align_center .box_detail_left ul#menu_filter li ul.list_index li .checkbox {
 width: 16px;
 height: 18px;
 background: url(../../../../includes/images/icon/check.png) no-repeat;
@@ -172,7 +150,7 @@ display: inline-block;
 float: left;
 /*margin-right: 5px;*/
 }
-ul.list_index li .checkboxSelect {
+#result_search .box_align_center .box_detail_left ul#menu_filter li ul.list_index li .checkboxSelect {
 background: url(../../../../includes/images/icon/checked.png) no-repeat;
 /*margin-right: 5px;*/
 display: inline-block;

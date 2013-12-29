@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require APPPATH.'/models/api_link_enum.php';
-
+require APPPATH.'/models/common/templater.php';
 class Search extends CI_Controller {
    public function __construct() {
     parent::__construct();
@@ -11,6 +11,7 @@ class Search extends CI_Controller {
     $this->load->model('restaurantenum');
     $this->load->model('restaurant/restaurant_apis');
     $this->load->model('common/common_apis');
+    $this->load->model('common/common_model');
     $this->load->model('user/user_apis');
     $this->load->library('session');
     $this->info_user   = $this->session->userdata('info_user');
@@ -101,7 +102,23 @@ class Search extends CI_Controller {
     
     
     
-   $this->load->view('home/content/footer_content'); 
+    /*footer content*/
+          $item_url=  base_url();
+          $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
+          $template_footer_content_info_item = new Templater($footer_content_info_item);                  
+          $website_info_list = $this->common_model->get_website_info_list();      
+          $result_website_info_list = "";
+          $i = 0;
+          foreach ($website_info_list as $value){
+            $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
+            $template_footer_content_info_item->item_name = $value['name'];
+            $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();
+          }
+
+          $data['footer_content_info_item_list'] = $result_website_info_list;
+          $this->load->view('home/content/footer_content',$data);
+      /*end footer content*/
+          
    $this->load->view('search/footer/footer');
     
   }
@@ -179,7 +196,23 @@ class Search extends CI_Controller {
    $this->load->view('search/content/result_search',$data); 
   
     
-   $this->load->view('home/content/footer_content'); 
+   /*footer content*/
+          $item_url=  base_url();
+          $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
+          $template_footer_content_info_item = new Templater($footer_content_info_item);                  
+          $website_info_list = $this->common_model->get_website_info_list();      
+          $result_website_info_list = "";
+          $i = 0;
+          foreach ($website_info_list as $value){
+            $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
+            $template_footer_content_info_item->item_name = $value['name'];
+            $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();
+          }
+
+          $data['footer_content_info_item_list'] = $result_website_info_list;
+          $this->load->view('home/content/footer_content',$data);
+      /*end footer content*/
+          
    $this->load->view('search/footer/footer');
     
   }
@@ -252,7 +285,23 @@ class Search extends CI_Controller {
    $this->load->view('search/content/result_search',$data); 
   
     
-   $this->load->view('home/content/footer_content'); 
+   /*footer content*/
+          $item_url=  base_url();
+          $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
+          $template_footer_content_info_item = new Templater($footer_content_info_item);                  
+          $website_info_list = $this->common_model->get_website_info_list();      
+          $result_website_info_list = "";
+          $i = 0;
+          foreach ($website_info_list as $value){
+            $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
+            $template_footer_content_info_item->item_name = $value['name'];
+            $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();
+          }
+
+          $data['footer_content_info_item_list'] = $result_website_info_list;
+          $this->load->view('home/content/footer_content',$data);
+    /*end footer content*/
+          
    $this->load->view('search/footer/footer');
     
   }
@@ -322,7 +371,23 @@ class Search extends CI_Controller {
    $this->load->view('search/content/result_search',$data); 
   
     
-   $this->load->view('home/content/footer_content'); 
+   /*footer content*/
+          $item_url=  base_url();
+          $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
+          $template_footer_content_info_item = new Templater($footer_content_info_item);                  
+          $website_info_list = $this->common_model->get_website_info_list();      
+          $result_website_info_list = "";
+          $i = 0;
+          foreach ($website_info_list as $value){
+            $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
+            $template_footer_content_info_item->item_name = $value['name'];
+            $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();
+          }
+
+          $data['footer_content_info_item_list'] = $result_website_info_list;
+          $this->load->view('home/content/footer_content',$data);
+   /*end footer content*/
+          
    $this->load->view('search/footer/footer');
     
   }
@@ -357,8 +422,26 @@ class Search extends CI_Controller {
   /*================LOCATION============================================================================*/
    $this->load->view('search/content/location_page'); 
  /*================END LOCATION============================================================================*/
-   $this->load->view('search/content/result_search_post',$data); 
-   $this->load->view('home/content/footer_content'); 
+   $this->load->view('search/content/result_search_post',$data);
+   
+   /*footer content*/
+          $item_url=  base_url();
+          $footer_content_info_item = 'application/views/home/content/footer_content_info_item.tpl';      
+          $template_footer_content_info_item = new Templater($footer_content_info_item);                  
+          $website_info_list = $this->common_model->get_website_info_list();      
+          $result_website_info_list = "";
+          $i = 0;
+          foreach ($website_info_list as $value){
+            $template_footer_content_info_item->item_url = base_url().'index.php/home_controller/webinfo?f='.$value['code'];                
+            $template_footer_content_info_item->item_name = $value['name'];
+            $result_website_info_list = $result_website_info_list.$template_footer_content_info_item->parse();
+          }
+
+          $data['footer_content_info_item_list'] = $result_website_info_list;
+          $this->load->view('home/content/footer_content',$data);
+      /*end footer content*/
+          
+          
    $this->load->view('search/footer/footer');
     
   }

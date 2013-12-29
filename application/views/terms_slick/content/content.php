@@ -6,17 +6,13 @@
   <div class="box_align_center">
     <div class="box_left">
       <ul>
-        <?php 
-        
-          echo $item_list
-                
-                
-                ?>
+        <?=  $item_list ?>
       </ul>
     </div>
     <div class="box_right">
-      <?=$item_selected_content;?>
-      
+      <div class="text_center">
+       <?= htmlspecialchars_decode ($item_selected_content); ?>
+      </div>
     </div>
   </div>
 </div>
