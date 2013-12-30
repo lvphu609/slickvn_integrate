@@ -1695,17 +1695,19 @@ public function coupon_page()
   }
   public function add_item_website_info(){
     
-    $param_name            =$_POST['param_name'];   
-    $param_code            =$_POST['param_code']; 
-    $param_status          =$_POST['param_status']; 
+    $name            =$_POST['param_name'];   
+    $code            =$_POST['param_code']; 
+    $approval          =$_POST['param_status']; 
     $content               =$_POST['content']; 
-    $string_image_filter   =$_POST['string_image_filter']; 
+    $str_image_post   =$_POST['string_image_filter']; 
     
-    
+    $action="insert";
     
     $results=$this->common_apis->update_website_info(
-            $param_name,
-            $param_code
+            $action, $id=null, $code,
+            $name, $content, $approval,
+            $str_image_post,
+            null,null
             );
     
     
