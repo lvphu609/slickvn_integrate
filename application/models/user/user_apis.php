@@ -506,10 +506,14 @@ class user_apis extends CI_Model{
                 $avatar = $old_avatar;
             }
         }
+        $code_register = $this->common_model->getRandomWord(8);//   sinh 8 ky tu ngu nhien
+        
         $array_value = ($is_delete != 0) ? 
                 array(
                         User_enum::FULL_NAME         => $full_name,
                         User_enum::EMAIL             => $email,        
+                        User_enum::CODE_REGISTER     => $code_register,        
+                        User_enum::ACTIVE           => 0,
                         User_enum::PASSWORD          => $password,
                         User_enum::PHONE_NUMBER      => $phone_number,
                         User_enum::ADDRESS           => ($address == null)? '' : $address,
@@ -531,13 +535,19 @@ class user_apis extends CI_Model{
         }
         else if($is_edit == 0){
             unset($array_value[Common_enum::CREATED_DATE]);
-            unset($array_value[Common_enum::CREATED_DATE]);
+            unset($array_value[User_enum::ACTIVE]);
+        }
+        else if($is_delete == 0){
+            unset($array_value[User_enum::ACTIVE]);
         }
 //        var_dump($array_value);
         $this->user_model->updateUser($action, $id, $array_value);
         $error = $this->user_model->getError();
         
         if( $is_delete!=0 && $error == null && isset($array_value[Common_enum::_ID])){
+            $pat_auth = Common_enum::ROOT.Common_enum::DIR_AUTH;
+            $this->common_model->createDirectory($pat_auth.$code_register, Common_enum::WINDOWN);
+            
             $data = $this->get_user_by_id($array_value[Common_enum::_ID]->{'$id'});
             return $data;
         }

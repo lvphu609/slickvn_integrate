@@ -108,14 +108,14 @@ class Common_model extends CI_Model{
             case Common_enum::WINDOWN:{
                 
                 if(!file_exists($path)){
-                    mkdir($path, 0, true);
+                    return mkdir($path, 0, true);
                 }
                 break;
             }
             case Common_enum::LINUX:{
                 
                 if(!file_exists($path)){
-                    mkdir($path, 0, true);
+                    return mkdir($path, 0, true);
                 }
                 break;
             }
@@ -123,8 +123,13 @@ class Common_model extends CI_Model{
         }
         
     }
+    
+    public function createFile($path, $file_name, $mode = 'w+', $content) {
+        $file = fopen($path.$file_name, $mode) or die('Cannot open file:  '.$path.$file_name);;
+        
+    }
 
-        /**
+    /**
      * 
      * Remove Element Array Null
      * 
@@ -1041,19 +1046,25 @@ class Common_model extends CI_Model{
   	return $str;
 	}
         
-  public function &array_merge_recursive_distinct ( &$array1, &$array2 ){            
-	  $merged = $array1;
-	  foreach ( $array2 as $key => &$value )
-	  {
-		  if ( is_array ( $value ) && isset ( $merged [$key] ) && is_array ( $merged [$key] ) )
-		  {
-		    $merged [$key] = array_merge_recursive_distinct ( $merged [$key], $value );
-		  }
-		  else
-		  {
-		    $merged [$key] = $value;
-		  }
-    }
+//  public function &array_merge_recursive_distinct ( &$array1, &$array2 ){            
+//	  $merged = $array1;
+//	  foreach ( $array2 as $key => &$value )
+//	  {
+//		  if ( is_array ( $value ) && isset ( $merged [$key] ) && is_array ( $merged [$key] ) )
+//		  {
+//		    $merged [$key] = array_merge_recursive_distinct ( $merged [$key], $value );
+//		  }
+//		  else
+//		  {
+//		    $merged [$key] = $value;
+//		  }
+//        }
+//   }
+   
+   public function getRandomWord($len) {
+       $word = array_merge(range('a', 'z'), range('A', 'Z'), range('0', '9'));
+       shuffle($word);
+       return substr(implode($word), 0, $len);
    }
         
 // public function get_website_info_list()
