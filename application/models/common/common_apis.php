@@ -248,6 +248,57 @@ class Common_apis extends CI_Model{
     }
     
     /**
+     * get_website_info_by_code
+     * 
+     * @param string $code
+     * 
+     * @return array
+     */
+    public function get_website_info_by_id($id) {
+        $collection = Info_website_enum::COLLECTION_INFO_WEBSITE;
+        //  Get collection 
+        $get_collection = $this->common_model->getCollectionById($collection, $id);
+        $error = $this->common_model->getError();
+        if($error == null){
+            //  Array object
+            $results = array();
+            //  Count object
+            $count = 0;
+            
+            if(is_array($get_collection)){
+                foreach ($get_collection as $value){
+                    $count ++;
+                    //  Create JSONObject
+                    $jsonobject = array( 
+                                Info_website_enum::ID                   => $value['_id']->{'$id'},
+                                Info_website_enum::CODE    => $value[Info_website_enum::CODE],
+                                Info_website_enum::NAME         => $value[Info_website_enum::NAME],
+                                Info_website_enum::CONTENT => $value[Info_website_enum::CONTENT],
+                                Comment_enum::APPROVAL => $value[Comment_enum::APPROVAL],
+                                Common_enum::UPDATED_DATE               => $value[Common_enum::UPDATED_DATE],
+                                Common_enum::CREATED_DATE               => $value[Common_enum::CREATED_DATE]
+                               );
+                    $results[] = $jsonobject;
+                }
+            }
+            
+            $data =  array(
+                   'Status'     =>  Common_enum::MESSAGE_RESPONSE_SUCCESSFUL,
+                   'Total'      =>  sizeof($results),
+                   'Results'    =>$results
+            );
+            return $data;
+            
+        }else{
+            $data =  array(
+                   'Status'     =>Common_enum::MESSAGE_RESPONSE_FALSE,
+                   'Error'      =>$error
+            );
+            return $data;
+        }
+    }
+    
+    /**
      * 
      * Update Collection Info website
      * 
