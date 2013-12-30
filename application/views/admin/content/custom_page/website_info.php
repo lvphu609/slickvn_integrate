@@ -90,7 +90,7 @@ foreach ($website_info_list as $value){
               <input onclick="return status_check(this);"  id="status_item" type="checkbox" disabled="disabled" '.$checked.'  >
             </li>
             <li class="update_delete">
-              <a href="javascript:;" class="view_edit_user"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+              <a href="javascript:;" onclick="return edit_item(this)" class="view_edit_user"  data-value_edit="'.$id.'"><div class="edit"></div></a>
               <a href="javascript:;" class="delete_user" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
             </li>
           </ul>   
@@ -114,7 +114,7 @@ foreach ($website_info_list as $value){
               <input onclick="return status_check(this);"  id="status_item" type="checkbox" disabled="disabled" '.$checked.'  >
             </li>
             <li class="update_delete">
-              <a href="javascript:;" class="view_edit_user"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+              <a href="javascript:;" onclick="return edit_item(this)" class="view_edit_user"  data-value_edit="'.$id.'"><div class="edit"></div></a>
               <a href="javascript:;" class="delete_user" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
             </li>
           </ul>   
@@ -136,7 +136,7 @@ foreach ($website_info_list as $value){
   </div>
 </div>
 <?php $url=  base_url(); ?>
-<input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/view_edit_user";?>" id="hdUrl_edit_user" >
+<input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/form_edit_item_website_info";?>" id="hidUrl_edit_item" >
 <input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/delete_user";?>" id="hdUrl_delete_user" >
 <input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
 <script>
@@ -145,13 +145,17 @@ foreach ($website_info_list as $value){
          $('.delete_member').hide();
       });
   
-  $(".view_edit_user").click(function (){
-    var url=$("#hdUrl_edit_user").val();
-    var data_value_edit=$(this).attr('data-value_edit');
+  function edit_item(object){
+    var url=$("#hidUrl_edit_item").val();
+    var data_value_edit=$(object).attr('data-value_edit');
     window.location=url+"?param_id="+data_value_edit;
-  });
-  $(".delete_user").click(function (){
-      $(this).parent().parent().addClass('select_delete');
+  };
+  
+  
+  
+  
+  function delete_item(object){
+      $(object).parent().parent().addClass('select_delete');
       var url=$("#hdUrl_delete_user").val();
       var data_value_delete=$(this).attr('data-value_delete');
    
@@ -182,7 +186,7 @@ foreach ($website_info_list as $value){
        
        
        
-  });
+  };
   
  //search member
  $('#btn_search_member').click(function (){

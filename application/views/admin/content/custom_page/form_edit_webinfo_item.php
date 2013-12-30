@@ -1,4 +1,7 @@
-<?php $url=  base_url(); ?>
+<?php $url=  base_url(); 
+  
+
+?>
 <div id="form_editor">
  <div id="content_form_editor">
    <div class="form_editor_title">
