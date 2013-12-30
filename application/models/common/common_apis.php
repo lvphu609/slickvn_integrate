@@ -256,7 +256,7 @@ class Common_apis extends CI_Model{
      * Response: JSONObject
      * 
      */
-    public function update_info_website_post($action, $id=null, $code=null,
+    public function update_info_website($action, $id=null, $code=null,
                                              $name=null, $content=null, $approval = null,
                                              $str_image_post,
                                              $updated_date=null, $created_date=null
@@ -319,8 +319,6 @@ class Common_apis extends CI_Model{
                     unlink($path_image_website_info);
                 }
             }
-            
-            
         }
         
         $array_value = array(
@@ -331,7 +329,6 @@ class Common_apis extends CI_Model{
                         Common_enum::UPDATED_DATE               => ($updated_date == null ) ? $this->common_model->getCurrentDate(): $updated_date,
                         Common_enum::CREATED_DATE               => ($created_date == null ) ? $this->common_model->getCurrentDate(): $created_date
                 );
-        $is_edit = $this->common_model->checkAction( $action, Common_enum::EDIT );
         if($is_edit == TRUE){
             unset($array_value[Common_enum::CREATED_DATE]);
         }
