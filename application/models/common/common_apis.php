@@ -253,7 +253,7 @@ class Common_apis extends CI_Model{
      * @param string $code
      * 
      * @return array
-     */
+     aaaa*/ 
     public function get_website_info_by_id($id) {
         $collection = Info_website_enum::COLLECTION_INFO_WEBSITE;
         //  Get collection 
