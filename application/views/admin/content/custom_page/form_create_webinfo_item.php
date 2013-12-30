@@ -2,11 +2,29 @@
 <div id="form_editor">
  <div id="content_form_editor">
    <div class="form_editor_title">
-     <span><div class="main_page_text"><?php echo $title_item; ?></div></span>
+     <span><div class="main_page_text">Tạo mới thông tin website</div></span>
    </div>
    <div class="line_title"></div></br>
-   <ul class="box_out">
-     
+   <ul class="ul_input_text">
+       <li>
+            <span class="title_input">Tên mô tả</span><br>
+            <input class="input_text" id="param_name" type="text" placeholder="" name="" >
+       </li>
+        <li>
+            <span class="title_input">Từ khóa viết tắt</span><br>
+            <input  class="input_text" id="param_code" type="text" placeholder="" name="">
+       </li>
+       <li>
+            <span class="title_input">Trạng thái</span><br>
+            <input onclick="return status_check(this);" class="input_checkbox" type="checkbox" placeholder="" name="">
+            <input id="param_status" value="0" type="hidden">
+       </li>
+   </ul>
+   <div class="box_input">
+   
+   
+   
+   <ul class="box_out">      
      <div class="editor_custom">
       <form action="#" method="post">
          <p>
@@ -90,14 +108,24 @@
  </div>
 </div>
 <input id="hidUrl" value="<?php echo $url; ?>" type="hidden">
-<input id="field_value" value="<?php echo $field_value; ?>" type="hidden">
+<input id="field_value" value="<?php //echo $field_value; ?>" type="hidden">
 <input id="id_item" value="1" type="hidden">
 <script>
 CKEDITOR.replace( '#editor1', {
 	fullPage: true,
 	allowedContent: true
 });
-
+function status_check(object){
+       var test=$(object).closest('li').find('#param_status').val();       
+       if(parseInt(test)==0){
+         $(object).closest('li').find('#param_status').val('1');
+       }
+       if(parseInt(test)==1){
+         $(object).closest('li').find('#param_status').val('0');
+       }
+       
+     };
+     
 function submit_save_info(){
 
      //noi dung bai viet=======================================================>
@@ -174,17 +202,25 @@ function submit_save_info(){
       var id =$('#id_item').val();
 
      var url=$("#hidUrl").val();
-     var url_api=url+"index.php/admin/admin_controller/update_terms_slick";
-     
-     var data={ content: content,
-                string_image_filter : string_image_filter,
-                string_image_delete_filter:string_image_delete_filter,        
-                field_value    :    field_value,
-                id              :id
+     var url_api=url+"index.php/admin/admin_controller/add_item_website_info";
+     var param_name = $('#param_name').val();
+     var param_code = $('#param_code').val();
+     var param_status = $('#param_status').val();
+     var data={ 
+                param_name:param_name,
+                param_code:param_code,
+                param_status:param_status,
+                content: content,
+                string_image_filter : string_image_filter
+                //string_image_delete_filter:string_image_delete_filter,        
+               // field_value    :    field_value,
+               // id              :id
           }
        
+     //alert(url_api);
      
-      $.ajax({
+     
+     $.ajax({
           url: url_api ,
           type: 'POST',
           data:data,

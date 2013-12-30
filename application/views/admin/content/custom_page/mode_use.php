@@ -39,7 +39,7 @@
          <span>Mã thành viên</span>
        </li>-->
        <li class="name_member">
-         <span class="index_bole">Nhu cầu</span>
+         <span class="index_bole">Phương thức sử dụng</span>
          <div class="line_index"></div>
        </li>
 <!--       <li class="job_member">

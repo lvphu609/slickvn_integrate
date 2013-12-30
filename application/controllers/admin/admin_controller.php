@@ -1663,6 +1663,55 @@ public function coupon_page()
     
   }
   
+  
+  //thông tin website
+  public function website_info(){
+    $data['chosed']="custom_page";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+     //danh sách tất cả các thành viên
+    $website_info_list = $this->common_apis->get_website_info_list();     
+    $data['website_info_list']=$website_info_list["Results"];
+    //var_dump($data['website_info_list']);
+    $this->load->view('admin/content/custom_page/website_info',$data);
+    
+    
+    $this->load->view('admin/footer/footer_main');
+  }
+  public function create_new_website_info(){
+    $data['chosed']="custom_page";
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+    $this->load->view('admin/content/custom_page/form_create_webinfo_item',$data);
+    
+    
+    $this->load->view('admin/footer/footer_main');
+    
+    
+  }
+  public function add_item_website_info(){
+    
+    $param_name            =$_POST['param_name'];   
+    $param_code            =$_POST['param_code']; 
+    $param_status          =$_POST['param_status']; 
+    $content               =$_POST['content']; 
+    $string_image_filter   =$_POST['string_image_filter']; 
+    
+    
+    
+    $results=$this->common_apis->update_website_info(
+            $param_name,
+            $param_code
+            );
+    
+    
+  }
+  
+  
   //cập nhật các điều khoản của slick
   public function update_terms_slick(){
     $id               =$_POST['id'];
@@ -1672,7 +1721,7 @@ public function coupon_page()
     $field_value      =$_POST['field_value'];
     
     
-    echo "Xinh về rồi nên chưa có hàm xử lý :(";
+    
    /* echo "id: ".$id."</br>";
     echo "nội dung: ".$content."</br>";
     echo "image sử dụng: ".$image_use."</br>";

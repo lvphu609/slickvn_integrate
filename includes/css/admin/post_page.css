@@ -2,7 +2,7 @@
   width: 85%;
   height: auto;
   float: left;
-  background: url('../../../includes/images/icon/slidebg.png'); 
+  background: #FFF; 
 }
 #main_page #content_main_page{
   margin-top: 100px;;
@@ -72,7 +72,7 @@
   width: 240px;
   float: left;
   height: 56px;
-  background: #FFF;
+  background:url('../../../includes/images/icon/bg.jpg'); 
   border-top-left-radius: 10px;
   -moz-border-top-left-radius: 10px;
  text-align: center; 
@@ -98,14 +98,15 @@
   width: 55px;
   float: left;
   height: 60px;
-  background: url('../../../includes/images/icon/bg_left_form_sign_up_title_right.png');
+  background: url('../../../includes/images/icon/bg_left_form_sign_up_title_right1.png');
+  background-size: 55px 60px;
 }
 
 #main_page #content_main_page .form_content_post .box .box_left .sub_title_1{
   width: 984px;
   float: left;
   height: 40px;
-  background: #FFF;
+  background:url('../../../includes/images/icon/bg.jpg'); 
 }
 #main_page #content_main_page .form_content_post .box .box_left .line {
   width: 984px;
@@ -118,13 +119,13 @@
   width: 1024px;
   float: left;
   height: 20px;
-
+  
 }
 #main_page #content_main_page .form_content_post .box .box_left .sub_title_2 .left{
   width: 984px;
   float: left;
   height: 20px;
-  background: #FFF;  
+  background:url('../../../includes/images/icon/bg.jpg');  
 }
 #main_page #content_main_page .form_content_post .box .box_left .sub_title_2 .right{
   width: 39px;
@@ -368,7 +369,7 @@ background-image: linear-gradient(to bottom, #19B3B3 100%, #70F8FF 100%);
   width: 984px;
   float: left;
   height: 20px;
-  background: #FFF;  
+  background:url('../../../includes/images/icon/bg.jpg');   
 }
 #main_page #content_main_page .form_content_post .box .box_left .sub_title_3 .right{
   width: 39px;
@@ -380,7 +381,7 @@ background-image: linear-gradient(to bottom, #19B3B3 100%, #70F8FF 100%);
   width: 570px;
   float: left;
   height:100px;
-  background: #FFF;
+  background:url('../../../includes/images/icon/bg.jpg'); 
   
 }
           /*custom nimbel style btn Đăng ký */

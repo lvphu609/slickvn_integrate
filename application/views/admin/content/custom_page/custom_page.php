@@ -71,10 +71,20 @@
      </li>
      <li class="box_out_li">
        <span class="title_box_in">SLICK.VN</span>
-       <ul class="box_in">
+          <ul class="box_in">
+            <li class="box_in_li">
+              <div class="icon_dot"></div>
+              <a href="<?php echo $url;?>index.php/admin/admin_controller/website_info">
+              <span class="sub_title_box_in">Thông tin website</span>
+              </a>
+            </li>
+          </ul>
+       
+       
+<!--     <ul class="box_in">
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php echo $url;?>index.php/admin/admin_controller/privacy_policy">
+           <a href="<?php //echo $url;?>index.php/admin/admin_controller/privacy_policy">
            <span class="sub_title_box_in">Chính sách bảo mật</span>
            </a>
          </li>
@@ -82,7 +92,7 @@
        <ul class="box_in">
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php echo $url;?>index.php/admin/admin_controller/terms_of_use">
+           <a href="<?php //echo $url;?>index.php/admin/admin_controller/terms_of_use">
            <span class="sub_title_box_in">Điều khoản sử dụng</span>
            </a>
          </li>
@@ -90,7 +100,7 @@
        <ul class="box_in">
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php echo $url;?>index.php/admin/admin_controller/employment">
+           <a href="<?php //echo $url;?>index.php/admin/admin_controller/employment">
            <span class="sub_title_box_in">Việc làm</span>
            </a>
          </li>
@@ -98,7 +108,7 @@
        <ul class="box_in">
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php echo $url;?>index.php/admin/admin_controller/faq">
+           <a href="<?php// echo $url;?>index.php/admin/admin_controller/faq">
            <span class="sub_title_box_in">Hỏi đáp</span>
            </a>
          </li>
@@ -106,7 +116,7 @@
        <ul class="box_in">
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php echo $url;?>index.php/admin/admin_controller/contact_us">
+           <a href="<?php// echo $url;?>index.php/admin/admin_controller/contact_us">
            <span class="sub_title_box_in">Liên hệ</span>
            </a>
          </li>
@@ -114,11 +124,14 @@
        <ul class="box_in">
          <li class="box_in_li">
            <div class="icon_dot"></div>
-           <a href="<?php echo $url;?>index.php/admin/admin_controller/quotation">
+           <a href="<?php //echo $url;?>index.php/admin/admin_controller/quotation">
            <span class="sub_title_box_in">Bảng báo giá</span>
            </a>
          </li>
-       </ul>
+       </ul>-->
+       
+       
+       
      </li>
      
      

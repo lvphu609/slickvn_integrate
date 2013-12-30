@@ -109,7 +109,7 @@
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/price_person.css">';
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/other_criteria.css">';
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/form_editor.css">';
-       
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/website_info.css">';
        
        echo '<script src="'.$url.'includes/plugins/date_time_picker/jquery-1.10.2.min.js"></script>';
        

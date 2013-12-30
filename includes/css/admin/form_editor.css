@@ -16,6 +16,27 @@
   /*background: #0066FF;*/
   
 }
+#form_editor #content_form_editor .ul_input_text{
+  width: 100%;
+  height: auto;
+  float: left;
+  list-style: none;
+}
+
+#form_editor #content_form_editor .ul_input_text li{
+  width: 200px;
+  height: 30px;
+  float: left;
+  margin-bottom: 50px;
+  margin-left: 10px;
+}
+#form_editor #content_form_editor .ul_input_text li .input_text{
+  width: 200px;
+  height: 30px;
+  float: left;
+  
+}
+
 #form_editor #content_form_editor .form_editor_title{
  width: 100%;
  height: auto;
@@ -45,6 +66,12 @@
   list-style: none;
   width: 100%;
   height: auto;
+  /*temp*/
+}
+#form_editor #content_form_editor .box_out .editor_custom{
+  width: 100%;
+  height: auto;
+  float: left;
   /*temp*/
 }
 
