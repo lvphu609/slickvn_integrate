@@ -164,7 +164,7 @@ class Common_apis extends CI_Model{
             if(is_array($get_collection)){
                 foreach ($get_collection as $value){
                     $approval = (isset($value[Comment_enum::APPROVAL]))? $value[Comment_enum::APPROVAL] : 1;
-                    if($approval == null || $approval = $is_approval){
+                    if($is_approval == null || $approval = $is_approval){
                         //  Create JSONObject
                         $jsonobject = array( 
                                     Info_website_enum::ID                   => $value['_id']->{'$id'},
