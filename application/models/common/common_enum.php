@@ -53,7 +53,9 @@ class Common_enum {
     const TYPE_DISH                 = 'dish/';
     const TYPE_INTRODUCE            = 'introduce/';
     const DIR_WEBSITE_INFO           = 'website_info/';
-    
+    const DIR_AUTH                  = 'auth/';
+
+
     const DEFAULT_AVATAR            = 'DEFAULT_AVATAR.png';
     
     //  ROOT
