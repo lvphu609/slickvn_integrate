@@ -25,17 +25,19 @@ class Test extends CI_Controller{
 //        
 //    }
     
-    public function t($t, $t1) {
-        echo $t.' - '.$t1;
+    public function update_info_website($action, $id, $code, $name, $content, $approval, $str_image_post) {
+        $this->load->model('common/common_apis');
+        $check = $this->common_apis->update_info_website($action, null, $code, $name, $content, $approval, $str_image_post);
+        print_r($check);
     }
     
-    public function aaa($action, $id=null, $name, $desc=null, $function_list) {
-        $this->load->model('user/user_apis');
-        $check = $this->user_apis->update_role($action, $id, $name, $desc, $function_list);
-        
-        print_r($check);
-        
-    }
+    public function aaa(/*$action, $id=null, $name, $desc=null, $function_list*/) {
+//        $this->load->model('user/user_apis');
+//        $check = $this->user_apis->update_role($action, $id, $name, $desc, $function_list);
+//        
+//        print_r($check);
+        echo 'bla bla...';
+        }
     
     public function get_list_restaurant_liked_by_user($l, $p, $id_user) {
         $this->load->model('restaurant/restaurant_apis');
