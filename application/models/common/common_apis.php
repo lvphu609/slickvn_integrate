@@ -256,7 +256,7 @@ class Common_apis extends CI_Model{
      * Response: JSONObject
      * 
      */
-    public function update_info_website($action, $id=null, $code=null,
+    public function update_website_info($action, $id=null, $code=null,
                                              $name=null, $content=null, $approval = null,
                                              $str_image_post,
                                              $updated_date=null, $created_date=null
